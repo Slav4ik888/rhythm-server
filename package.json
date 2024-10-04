@@ -1,0 +1,20 @@
+{
+  "name": "rhythm-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "concurrently \"npm run copy\" \"npm run tsc\"",
+    "tsc": "tsc -p tsconfig.prod.json",
+    "copy": "copyfiles -u 1 src/__temp/* src/__temp/**/* src/downloads/**/* src/downloads/* src/assets/**/* src/assets/**/**/* src/libs/emails/templates/* src/libs/storage/config/private/* server",
+    "dev": "NODE_PATH=server/ nodemon server/index.js",
+    "test:unit": "jest --config ./config/jest/jest.config.ts"
+  },
+  "author": "Vyacheslav",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "koa": "^2.15.3",
+    "koa-router": "^13.0.1"
+  }
+}
