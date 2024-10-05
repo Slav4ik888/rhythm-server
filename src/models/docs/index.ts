@@ -1,0 +1,1 @@
+export { getDocs } from './handlers'

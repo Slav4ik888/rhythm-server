@@ -1,0 +1,27 @@
+doctype html
+html
+    head
+        meta(http-equiv='Content-Type', content='text/html; charset=UTF-8')
+        title Подтверждение адреса электронной почты - курс #{courseName}
+        style.
+            .container { padding: 0 100px; }
+
+
+    body.container
+        a(href=url_course)
+            img(src="https://firebasestorage.googleapis.com/v0/b/osnova-course.appspot.com/o/logo_white_bg.jpg?alt=media&token=3781892d-1475-4940-9c43-eb4b8a3b25c5",  alt="Учебный центр Основа" style="width: 130px;")
+        h3 Здравствуйте, #{name} 
+        p вы зарегистрировались на 
+            a(href=url_course) курс&nbsp;#{courseName}.
+        br
+        p Подтвердите пожалуйста адрес электронной почты, для этого перейдите по ссылке ниже:
+        p
+            a(href=url_confirmation) подтвердить регистрацию
+        
+        br
+        br
+        p Если вы не регистрировались, просто проигнорируйте это письмо.
+
+        hr
+        footer
+            p С наилучшими пожеланиями, «#{platform_name}»

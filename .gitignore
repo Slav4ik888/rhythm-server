@@ -32,4 +32,4 @@ Thumbs.db
 
 src/libs/firebase/config/
 src/libs/storage/config/private
-src/libs/emails/config.ts
+src/libs/emails/email-config.ts
