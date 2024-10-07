@@ -5,18 +5,20 @@ import { auth } from '../../../libs/firebase';
 import { checkIsUserDisabled } from './services';
 import { Context } from '../../../app/types/global';
 import { serviceFindUserByEmail } from '../../users';
+import { AuthByLogin } from './types';
 
 
 
 export async function loginModel(ctx: Context): Promise<any> {
-  const data = ctx.request.body.authByLogin;
+  const data = ctx?.request?.body?.authByLogin || {} as AuthByLogin;
+  const { email = '', password } = data;
 
   validateAuthByLogin(ctx, data);
   
-  await checkIsUserDisabled(ctx, data.email);
+  await checkIsUserDisabled(ctx, email);
  
-  const userCredential = await signInWithEmailAndPassword(auth, data.email, data.password);
-  const user = await serviceFindUserByEmail(data.email);
+  const userCredential = await signInWithEmailAndPassword(auth, email, password);
+  const user = await serviceFindUserByEmail(email);
 
   await setCookie(ctx, userCredential, user, 'login');
 

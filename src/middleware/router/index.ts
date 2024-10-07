@@ -1,64 +1,31 @@
 import Router from 'koa-router';
 import controllers from '../../controllers';
 import { fbAuth } from '../../libs/firebase';
-import { checkUserSession } from '../session-caches';
+import { em } from './helpers';
 import { paths } from './paths';
+// import { checkUserSession } from '../session-caches';
 // import { mustBeAuthenticated } from '../../libs/verifications/must-be-authenticated.js';
 
 
 const
   router = new Router({ prefix: '/api' }),
-  { auth, users, folders, documents, rules, files, transactions } = controllers;
+  { auth, users } = controllers;
+
 
 
 // USERS - Auth
-router.post(paths.auth.signup.byEmail,           auth.signup);
-router.post(paths.auth.login.resetEmailPassword, auth.resetEmailPassword);
-router.post(paths.auth.login.byEmail,            auth.login);
-router.get (paths.user.logout,                   auth.logout);
+router.post(paths.auth.signup.byEmail,           em, auth.signup);
+router.post(paths.auth.login.resetEmailPassword, em, auth.resetEmailPassword);
+router.post(paths.auth.login.byEmail,            em, auth.login);
+router.get (paths.user.logout,                   em, auth.logout);
 
 // USERS - Data
 router.post(paths.user.getStartResourseData,    fbAuth, users.getStartResourseData);
 
 // COMPANY
+// router.post(paths.transactions.sendTransactions, checkUserSession, transactions.sendTransactions);
 
 // UI
-
-// Data - Docs
-router.post(paths.transactions.sendTransactions, checkUserSession, transactions.sendTransactions);
-
-router.get (paths.folders.getDocsByFolder,       checkUserSession, folders.getDocsByFolder);
-
-// Data - Folders
-router.post(paths.folders.addFolder,             checkUserSession, folders.addFolder);
-// router.post(path.folders.GET_FOLDERS,           checkUserSession, d.getFolders);
-router.post(paths.folders.updateFolder,          checkUserSession, folders.updateFolder);
-// router.post(path.folders.REMOVE_FOLDER,         checkUserSession, d.removeFolder);
-
-// Data - Documents
-router.post(paths.documents.addDocument,         checkUserSession, documents.addDocument);
-router.post(paths.documents.updateDocument,      checkUserSession, documents.updateDocument);
-router.get (paths.documents.getDocumentById,     checkUserSession, documents.getDocumentById);
-// router.post(path.documents.GET_DOCUMENT_ID,           checkUserSession, d.getDocument);
-// router.post(path.documents.GET_DOCUMENT_ID_PARENT_ID, checkUserSession, d.getDocument);
-// router.post(path.documents.REMOVE_DOCUMENT,           checkUserSession, d.updateDocument);
-
-// Data - Rules
-router.post(paths.rules.addRule,                 checkUserSession, rules.addRule);
-// router.get (path.rules.GET_RULE_ID_PARENT_ID,   checkUserSession, d.getRule);
-router.get (paths.rules.getRuleById,             checkUserSession, rules.getRuleById);
-router.get (paths.rules.getRuleByIdByParentId,   checkUserSession, rules.getRuleById);
-// router.post(path.rules.GET_RULE,                checkUserSession, d.getRule);
-router.post(paths.rules.updateRule,              checkUserSession, rules.updateRule);
-// router.post(path.rules.REMOVE_RULE,             checkUserSession, d.removeRule);
-
-// router.post(path.rulesTitles.GET_RULES_TITLES,  checkUserSession, d.getRulesTitles);
-// router.post(path.rulesTitles.UPDATE_RULE_TITLE, checkUserSession, d.updateRuleTitle);
-
-
-// FILES
-router.post(paths.files.upload, checkUserSession, files.upload);
-
 
 // Testing
 router.get('/hello', (ctx) => {
@@ -77,6 +44,6 @@ router.get('/throw/:status', (ctx) => {
 });
 
 // DEV
-router.post('/devDeleteCompanyAccount', fbAuth, controllers.auth.deleteCompanyAccount);
+// router.post('/devDeleteCompanyAccount', fbAuth, controllers.auth.deleteCompanyAccount);
 
 export default router;

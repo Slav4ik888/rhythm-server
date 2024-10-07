@@ -7,7 +7,7 @@ import { responseError } from '../../../views';
 
 export async function signupController(ctx: Context): Promise<any> {
   const
-    email   = String((ctx.request.body.signupData)?.email),
+    email   = String((ctx?.request?.body?.signupData)?.email),
     logTemp = createLogTemp(ctx, 'signup', email),
     error   = responseError(ctx, logger, logTemp);
   

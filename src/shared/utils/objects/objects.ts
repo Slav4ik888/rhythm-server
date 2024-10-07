@@ -1,4 +1,4 @@
-import { isNotObj } from 'shared/lib/validators';
+import { isNotObj } from '../../../libs/validators';
 
 
 export function extend<A, B>(a: A, b: B): A & B {

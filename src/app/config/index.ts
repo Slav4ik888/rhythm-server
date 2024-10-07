@@ -1,6 +1,6 @@
 export const cfg = {
   COOKIE_NAME     : 'rhythm',
-  SITE_URL        : 'https://rhythm.thm.su',
+  SITE_URL        : 'https://rhy.thm.su',
   SITE_TITLE_FULL : 'Rhythm',
   
   UPLOAD: {

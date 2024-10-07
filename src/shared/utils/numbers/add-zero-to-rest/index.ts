@@ -1,5 +1,5 @@
-import { createArr } from 'shared/helpers/arrays';
-import { isUndefined } from 'shared/lib/validators';
+import { createArr } from '../../arrays';
+import { isUndefined } from '../../../../libs/validators';
 import { getRest } from '../get-rest';
 
 

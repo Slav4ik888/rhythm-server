@@ -3,7 +3,6 @@ import { cloneObj } from '../../../shared/utils/objects';
 import { Role, User, UserStatus } from '../types';
 import { MOCK_PERSON, MOCK_PERSON_EMPTY } from './person';
 import { MOCK_COMPANY_ID } from '../../companies';
-import { USER_SETTINGS } from './settings';
 
 
 
@@ -18,13 +17,11 @@ export const MOCK_USER_EMPTY: User = {
   email         : '',
   permissions   : false,
 
-  positions     : [],
   role          : Role.EMPLOYEE,
   emailVerified : false,
   status        : UserStatus.NEW,
   order         : 100,
 
-  settings      : cloneObj(USER_SETTINGS),
   createdAt     : creatorFixDate(),
   lastChange    : creatorFixDate()
 };
@@ -38,12 +35,10 @@ export const MOCK_USER_EMPLOYEE: User = {
   email         : 'korzan.va@mail.ru',
   permissions   : false,
 
-  positions     : [],
   role          : Role.EMPLOYEE,
   emailVerified : false,
   status        : UserStatus.NEW,
   order         : 100,
-  settings      : cloneObj(USER_SETTINGS),
   
   createdAt     : creatorFixDate(MOCK_USER_ID),
   lastChange    : creatorFixDate(MOCK_USER_ID)

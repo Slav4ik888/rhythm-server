@@ -1,5 +1,5 @@
-import { isArrsEqual } from 'shared/helpers/arrays';
-import { isArr, isObj, isUndefined, isNotObj } from 'shared/lib/validators';
+import { isArrsEqual } from '../../arrays';
+import { isArr, isObj, isUndefined, isNotObj } from '../../../../libs/validators';
 import { cloneObj } from '../objects';
 import { setValueByScheme } from '../set-value-by-scheme';
 

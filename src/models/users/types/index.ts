@@ -1,4 +1,3 @@
-export * from './languages'
 export * from './person'
 export * from './phones'
 export * from './positions'

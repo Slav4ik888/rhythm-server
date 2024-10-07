@@ -1,5 +1,5 @@
 import { isArrsEqual } from '../../arrays';
-import { isArr, isUndefined, isObj, isNotObj } from '../../../lib/validators';
+import { isArr, isUndefined, isObj, isNotObj } from '../../../../libs/validators';
 import { setValueByScheme } from '../set-value-by-scheme';
 
 

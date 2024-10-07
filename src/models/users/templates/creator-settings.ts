@@ -1,7 +1,7 @@
-import { Languages, UserSettings } from '../types';
+import { UserSettings } from '../types';
 
 
-/** v.2023-11-11 */
+/** v.2024-10-07 */
 export const creatorUserSettings = (cfg: Partial<UserSettings> = {}): UserSettings => ({
-  language: cfg.language || Languages.RU
+  
 });

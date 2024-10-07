@@ -1,4 +1,4 @@
-import { isNotStr } from 'shared/lib/validators'
+import { isNotStr } from '../../../../libs/validators';
 
 interface CapitalConfig {
   first?: boolean

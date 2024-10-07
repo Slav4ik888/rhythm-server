@@ -1,5 +1,5 @@
 import { Errors } from '../../../libs/validators';
-import { isNotEmptyFields } from '../../../shared/utils/objects';
+import { isNoEmptyFields } from '../../../shared/utils/objects';
 import { ERR_CODE } from '../err-code';
 import { getErrorMessage } from '../get-error-message';
 
@@ -13,7 +13,7 @@ type Result = Errors & {
 export const getErrors = (errors: Errors): Result => {
   if (! errors) return { general: getErrorMessage(ERR_CODE.General) };
   
-  const isNotEmpty = isNotEmptyFields(errors);
+  const isNotEmpty = isNoEmptyFields(errors);
   let result: Result = {};
   console.log('[ResponseError][getErrors] isNotEmpty:', isNotEmpty);
 

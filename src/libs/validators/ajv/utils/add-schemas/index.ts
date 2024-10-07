@@ -6,9 +6,6 @@ import { defsItemBase, schemaFixDate } from '../../../../../models/base/validato
 import { defsCompany, schemaCompany } from '../../../../../models/companies/validators/schemas';
 import { defsFIO, defsPhone, defsUser, schemaPerson, schemaPhoneNumber, schemaPosition, } from '../../../../../models/users/validators/schemas';
 import { defsBase } from '../../schemas';
-import { schemaDeleteCompany } from '../../../../../models/auth/delete-accounts/validators/schemas';
-import { schemaFolder } from '../../../../../models/folders/validators/schemas';
-import { defsRule, schemaRule } from '../../../../../models/rules/validators/schemas';
 
 
 
@@ -37,13 +34,5 @@ export const addSchemas = (ajv: Ajv) => {
       // Company
       defsCompany,
       schemaCompany,
-      schemaDeleteCompany,
-
-      // Folders
-      schemaFolder,
-
-      // Rules
-      defsRule,
-      schemaRule
     ])
 };

@@ -1,4 +1,4 @@
-import { isNotNum, isNotStr } from 'shared/lib/validators';
+import { isNotNum, isNotStr } from '../../../../libs/validators';
 import { getArrWithoutItem } from '../get-arr-without-item';
 import type { Item, Items } from '../types';
 

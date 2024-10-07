@@ -1,4 +1,4 @@
-import { Context } from 'koa';
+import { Context } from '../../../app/types/global';
 import { createLogTemp, loggerLogin as logger } from '../../../libs/loggers';
 import models from '../../../models';
 import { responseError } from '../../../views';

@@ -1,4 +1,4 @@
-import { isObj } from 'shared/lib/validators';
+import { isObj } from '../../../../libs/validators';
 import { objectLength as length, getFirstFieldKey as getKey } from '../../objects';
 import type { Item, Items } from '../types';
 

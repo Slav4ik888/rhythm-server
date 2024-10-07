@@ -15,7 +15,6 @@ export const creatorUser = (cfg: Partial<User> = {}): User => {
     person        : creatorPerson(cfg.person),
     email         : cfg.email         || '',
 
-    positions     : cfg.positions     || [],
     role          : cfg.role          || Role.EMPLOYEE,
 
     emailVerified : cfg.emailVerified || false,
