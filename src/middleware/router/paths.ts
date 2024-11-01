@@ -1,12 +1,12 @@
 export const paths = {
   auth: {
     login: {
-      byEmail            : '/loginByEmail',
-      resetEmailPassword : '/resetEmailPassword'
+      byEmail            : '/auth/login/loginByEmail',
+      resetEmailPassword : '/auth/login/resetEmailPassword',
     },
     signup: {
-      byEmail: '/signupByEmail'
-    }
+      byEmail: '/auth/signup/byEmail',
+    },
   },
   user: {
     getStartResourseData  : '/getStartResourseData',

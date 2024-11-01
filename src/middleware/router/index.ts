@@ -14,7 +14,7 @@ const
 
 
 // USERS - Auth
-router.post(paths.auth.signup.byEmail,           em, auth.signup);
+router.post(paths.auth.signup.byEmail,           em, auth.signupByEmail);
 router.post(paths.auth.login.resetEmailPassword, em, auth.resetEmailPassword);
 router.post(paths.auth.login.byEmail,            em, auth.login);
 router.get (paths.user.logout,                   em, auth.logout);

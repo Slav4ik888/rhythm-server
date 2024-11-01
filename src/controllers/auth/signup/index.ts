@@ -5,14 +5,14 @@ import { responseError } from '../../../views';
 
 
 
-export async function signupController(ctx: Context): Promise<any> {
+export async function signupByEmailController(ctx: Context): Promise<any> {
   const
     email   = String((ctx?.request?.body?.signupData)?.email),
     logTemp = createLogTemp(ctx, 'signup', email),
     error   = responseError(ctx, logger, logTemp);
   
   try {
-    await models.auth.signup(ctx);
+    await models.auth.signupByEmail(ctx);
     logger.info(`${logTemp} success`);
     // TODO: send email for confirm email
     // TODO: send email about registration

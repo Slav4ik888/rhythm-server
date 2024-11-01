@@ -1,4 +1,4 @@
-export { signupModel as signup } from './signup'
+export { signupByEmailModel as signupByEmail } from './signup'
 export { SignupData } from './signup/types'
 export { loginModel as login } from './login'
 export { AuthByLogin } from './login/types'

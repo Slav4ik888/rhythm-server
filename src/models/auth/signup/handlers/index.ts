@@ -8,7 +8,7 @@ import { Context } from '../../../../app/types/global';
 
 // TODO: When invite new User нужно разделить создание пользователя с записью в уже имеющуюся компанию
 
-export async function signupModel(ctx: Context): Promise<any> {
+export async function signupByEmailModel(ctx: Context): Promise<any> {
   const { signupData } = ctx.request.body;
 
   validateSignupData(ctx, signupData);
