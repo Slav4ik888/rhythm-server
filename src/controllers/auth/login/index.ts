@@ -8,7 +8,7 @@ import { responseError } from '../../../views';
 export async function loginController(ctx: Context): Promise<any> {
   const
     email   = String(ctx.request.body.authByLogin?.email),
-    logTemp = createLogTemp(ctx, 'login', email),
+    logTemp = createLogTemp(ctx, 'authByLogin', email),
     error   = responseError(ctx, logger, logTemp);
   
   try {

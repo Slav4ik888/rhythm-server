@@ -12,7 +12,8 @@ export async function sendGroupMail(
 ) {
   const
     { subject, locals, template } = config,
-    logTemp = createLogTemp(email, 'sendGroupMail');
+    // TODO: добавить инфо про Sender email
+    logTemp = createLogTemp(undefined, 'sendGroupMail');
 
   try {
     for (let to of mailList) {

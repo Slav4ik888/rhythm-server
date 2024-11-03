@@ -1,7 +1,7 @@
 export const paths = {
   auth: {
     login: {
-      byEmail            : '/auth/login/loginByEmail',
+      byEmail            : '/auth/login/byEmail',
       resetEmailPassword : '/auth/login/resetEmailPassword',
     },
     signup: {
