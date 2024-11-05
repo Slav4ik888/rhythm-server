@@ -20,7 +20,7 @@ router.post(paths.auth.login.byEmail,            em, auth.login);
 router.get (paths.user.logout,                   em, auth.logout);
 
 // USERS - Data
-router.post(paths.user.getStartResourseData,    fbAuth, users.getStartResourseData);
+router.get(paths.user.getStartResourseData,      fbAuth, users.getStartResourseData);
 
 // COMPANY
 // router.post(paths.transactions.sendTransactions, checkUserSession, transactions.sendTransactions);

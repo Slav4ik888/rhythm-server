@@ -9,13 +9,13 @@ export const paths = {
     },
   },
   user: {
-    getStartResourseData  : '/getStartResourseData',
-    updateUser            : '/updateUser',
-    sendEmailConfirmation : '/sendEmailConfirmation',
-    logout                : '/logout/:email',
+    getStartResourseData  : '/user/getStartResourseData',
+    update                : '/user/update',
+    sendEmailConfirmation : '/user/sendEmailConfirmation',
+    logout                : '/user/logout/:email',
   },
   company: {
-    updateCompany : '/updateCompany',
+    update : '/company/update',
     // deleteCompany : '/deleteCompany/:companyId',
   },
 }
