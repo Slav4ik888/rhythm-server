@@ -1,1 +1,2 @@
-export { getCompany } from './get-company'
+export { getCompanyModel as getCompany } from './get'
+export { updateCompanyModel as updateCompany } from './update'

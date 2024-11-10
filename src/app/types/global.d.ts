@@ -1,6 +1,8 @@
 import { Context as KoaContext } from 'koa';
 import { SignupData, AuthByLogin } from '../../models';
+import { Company } from '../../models/companies';
 import { User } from '../../models/users';
+
 
 
 type Context = KoaContext & {
@@ -10,6 +12,8 @@ type Context = KoaContext & {
       email?           : string
       signupData?      : SignupData
       authByLogin?     : AuthByLogin
+      userData?        : Partial<User>
+      companyData?     : Partial<Company>
     }
   },
   state: {

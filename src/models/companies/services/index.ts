@@ -1,1 +1,2 @@
-export { serviceGetCompany } from './get-company'
+export { serviceGetCompany } from './get'
+export { serviceUpdateCompany } from './update'

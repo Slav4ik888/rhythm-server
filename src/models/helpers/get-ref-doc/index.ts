@@ -11,7 +11,7 @@ interface Data {
 }
 
 
-/** Ref */
+/** Ref to document */
 export const getRefDoc = (type: DbRef, data: Data = {}): DocumentReference<DocumentData> => {
   const { companyId, userId, id } = data;
   

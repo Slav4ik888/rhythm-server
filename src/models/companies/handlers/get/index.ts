@@ -1,13 +1,13 @@
-import { Company } from '..';
-import { Context } from '../../../app/types/global';
-import { ERROR_NAME, getErrorText } from '../../../libs/validators';
-import { serviceGetCompany } from '../services';
+import { Company } from '../..';
+import { Context } from '../../../../app/types/global';
+import { ERROR_NAME, getErrorText } from '../../../../libs/validators';
+import { serviceGetCompany } from '../../services';
 
 
 /**
  * @requires body.companyId
  */
-export const getCompany = async (ctx: Context): Promise<Company> => {
+export const getCompanyModel = async (ctx: Context): Promise<Company> => {
   const { companyId } = ctx.request.body;
 
   if (! companyId) return ctx.throw(400, { general: getErrorText(ERROR_NAME.INVALID_DATA, 'companyId') })
