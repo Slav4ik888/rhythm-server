@@ -1,4 +1,4 @@
-import { Company, MOCK_COMPANY_EMPTY } from '../../../../companies';
+import { Company, MOCK_COMPANY_EMPTY } from '../../../../company';
 
 
 

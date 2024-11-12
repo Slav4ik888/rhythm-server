@@ -1,6 +1,6 @@
 import { checkPermissions } from '..';
 import { CtxClass } from '../../../tests';
-import { Role } from '../../../../models/users';
+import { Role } from '../../../../models/user';
 import { ERROR_NAME, getErrorText } from '../../../validators';
 import { Context } from '../../../../app/types/global';
 import { creatorCompany, MOCK_OWNER_ID, MOCK_COMPANY_ID } from '../../../../models';

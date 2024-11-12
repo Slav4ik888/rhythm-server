@@ -1,4 +1,4 @@
-import { serviceFindUserByEmail } from '../../../users';
+import { serviceFindUserByEmail } from '../../../user';
 
 
 /** Проверяем свободен ли email */

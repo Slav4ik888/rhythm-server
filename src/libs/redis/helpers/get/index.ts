@@ -1,4 +1,4 @@
-import { User } from '../../../../models/users';
+import { User } from '../../../../models/user';
 import { parse } from '../../../../shared/utils/strings';
 import { client } from '../../init';
 

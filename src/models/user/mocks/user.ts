@@ -2,7 +2,7 @@ import { creatorFixDate } from '../../base';
 import { cloneObj } from '../../../shared/utils/objects';
 import { Role, User, UserStatus } from '../types';
 import { MOCK_PERSON, MOCK_PERSON_EMPTY } from './person';
-import { MOCK_COMPANY_ID } from '../../companies';
+import { MOCK_COMPANY_ID } from '../../company';
 
 
 

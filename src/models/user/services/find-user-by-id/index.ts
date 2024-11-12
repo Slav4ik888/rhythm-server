@@ -1,5 +1,5 @@
 import { db } from '../../../../libs/firebase';
-import { User } from '../../../users';
+import { User } from '../..';
 
 
 export async function serviceFindUserById(userId: string): Promise<User> {

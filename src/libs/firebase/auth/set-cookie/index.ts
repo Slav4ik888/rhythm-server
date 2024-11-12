@@ -1,7 +1,7 @@
 import { UserCredential } from 'firebase/auth';
 import { cfg } from '../../../../app/config';
 import { Context } from '../../../../app/types/global';
-import { User } from '../../../../models/users';
+import { User } from '../../../../models/user';
 import { day } from '../../../../shared/utils/dates';
 import { admin } from '../../config/admin-sdk';
 import { checkCsrfToken } from '../check-csrf-token';

@@ -3,8 +3,8 @@ import { schemaResetEmailPassword } from '../../../../../models/auth/reset-email
 import { schemaAuthByLogin } from '../../../../../models/auth/login/validators/schemas';
 import { schemaSignupData } from '../../../../../models/auth/signup/validators/schemas';
 import { defsItemBase, schemaFixDate } from '../../../../../models/base/validators/schemas';
-import { defsCompany, schemaCompany } from '../../../../../models/companies/validators/schemas';
-import { defsFIO, defsPhone, defsUser, schemaPerson, schemaPhoneNumber, schemaPosition, } from '../../../../../models/users/validators/schemas';
+import { defsCompany, schemaCompany } from '../../../../../models/company/validators/schemas';
+import { defsFIO, defsPhone, defsUser, schemaPerson, schemaPhoneNumber, schemaPosition, } from '../../../../../models/user/validators/schemas';
 import { defsBase } from '../../schemas';
 
 

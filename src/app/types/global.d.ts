@@ -1,7 +1,7 @@
 import { Context as KoaContext } from 'koa';
 import { SignupData, AuthByLogin } from '../../models';
-import { Company } from '../../models/companies';
-import { User } from '../../models/users';
+import { Company } from '../../models/company';
+import { User } from '../../models/user';
 
 
 

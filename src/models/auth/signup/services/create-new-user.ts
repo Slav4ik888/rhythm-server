@@ -2,7 +2,7 @@ import { SignupData } from '../types';
 import { createNewUserData } from '../utils';
 import { auth } from '../../../../libs/firebase';
 import { createUserWithEmailAndPassword, UserCredential } from 'firebase/auth';
-import { Role, User } from '../../../users';
+import { Role, User } from '../../../user';
 import { creatorFixDate } from '../../../base';
 
 

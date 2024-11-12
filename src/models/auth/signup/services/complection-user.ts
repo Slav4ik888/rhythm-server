@@ -1,5 +1,5 @@
 import { DbRef, getRefDoc } from '../../../helpers';
-import { User } from '../../../users';
+import { User } from '../../../user';
 
 
 

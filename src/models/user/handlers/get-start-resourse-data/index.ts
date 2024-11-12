@@ -1,5 +1,5 @@
 import { Context } from '../../../../app/types/global';
-import { Company, serviceGetCompany } from '../../../companies';
+import { Company, serviceGetCompany } from '../../../company';
 import { serviceGetUser } from '../../services';
 import { User } from '../../types';
 

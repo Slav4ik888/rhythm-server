@@ -1,7 +1,7 @@
 import { createNewUserData, NewUser } from "..";
 import { creatorFixDate } from '../../../../../base';
 import { MOCK_EMAIL, MOCK_PASSWORD } from '../../../../../base/mocks';
-import { Role, UserStatus } from '../../../../../users/types';
+import { Role, UserStatus } from '../../../../../user/types';
 import { MOCK_SIGNUP_DATA_FULL, MOCK_SIGNUP_DATA_SMALL } from '../../../mocks';
 
 

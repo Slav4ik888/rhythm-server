@@ -1,5 +1,5 @@
-import { Company } from '../types';
-import { DbRef, getRefDoc } from '../../helpers';
+import { Company } from '../../types';
+import { DbRef, getRefDoc } from '../../../helpers';
 
 
 export async function serviceGetCompany(companyId: string): Promise<Company | undefined> {

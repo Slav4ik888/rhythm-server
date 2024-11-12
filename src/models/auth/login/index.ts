@@ -4,7 +4,7 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../../libs/firebase';
 import { checkIsUserDisabled } from './services';
 import { Context } from '../../../app/types/global';
-import { serviceFindUserByEmail } from '../../users';
+import { serviceFindUserByEmail } from '../../user';
 import { AuthByLogin } from './types';
 
 

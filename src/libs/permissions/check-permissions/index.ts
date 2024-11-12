@@ -1,6 +1,6 @@
 import { Context } from '../../../app/types/global';
-import { Company } from '../../../models/companies';
-import { Role, User } from '../../../models/users';
+import { Company } from '../../../models/company';
+import { Role, User } from '../../../models/user';
 import { ERROR_NAME, getErrorText } from '../../validators';
 import { isNotRoleOwner } from '../is-role';
 

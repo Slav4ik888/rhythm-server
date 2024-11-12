@@ -3,13 +3,13 @@ import controllers from '../../controllers';
 import { fbAuth } from '../../libs/firebase';
 import { em } from './helpers';
 import { paths } from './paths';
-// import { checkUserSession } from '../session-caches';
+import { checkUserSession } from '../session-caches';
 // import { mustBeAuthenticated } from '../../libs/verifications/must-be-authenticated.js';
 
 
 const
   router = new Router({ prefix: '/api' }),
-  { auth, users } = controllers;
+  { auth, user, company } = controllers;
 
 
 
@@ -20,10 +20,11 @@ router.post(paths.auth.login.byEmail,            em, auth.login);
 router.get (paths.user.logout,                   em, auth.logout);
 
 // USERS - Data
-router.get(paths.user.getStartResourseData,      fbAuth, users.getStartResourseData);
+router.get(paths.user.getStartResourseData, fbAuth,           user.getStartResourseData);
+router.post(paths.user.update,              checkUserSession, user.update);
 
 // COMPANY
-// router.post(paths.transactions.sendTransactions, checkUserSession, transactions.sendTransactions);
+router.post(paths.company.update,              checkUserSession, company.update);
 
 // UI
 

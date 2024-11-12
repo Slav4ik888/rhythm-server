@@ -1,7 +1,7 @@
 import { Next } from 'koa';
 import { admin } from '../config/admin-sdk';
 import { getErrorMessage, NotAutorized, ERR_CODE } from '../../../views';
-import { loggerAuth } from '../../loggers';
+import { createLogTemp, loggerAuth } from '../../loggers';
 import models from '../../../models';
 import { Context } from '../../../app/types/global';
 import { getSessionData } from './get-session-data';
@@ -20,11 +20,12 @@ export async function fbAuthCookie(ctx: Context, next: Next) {
     if (! cookie) throw new NotAutorized(getErrorMessage(ERR_CODE.CookieNotAuth));
 
     const decodedIdToken = await admin.auth().verifySessionCookie(cookie, true /** checkRevoked */);
-    const user = await models.users.serviceFindUserById(decodedIdToken.uid);
+    const user = await models.user.serviceFindUserById(decodedIdToken.uid);
 
     ctx.state.user = { ...user };
+    loggerAuth.info(createLogTemp(ctx, 'FBAuth'));
+
     redisSet(decodedIdToken.uid, cookie, user);
-    
     return next();
   }
   catch(err) {

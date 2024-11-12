@@ -11,7 +11,7 @@ export async function getStartResourseDataController(ctx: Context): Promise<any>
     error   = responseError(ctx, logger, logTemp);
   
   try {
-    await models.users.getStartResourseData(ctx);
+    await models.user.getStartResourseData(ctx);
     logger.info(`${logTemp} success`);
   }
   catch (err) {

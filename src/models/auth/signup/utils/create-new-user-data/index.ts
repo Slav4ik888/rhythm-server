@@ -1,6 +1,6 @@
 import { isNotUndefined } from '../../../../../libs/validators';
 import { cloneObj } from '../../../../../shared/utils/objects';
-import { User, Role, creatorUser } from '../../../../users';
+import { User, Role, creatorUser } from '../../../../user';
 import { SignupData } from '../../types';
 
 

@@ -1,7 +1,7 @@
 import Ajv from 'ajv';
 import { isCondition } from '../../../../../models/base/validators/schemas';
-import { isCompanyStatus } from '../../../../../models/companies/validators/schemas';
-import { isPhoneNumberScheme, isCountryCode, isPhoneType, isRole, isUserStatus } from '../../../../../models/users/validators/schemas';
+import { isCompanyStatus } from '../../../../../models/company/validators/schemas';
+import { isPhoneNumberScheme, isCountryCode, isPhoneType, isRole, isUserStatus } from '../../../../../models/user/validators/schemas';
 
 
 export const addKeywords = (ajv: Ajv) => {

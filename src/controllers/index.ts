@@ -1,7 +1,8 @@
 import { default as auth } from './auth'
-import { default as users } from './users'
+import { default as user } from './user'
+import { default as company } from './company'
 
 
 export default {
-  auth, users
+  auth, user, company
 }

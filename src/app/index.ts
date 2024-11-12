@@ -15,7 +15,7 @@ app.use(async (ctx, next) => {
   catch (err) {
     // Logs
     let message = getUserDataTemp(ctx);
-    message += `, [status]: ${err.status}, [message]: ${err.message}, [error]: ${JSON.stringify(err)}`; // (err, null, 2)}`);
+    message += `, [status]: ${err.status}, [url]: ${ctx.url}, [message]: ${err.message}, [error]: ${JSON.stringify(err)}`; // (err, null, 2)}`);
     loggerServer.error(message);
 
     // Send response

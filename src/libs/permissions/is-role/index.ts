@@ -1,4 +1,4 @@
-import { Role } from '../../../models/users';
+import { Role } from '../../../models/user';
 
 
 type WithRole = {

@@ -1,5 +1,5 @@
 import { Context } from '../../../../app/types/global';
-import { getUserId } from '../../../users';
+import { getUserId } from '../../../user';
 import { serviceUpdateCompany } from '../../services';
 import { Company } from '../../types';
 
@@ -18,7 +18,8 @@ export const updateCompanyModel = async (ctx: Context): Promise<void> => {
   const userId = getUserId(ctx);
 
   // TODO: Permissions
-  
+  // TODO: Remove fields that are not allowed to be updated: owner
+
   // TODO: validateCompany(ctx, companyData);
 
   // Update

@@ -13,7 +13,6 @@ export const serviceUpdateCompany = async (company: Partial<Company>, userId: st
   if (isField(company, 'lastChange')) company.lastChange = creatorFixDate(userId);
 
   const dataInDot = convertToDot(company);
-  console.log('dataInDot: ', dataInDot);
 
   await getRefDoc(DbRef.COMPANY, { companyId }).update(dataInDot);
 

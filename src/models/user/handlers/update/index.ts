@@ -18,6 +18,7 @@ export const updateUserModel = async (ctx: Context): Promise<void> => {
   const userId = getUserId(ctx);
 
   // TODO: Permissions
+  // TODO: Remove fields that are not allowed to be updated
   
   // TODO: validateUser(ctx, userData);
 

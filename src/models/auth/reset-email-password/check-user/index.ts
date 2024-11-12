@@ -1,6 +1,6 @@
 import { Context } from '../../../../app/types/global';
 import { ERR_CODE, getErrorMessage } from '../../../../views';
-import { serviceFindUserByEmail } from '../../../users';
+import { serviceFindUserByEmail } from '../../../user';
 
 
 

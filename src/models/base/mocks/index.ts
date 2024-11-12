@@ -1,4 +1,4 @@
-import { MOCK_USER_ID } from '../../users/mocks';
+import { MOCK_USER_ID } from '../../user/mocks';
 import { creatorFixDate } from '../creators';
 import { FixDate } from '../types';
 

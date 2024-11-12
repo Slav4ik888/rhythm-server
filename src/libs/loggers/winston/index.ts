@@ -71,29 +71,29 @@ const loggerSignup = createLogger({
   ]
 });
 
-const loggerUsers = createLogger({
+const loggerUser = createLogger({
   level: 'info',
   format: combine(
-    label({ label: 'users' }),
+    label({ label: 'user' }),
     timestamp(),
     myFormat
   ),
   transports: [
     new transports.File({ filename: path.join(__dirname, rootPath, 'errors.log'), level: 'error' }),
-    new transports.File({ filename: path.join(__dirname, rootPath, 'users.log') })
+    new transports.File({ filename: path.join(__dirname, rootPath, 'user.log') })
   ]
 });
 
-const loggerCompanies = createLogger({
+const loggerCompany = createLogger({
   level: 'info',
   format: combine(
-    label({ label: 'companies' }),
+    label({ label: 'company' }),
     timestamp(),
     myFormat
   ),
   transports: [
     new transports.File({ filename: path.join(__dirname, rootPath, 'errors.log'), level: 'error' }),
-    new transports.File({ filename: path.join(__dirname, rootPath, 'companies.log') })
+    new transports.File({ filename: path.join(__dirname, rootPath, 'company.log') })
   ]
 });
 
@@ -113,16 +113,16 @@ const loggerMail = createLogger({
 
 
 if (process.env.NODE_ENV !== 'production') {
-  loggerServer      .add(new transports.Console({ format: combine(format.colorize(), format.simple()) }));
-  loggerAuth        .add(new transports.Console({ format: combine(format.colorize(), format.simple()) }));
-  loggerLogin       .add(new transports.Console({ format: combine(format.colorize(), format.simple()) }));
-  loggerSignup      .add(new transports.Console({ format: combine(format.colorize(), format.simple()) }));
-  loggerUsers       .add(new transports.Console({ format: combine(format.colorize(), format.simple()) }));
-  loggerCompanies   .add(new transports.Console({ format: combine(format.colorize(), format.simple()) }));
-  loggerMail        .add(new transports.Console({ format: combine(format.colorize(), format.simple()) }));
+  loggerServer  .add(new transports.Console({ format: combine(format.colorize(), format.simple()) }));
+  loggerAuth    .add(new transports.Console({ format: combine(format.colorize(), format.simple()) }));
+  loggerLogin   .add(new transports.Console({ format: combine(format.colorize(), format.simple()) }));
+  loggerSignup  .add(new transports.Console({ format: combine(format.colorize(), format.simple()) }));
+  loggerUser    .add(new transports.Console({ format: combine(format.colorize(), format.simple()) }));
+  loggerCompany .add(new transports.Console({ format: combine(format.colorize(), format.simple()) }));
+  loggerMail    .add(new transports.Console({ format: combine(format.colorize(), format.simple()) }));
 }
 
 
 export {
-  loggerServer, loggerAuth, loggerLogin, loggerSignup, loggerUsers, loggerCompanies, loggerMail
+  loggerServer, loggerAuth, loggerLogin, loggerSignup, loggerUser, loggerCompany, loggerMail
 };

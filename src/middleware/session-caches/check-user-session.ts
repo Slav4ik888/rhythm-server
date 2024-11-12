@@ -1,7 +1,7 @@
 import { Next } from 'koa';
 import { Context } from '../../app/types/global';
 import { getSessionData } from '../../libs/firebase';
-import { serviceFindUserById } from '../../models/users';
+import { serviceFindUserById } from '../../models/user';
 import { ERR_CODE, getErrorMessage, NotAutorized } from '../../views';
 import { redisGet, redisSet } from '../../libs/redis';
 

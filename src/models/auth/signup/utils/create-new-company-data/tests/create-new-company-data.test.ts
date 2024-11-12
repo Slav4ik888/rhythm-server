@@ -1,6 +1,6 @@
 import { createNewCompanyData, CreateNewCompany } from '..';
 import { creatorFixDate } from '../../../../../base';
-import { Company, CompanyStatus } from '../../../../../companies';
+import { Company, CompanyStatus } from '../../../../../company';
 
 
 describe('createNewCompanyData', () => {

@@ -2,7 +2,7 @@ import { SignupData } from '../types';
 import { createNewCompanyData } from '../utils';
 import { creatorFixDate } from '../../../base';
 import { DbRef, getRefCol, getRefDoc } from '../../../helpers';
-import { Company } from '../../../companies';
+import { Company } from '../../../company';
 
 
 interface CreateNewCompany {
