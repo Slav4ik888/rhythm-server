@@ -17,14 +17,14 @@ const
 router.post(paths.auth.signup.byEmail,           em, auth.signupByEmail);
 router.post(paths.auth.login.resetEmailPassword, em, auth.resetEmailPassword);
 router.post(paths.auth.login.byEmail,            em, auth.login);
-router.get (paths.user.logout,                   em, auth.logout);
 
 // USERS - Data
 router.get(paths.user.getStartResourseData, fbAuth,           user.getStartResourseData);
 router.post(paths.user.update,              checkUserSession, user.update);
+router.get (paths.user.logout,              em,               user.logout);
 
 // COMPANY
-router.post(paths.company.update,              checkUserSession, company.update);
+router.post(paths.company.update,           checkUserSession, company.update);
 
 // UI
 

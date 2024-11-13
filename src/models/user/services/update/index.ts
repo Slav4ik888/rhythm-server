@@ -17,7 +17,7 @@ export const serviceUpdateUser = async (user: Partial<User>, userId: string): Pr
   const dataInDot = convertToDot(user);
   console.log('dataInDot: ', dataInDot);
 
-  await getRefDoc(DbRef.USER, { companyId, id }).update(dataInDot);
+  await getRefDoc(DbRef.USER, { companyId, userId: id }).update(dataInDot);
 
   return
 };
