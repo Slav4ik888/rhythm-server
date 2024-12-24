@@ -3,4 +3,7 @@ export enum DbRef {
   USERS       = 'users',
   COMPANY     = 'company',
   COMPANIES   = 'companies',
+
+  VIEW        = 'view',
+  VIEWS       = 'views',
 }

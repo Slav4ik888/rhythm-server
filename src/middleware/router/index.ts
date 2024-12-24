@@ -9,8 +9,7 @@ import { checkUserSession } from '../session-caches';
 
 const
   router = new Router({ prefix: '/api' }),
-  { auth, user, company } = controllers;
-
+  { auth, user, company, dashboard } = controllers;
 
 
 // USERS - Auth
@@ -26,7 +25,10 @@ router.get (paths.user.logout,              em,               user.logout);
 // COMPANY
 router.post(paths.company.update,           checkUserSession, company.update);
 
-// UI
+// DASHBOARD
+router.post(paths.dashboard.view.add,       checkUserSession, dashboard.view.add);
+router.post(paths.dashboard.view.update,    checkUserSession, dashboard.view.update);
+
 
 // Testing
 router.get('/hello', (ctx) => {

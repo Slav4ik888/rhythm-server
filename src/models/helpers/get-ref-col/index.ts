@@ -18,6 +18,7 @@ export const getRefCol = (type: DbRef, data: Data = {}): CollectionReference<Doc
 
   switch (type) {
     case DbRef.COMPANIES: return db.collection(DbRef.COMPANIES);
+    case DbRef.VIEWS:     return db.collection(DbRef.VIEWS)    .doc(companyId).collection(DbRef.VIEWS);
 
     default: return null
   }

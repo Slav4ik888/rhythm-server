@@ -15,7 +15,6 @@ export const serviceUpdateUser = async (user: Partial<User>, userId: string): Pr
   if (isField(user, 'lastChange')) user.lastChange = creatorFixDate(userId);
 
   const dataInDot = convertToDot(user);
-  console.log('dataInDot: ', dataInDot);
 
   await getRefDoc(DbRef.USER, { companyId, userId: id }).update(dataInDot);
 
