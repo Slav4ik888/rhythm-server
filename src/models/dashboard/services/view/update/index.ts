@@ -1,10 +1,10 @@
-import { Context } from '../../../../app/types/global';
-import { convertToDot } from '../../../../shared/utils/objects';
-import { creatorFixDate } from '../../../base';
-import { getCompanyId } from '../../../company';
-import { DbRef, getRefDoc } from '../../../helpers';
-import { getUserId } from '../../../user';
-import { CardItem } from '../../types';
+import { Context } from '../../../../../app/types/global';
+import { convertToDot } from '../../../../../shared/utils/objects';
+import { creatorFixDate } from '../../../../base';
+import { getCompanyId } from '../../../../company';
+import { DbRef, getRefDoc } from '../../../../helpers';
+import { getUserId } from '../../../../user';
+import { CardItem } from '../../../types';
 
 
 
@@ -17,7 +17,6 @@ export const serviceDashboardViewUpdate = async (ctx: Context, cardItem: Partial
   cardItem.lastChange = creatorFixDate(userId);
 
   const dataInDot = convertToDot(cardItem);
-  console.log('dataInDot: ', dataInDot);
 
   await getRefDoc(DbRef.VIEW, { companyId, id: cardItem.id }).update(dataInDot);
 

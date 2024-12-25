@@ -1,12 +1,12 @@
-import { Context } from '../../../../app/types/global';
-import { db } from '../../../../libs/firebase';
-import { convertToDot } from '../../../../shared/utils/objects';
-import { creatorFixDate } from '../../../base';
-import { getCompanyId } from '../../../company';
-import { DbRef, getRefDoc } from '../../../helpers';
-import { getUserId } from '../../../user';
-import { NO_PARENT_ID } from '../../consts';
-import { DeleteCard } from '../../handlers/view/delete';
+import { Context } from '../../../../../app/types/global';
+import { db } from '../../../../../libs/firebase';
+import { convertToDot } from '../../../../../shared/utils/objects';
+import { creatorFixDate } from '../../../../base';
+import { getCompanyId } from '../../../../company';
+import { DbRef, getRefDoc } from '../../../../helpers';
+import { getUserId } from '../../../../user';
+import { NO_PARENT_ID } from '../../../consts';
+import { DeleteCard } from '../../../handlers/view/delete';
 
 
 
@@ -29,12 +29,11 @@ export const serviceDashboardViewDeleteGroup = async (ctx: Context, data: Delete
     const userId = getUserId(ctx);
     
     const parentItem = {
-      parentChildrenIds,
-      lastChange: creatorFixDate(userId),
+      childrenIds : parentChildrenIds,
+      lastChange  : creatorFixDate(userId),
     };
 
     const dataInDot = convertToDot(parentItem);
-    console.log('dataInDot: ', dataInDot);
 
     const ref = getRefDoc(DbRef.VIEW, { companyId, id: parentId });
     batch.update(ref, dataInDot);

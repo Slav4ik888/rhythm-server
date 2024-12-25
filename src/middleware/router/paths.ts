@@ -9,7 +9,7 @@ export const paths = {
     },
   },
   user: {
-    getStartResourseData  : '/user/getStartResourseData',
+    getStartResourseData  : '/user/getStartResourseData/:sheetId',
     update                : '/user/update',
     sendEmailConfirmation : '/user/sendEmailConfirmation',
     logout                : '/user/logout',
@@ -22,6 +22,7 @@ export const paths = {
     view: {
       add    : '/dashboard/view/add',
       update : '/dashboard/view/update',
+      delete : '/dashboard/view/delete',
     }
   },
   transactions: {

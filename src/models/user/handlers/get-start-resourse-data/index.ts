@@ -1,15 +1,18 @@
 import { Context } from '../../../../app/types/global';
 import { Company, serviceGetCompany } from '../../../company';
+import { NO_SHEET_ID } from '../../../dashboard/consts';
+import { serviceDashboardViewGetCardsBySheetId } from '../../../dashboard/services';
+import { CardItem } from '../../../dashboard/types';
 import { serviceGetUser } from '../../services';
 import { User } from '../../types';
 
 
 
-/** 2024-03-06 */
+/** 2024-12-25 */
 interface ResGetStartResourseData {
-  userData    : User
-  companyData : Company
-  documents   : Document[]
+  userData      : User
+  companyData   : Company
+  dashboardView : CardItem[]
 }
 
 
@@ -19,17 +22,17 @@ interface ResGetStartResourseData {
  */
 export async function getStartResourseDataModel(ctx: Context): Promise<any> {
   const { id, companyId } = ctx.state.user;
-  // const activeFolderId = ctx.request.body.activeFolder?.id || '';
+  const { sheetId = NO_SHEET_ID } = ctx.params;
+
 
   // Get folders
-  ctx.state.return = true;
+  // ctx.state.return = true;
 
-  const userData    = await serviceGetUser(companyId, id);
-  const companyData = await serviceGetCompany(companyId);
-
-  // TODO: get documents & rulesTitles by activeFolder.id
+  const userData      = await serviceGetUser(companyId, id);
+  const companyData   = await serviceGetCompany(companyId);
+  const dashboardView = await serviceDashboardViewGetCardsBySheetId(companyId, sheetId);
 
   ctx.body = {
-    userData, companyData
+    userData, companyData, dashboardView
   };
 }

@@ -28,6 +28,7 @@ router.post(paths.company.update,           checkUserSession, company.update);
 // DASHBOARD
 router.post(paths.dashboard.view.add,       checkUserSession, dashboard.view.add);
 router.post(paths.dashboard.view.update,    checkUserSession, dashboard.view.update);
+router.post(paths.dashboard.view.delete,    checkUserSession, dashboard.view.delete);
 
 
 // Testing

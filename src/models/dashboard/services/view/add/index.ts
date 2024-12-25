@@ -1,9 +1,9 @@
-import { Context } from '../../../../app/types/global';
-import { creatorFixDate } from '../../../base';
-import { getCompanyId } from '../../../company';
-import { DbRef, getRefDoc } from '../../../helpers';
-import { getUserId } from '../../../user';
-import { CardItem } from '../../types';
+import { Context } from '../../../../../app/types/global';
+import { creatorFixDate } from '../../../../base';
+import { getCompanyId } from '../../../../company';
+import { DbRef, getRefDoc } from '../../../../helpers';
+import { getUserId } from '../../../../user';
+import { CardItem } from '../../../types';
 
 
 
@@ -15,7 +15,6 @@ export const serviceDashboardViewAdd = async (ctx: Context, cardItem: CardItem):
 
   cardItem.createdAt  = lastChange;
   cardItem.lastChange = lastChange;
-  console.log('cardItem: ', cardItem);
 
   await getRefDoc(DbRef.VIEW, { companyId, id: cardItem.id }).set(cardItem);
 

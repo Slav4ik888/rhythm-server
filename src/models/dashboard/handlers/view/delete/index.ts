@@ -15,7 +15,7 @@ export interface DeleteCard {
  * @requires body.folder
  */
 export const deleteCardItemModel = async (ctx: Context): Promise<void> => {
-  const { parentId, allIds } = ctx.request.body as DeleteCard;
+  // const { parentId, allIds } = ctx.request.body as DeleteCard;
   
   // TODO: Permissions
   // TODO: Remove fields that are not allowed to be updated
