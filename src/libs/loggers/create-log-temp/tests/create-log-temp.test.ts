@@ -13,25 +13,25 @@ describe('createLogTemp', () => {
   } as Context;
 
   test('Valid data', () => {
-    expect(createLogTemp(ctx, 'USER_TEST')).toEqual('[user]: lnmqB8rgzNYFSRZ7STmE8U6YBlt2, [email]: korzan.va@mail.ru, [functionName]: USER_TEST');
+    expect(createLogTemp(ctx, 'USER_TEST')).toEqual('[f]: USER_TEST [e]: korzan.va@mail.ru [u]: lnmqB8rgzNYFSRZ7STmE8U6YBlt2');
   });
 
   test('Valid data with value', () => {
     expect(createLogTemp(ctx, 'USER_TEST', 'some value'))
-      .toEqual('[user]: lnmqB8rgzNYFSRZ7STmE8U6YBlt2, [email]: korzan.va@mail.ru, [functionName]: USER_TEST, [value]: some value');
+      .toEqual('[f]: USER_TEST [e]: korzan.va@mail.ru [u]: lnmqB8rgzNYFSRZ7STmE8U6YBlt2 [v]: some value');
   });
 
   test('Ctx is undefined', () => {
-    expect(createLogTemp(undefined, 'USER_TEST')).toEqual('[user]: quest, [functionName]: USER_TEST');
+    expect(createLogTemp(undefined, 'USER_TEST')).toEqual('[f]: USER_TEST [u]: quest');
   });
 
   test('functionName is undefined', () => {
     expect(createLogTemp(ctx, undefined, 'some value'))
-      .toEqual('[user]: lnmqB8rgzNYFSRZ7STmE8U6YBlt2, [email]: korzan.va@mail.ru, [functionName]: undefined, [value]: some value');
+      .toEqual('[f]: undefined [e]: korzan.va@mail.ru [u]: lnmqB8rgzNYFSRZ7STmE8U6YBlt2 [v]: some value');
   });
 
   test('Ctx is a Email', () => {
-    expect(createLogTemp('korzan.va@mail.ru' as unknown as Context, 'USER_TEST')).toEqual('[user]: quest, [functionName]: USER_TEST');
+    expect(createLogTemp('korzan.va@mail.ru' as unknown as Context, 'USER_TEST')).toEqual('[f]: USER_TEST [u]: quest');
   });
 });
 

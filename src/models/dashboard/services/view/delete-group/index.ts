@@ -1,18 +1,13 @@
 import { Context } from '../../../../../app/types/global';
 import { db } from '../../../../../libs/firebase';
-import { convertToDot } from '../../../../../shared/utils/objects';
-import { creatorFixDate } from '../../../../base';
 import { getCompanyId } from '../../../../company';
 import { DbRef, getRefDoc } from '../../../../helpers';
-import { getUserId } from '../../../../user';
-import { NO_PARENT_ID } from '../../../consts';
-import { DeleteCard } from '../../../handlers/view/delete';
+import { CardItemId } from '../../../types';
 
 
 
 /** Delete group CardItems from DB */
-export const serviceDashboardViewDeleteGroup = async (ctx: Context, data: DeleteCard): Promise<undefined> => {
-  const { parentId, allIds, parentChildrenIds } = data;
+export const serviceDashboardViewDeleteGroup = async (ctx: Context, allIds: CardItemId[]): Promise<undefined> => {
   const companyId  = getCompanyId(ctx);
   
   // Get a new write batch
@@ -23,22 +18,6 @@ export const serviceDashboardViewDeleteGroup = async (ctx: Context, data: Delete
     batch.delete(ref);
   });
 
-  
-  // Убираем Id удаляемого Item из childreIds у Родителя
-  if (parentId !== NO_PARENT_ID) {
-    const userId = getUserId(ctx);
-    
-    const parentItem = {
-      childrenIds : parentChildrenIds,
-      lastChange  : creatorFixDate(userId),
-    };
-
-    const dataInDot = convertToDot(parentItem);
-
-    const ref = getRefDoc(DbRef.VIEW, { companyId, id: parentId });
-    batch.update(ref, dataInDot);
-  }
-  
   // Commit the batch
   await batch.commit();
 

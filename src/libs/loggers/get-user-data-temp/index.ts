@@ -9,6 +9,6 @@ export const getUserDataTemp = (ctx: Context): string => {
   const userId = ctx?.state?.user?.id;
 
   return userId
-    ? `[user]: ${userId}, [email]: ${ctx.state.user?.email}`
-    : `[user]: quest`;
+    ? `[e]: ${ctx.state.user?.email} [u]: ${userId}`
+    : `[u]: quest`;
 }

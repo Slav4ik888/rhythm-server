@@ -25,5 +25,6 @@ export interface CardItem extends ItemBase {
   styles       : ItemStyles
   // content?     : string
   // contentSx?   : ItemStyles
-  childrenIds  : CardItemId[]
 }
+
+export type PartialCardItem = Partial<CardItem> & { id: CardItemId }

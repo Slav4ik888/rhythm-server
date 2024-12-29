@@ -1,11 +1,11 @@
 import { Context } from '../../../../../app/types/global';
 import { serviceDashboardViewUpdate } from '../../../services';
-import { CardItem } from '../../../types';
+import { PartialCardItem } from '../../../types';
 
 
 
 export interface UpdateCardItem {
-  cardItem : Partial<CardItem> // with id
+  cardItem: PartialCardItem
 }
 
 /**

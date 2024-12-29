@@ -4,10 +4,7 @@ import { CardItemId } from '../../../types';
 
 
 export interface DeleteCard {
-  companyId         : string
-  parentId          : string
-  parentChildrenIds : CardItemId[] // Итоговые Ids актуальных потомков
-  allIds            : CardItemId[] // Ids всех удаляемых (вложенных элементов)
+  allIds: CardItemId[] // Ids удаляемого и всех вложенных элементов
 }
 
 
@@ -15,13 +12,13 @@ export interface DeleteCard {
  * @requires body.folder
  */
 export const deleteCardItemModel = async (ctx: Context): Promise<void> => {
-  // const { parentId, allIds } = ctx.request.body as DeleteCard;
+  const { allIds = [] } = ctx.request.body as DeleteCard;
   
   // TODO: Permissions
   // TODO: Remove fields that are not allowed to be updated
   // TODO: validateDeleteCardItem (ctx, userData);
 
-  serviceDashboardViewDeleteGroup(ctx, ctx.request.body as DeleteCard);
+  serviceDashboardViewDeleteGroup(ctx, allIds);
   
   ctx.status = 200;
   ctx.body = {};
