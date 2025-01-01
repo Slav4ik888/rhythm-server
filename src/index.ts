@@ -3,7 +3,7 @@ import app from './app';
 app.listen(process.env.PORT || 7575, () => console.log(`Listening on port ${process.env.PORT || 7575}!`))
 
 // cd ../rhythm-server 
-// git add . && git commit -m "remove childrenIds & refact" && git push -u origin main
+// git add . && git commit -m "refact" && git push -u origin main
 
 // 200 OK
 // This response code indicates that the request was successful.

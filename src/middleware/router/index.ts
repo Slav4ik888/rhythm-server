@@ -11,6 +11,7 @@ const
   router = new Router({ prefix: '/api' }),
   { auth, user, company, dashboard } = controllers;
 
+console.log('[ts][router][start]', new Date().getTime());
 
 // USERS - Auth
 router.post(paths.auth.signup.byEmail,           em, auth.signupByEmail);
