@@ -1,6 +1,6 @@
-import { Context } from '../../../../../app/types/global';
-import { serviceDashboardViewUpdate } from '../../../services';
-import { PartialCardItem } from '../../../types';
+import { Context } from '../../../../app/types/global';
+import { serviceDashboardViewUpdate } from '../../services';
+import { PartialCardItem } from '../../types';
 
 
 

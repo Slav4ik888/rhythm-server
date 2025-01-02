@@ -1,6 +1,6 @@
-import { Context } from '../../../../../app/types/global';
-import { serviceDashboardViewDeleteGroup } from '../../../services';
-import { CardItemId } from '../../../types';
+import { Context } from '../../../../app/types/global';
+import { serviceDashboardViewDeleteGroup } from '../../services';
+import { CardItemId } from '../../types';
 
 
 export interface DeleteCard {

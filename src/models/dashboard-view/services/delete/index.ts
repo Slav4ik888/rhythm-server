@@ -1,7 +1,7 @@
-import { Context } from '../../../../../app/types/global';
-import { getCompanyId } from '../../../../company';
-import { DbRef, getRefDoc } from '../../../../helpers';
-import { CardItemId } from '../../../types';
+import { Context } from '../../../../app/types/global';
+import { getCompanyId } from '../../../company';
+import { DbRef, getRefDoc } from '../../../helpers';
+import { CardItemId } from '../../types';
 
 
 

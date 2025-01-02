@@ -11,25 +11,24 @@ const
   router = new Router({ prefix: '/api' }),
   { auth, user, company, dashboard } = controllers;
 
-console.log('[ts][router][start]', new Date().getTime());
 
 // USERS - Auth
-router.post(paths.auth.signup.byEmail,           em, auth.signupByEmail);
-router.post(paths.auth.login.resetEmailPassword, em, auth.resetEmailPassword);
-router.post(paths.auth.login.byEmail,            em, auth.login);
+router.post(paths.auth.signup.byEmail,           em,               auth.signupByEmail);
+router.post(paths.auth.login.resetEmailPassword, em,               auth.resetEmailPassword);
+router.post(paths.auth.login.byEmail,            em,               auth.login);
 
 // USERS - Data
-router.get(paths.user.getStartResourseData, fbAuth,           user.getStartResourseData);
-router.post(paths.user.update,              checkUserSession, user.update);
-router.get (paths.user.logout,              em,               user.logout);
+router.get(paths.user.getStartResourseData,      fbAuth,           user.getStartResourseData);
+router.post(paths.user.update,                   checkUserSession, user.update);
+router.get (paths.user.logout,                   em,               user.logout);
 
 // COMPANY
-router.post(paths.company.update,           checkUserSession, company.update);
+router.post(paths.company.update,                checkUserSession, company.update);
 
 // DASHBOARD
-router.post(paths.dashboard.view.add,       checkUserSession, dashboard.view.add);
-router.post(paths.dashboard.view.update,    checkUserSession, dashboard.view.update);
-router.post(paths.dashboard.view.delete,    checkUserSession, dashboard.view.delete);
+router.post(paths.dashboard.view.add,            checkUserSession, dashboard.view.add);
+router.post(paths.dashboard.view.update,         checkUserSession, dashboard.view.update);
+router.post(paths.dashboard.view.delete,         checkUserSession, dashboard.view.delete);
 
 
 // Testing

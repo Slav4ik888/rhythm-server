@@ -1,6 +1,6 @@
-import { Context } from '../../../../../app/types/global';
-import { serviceDashboardViewAdd } from '../../../services';
-import { CardItem } from '../../../types';
+import { Context } from '../../../../app/types/global';
+import { serviceDashboardViewAdd } from '../../services';
+import { CardItem } from '../../types';
 
 
 

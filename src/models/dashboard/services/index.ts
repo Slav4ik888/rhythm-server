@@ -1,5 +1,0 @@
-export { serviceDashboardViewAdd } from './view/add'
-export { serviceDashboardViewUpdate } from './view/update'
-export { serviceDashboardViewDelete } from './view/delete'
-export { serviceDashboardViewDeleteGroup } from './view/delete-group'
-export { serviceDashboardViewGetCardsBySheetId } from './view/get-cards-by-sheetid'

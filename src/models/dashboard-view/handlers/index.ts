@@ -4,7 +4,7 @@ import { deleteCardItemModel } from './delete'
 
 
 export default { 
-  add    : addCardItemModel,
-  update : updateCardItemModel,
-  delete : deleteCardItemModel,
+  add          : addCardItemModel,
+  update       : updateCardItemModel,
+  delete       : deleteCardItemModel,
 }

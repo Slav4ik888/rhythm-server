@@ -1,8 +1,8 @@
-import { Context } from '../../../../../app/types/global';
-import { db } from '../../../../../libs/firebase';
-import { getCompanyId } from '../../../../company';
-import { DbRef, getRefDoc } from '../../../../helpers';
-import { CardItemId } from '../../../types';
+import { Context } from '../../../../app/types/global';
+import { db } from '../../../../libs/firebase';
+import { getCompanyId } from '../../../company';
+import { DbRef, getRefDoc } from '../../../helpers';
+import { CardItemId } from '../../types';
 
 
 
