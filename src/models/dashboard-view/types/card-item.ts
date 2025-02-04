@@ -1,30 +1,65 @@
 import { ItemBase } from '../../base'
-import { ItemStyles } from './item-styles'
+import { IndicatorsConfig } from './config'
+import { ViewItemStyles } from './item-styles'
 
-export type CardItemType = 'box'
+export type ViewItemType = 'box' | 'text' | 'divider' | 'chart' | 'chip' | 'growthIcon' | 'digitIndicator'
 
-export type CardItemId = string
-
-
-// export interface CardItemHeader {
-//   sx?: ItemStyles
-// }
+export type ViewItemId = string
 
 
-// export interface CardItemBody {
-//   sx?: ItemStyles
-// }
-
-
-export interface CardItem extends ItemBase {
-  id           : CardItemId
-  parentId     : CardItemId // Where item is child. If no parentId, then parentId === ''
-  sheetId      : CardItemId // Main sheet id === ''
-
-  type         : CardItemType
-  styles       : ItemStyles
-  // content?     : string
-  // contentSx?   : ItemStyles
+export interface ViewItemCharts {
+  kod?       : string
+  chartType? : any // ChartType
+  datasets?  : any // ChartConfigDatasets
 }
 
-export type PartialCardItem = Partial<CardItem> & { id: CardItemId }
+export type ViewItemChartsField = keyof ViewItemCharts
+
+export type ChipType = 'condition' | 'period' | 'company' | 'product' | 'custom'
+export type BaseChipType = 'periodType' | 'companyType' | 'productType'
+
+export const chipOptions: Record<ChipType, { label: string; value: ChipType }> = {
+  'condition' : { label: 'Состояние',     value: 'condition' },
+  'period'    : { label: 'Периодичность', value: 'period' },
+  'company'   : { label: 'Компания',      value: 'company' },
+  'product'   : { label: 'Продукт',       value: 'product' },
+  'custom'    : { label: 'Без привязки',  value: 'custom' },
+};
+export const arrayChipLabel = Object.values(chipOptions).map(item => item.label);
+
+
+export type ViewItemSettings = IndicatorsConfig & {
+  // Global settings
+  display?        : boolean // Показывать ли элемент
+  kod?            : string  // Код для одиночного элемента Chip | GrowthItem |
+  inverted?       : boolean // График перевёрнутый, пример - если задолженность уменьшается то это рост
+  unchangedBlack? : boolean // При отсутствии изменений в результатах красить чёрным цветом
+  
+  // Chart settings
+  charts?         : ViewItemCharts[]
+  chartOptions?   : any // ChartConfigOptions
+
+  // Chips settings
+  chipType?       : ChipType
+
+  // GrowthItem settings
+  scale?          : number  // Изменение размера треуголька
+  isLeft?         : boolean // При отсутствии изменений чёрный треугольник повернуть влево
+}
+
+export type ViewItemSettingsField = keyof ViewItemSettings;
+
+
+/** v.2025-02-04 */
+export interface ViewItem extends ItemBase {
+  id           : ViewItemId
+  parentId     : ViewItemId // Where item is child. If no parentId, then parentId === ''
+  sheetId      : ViewItemId // Main sheet id === ''
+
+  type         : ViewItemType
+  styles       : ViewItemStyles
+
+  settings?    : ViewItemSettings
+}
+
+export type PartialViewItem = Partial<ViewItem> & { id: ViewItemId }

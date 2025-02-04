@@ -1,10 +1,10 @@
-import { addCardItemModel } from './add'
-import { updateCardItemModel } from './update'
-import { deleteCardItemModel } from './delete'
+import { addViewItemModel } from './add'
+import { updateViewItemModel } from './update'
+import { deleteViewItemModel } from './delete'
 
 
 export default { 
-  add          : addCardItemModel,
-  update       : updateCardItemModel,
-  delete       : deleteCardItemModel,
+  add          : addViewItemModel,
+  update       : updateViewItemModel,
+  delete       : deleteViewItemModel,
 }

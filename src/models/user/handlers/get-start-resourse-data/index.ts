@@ -1,8 +1,8 @@
 import { Context } from '../../../../app/types/global';
 import { Company, serviceGetCompany } from '../../../company';
 import { NO_SHEET_ID } from '../../../dashboard-view/consts';
-import { serviceDashboardViewGetCardsBySheetId } from '../../../dashboard-view/services';
-import { CardItem } from '../../../dashboard-view/types';
+import { serviceDashboardViewGetViewsBySheetId } from '../../../dashboard-view/services';
+import { ViewItem } from '../../../dashboard-view/types';
 import { serviceGetUser } from '../../services';
 import { User } from '../../types';
 
@@ -12,7 +12,7 @@ import { User } from '../../types';
 interface ResGetStartResourseData {
   userData      : User
   companyData   : Company
-  dashboardView : CardItem[]
+  dashboardView : ViewItem[]
 }
 
 
@@ -30,7 +30,7 @@ export async function getStartResourseDataModel(ctx: Context): Promise<any> {
 
   const userData      = await serviceGetUser(companyId, id);
   const companyData   = await serviceGetCompany(companyId);
-  const dashboardView = await serviceDashboardViewGetCardsBySheetId(companyId, sheetId);
+  const dashboardView = await serviceDashboardViewGetViewsBySheetId(companyId, sheetId);
 
   ctx.body = {
     userData, companyData, dashboardView

@@ -9,7 +9,7 @@ export type JustifyContentType = 'flex-start' | 'flex-end' | 'center' | 'baselin
 
 export type RgbaString = string // rgba(255, 255, 255, 1)
 
-export interface ItemStyles {
+export interface ViewItemStyles {
   width?     : number | string // In px | '100%' | 'auto' | 'max-content' | 'min-content'
   minWidth?  : number | string
   maxWidth?  : number | string
@@ -76,4 +76,4 @@ export interface ItemStyles {
 
 }
 
-export type ItemStylesField = keyof ItemStyles;
+export type ItemStylesField = keyof ViewItemStyles;

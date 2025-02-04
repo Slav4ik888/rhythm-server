@@ -1,22 +1,22 @@
 import { Context } from '../../../../app/types/global';
 import { serviceDashboardViewDeleteGroup } from '../../services';
-import { CardItemId } from '../../types';
+import { ViewItemId } from '../../types';
 
 
-export interface DeleteCard {
-  allIds: CardItemId[] // Ids удаляемого и всех вложенных элементов
+export interface DeleteView {
+  allIds: ViewItemId[] // Ids удаляемого и всех вложенных элементов
 }
 
 
 /**
  * @requires body.folder
  */
-export const deleteCardItemModel = async (ctx: Context): Promise<void> => {
-  const { allIds = [] } = ctx.request.body as DeleteCard;
+export const deleteViewItemModel = async (ctx: Context): Promise<void> => {
+  const { allIds = [] } = ctx.request.body as DeleteView;
   
   // TODO: Permissions
   // TODO: Remove fields that are not allowed to be updated
-  // TODO: validateDeleteCardItem (ctx, userData);
+  // TODO: validateDeleteViewItem (ctx, userData);
 
   serviceDashboardViewDeleteGroup(ctx, allIds);
   

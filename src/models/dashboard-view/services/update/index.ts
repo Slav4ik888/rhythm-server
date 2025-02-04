@@ -4,20 +4,20 @@ import { creatorFixDate } from '../../../base';
 import { getCompanyId } from '../../../company';
 import { DbRef, getRefDoc } from '../../../helpers';
 import { getUserId } from '../../../user';
-import { PartialCardItem } from '../../types';
+import { PartialViewItem } from '../../types';
 
 
 
-/** Update CardItem in DB */
-export const serviceDashboardViewUpdate = async (ctx: Context, cardItem: PartialCardItem): Promise<undefined> => {
+/** Update ViewItem in DB */
+export const serviceDashboardViewUpdate = async (ctx: Context, viewItem: PartialViewItem): Promise<undefined> => {
   const userId    = getUserId(ctx);
   const companyId = getCompanyId(ctx);
   
-  cardItem.lastChange = creatorFixDate(userId);
+  viewItem.lastChange = creatorFixDate(userId);
 
-  const dataInDot = convertToDot(cardItem);
+  const dataInDot = convertToDot(viewItem);
 
-  await getRefDoc(DbRef.VIEW, { companyId, id: cardItem.id }).update(dataInDot);
+  await getRefDoc(DbRef.VIEW, { companyId, id: viewItem.id }).update(dataInDot);
 
   return
 };
