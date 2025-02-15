@@ -13,9 +13,8 @@ import { redisGet, redisSet } from '../../libs/redis';
  * если нет то fbAuth
  */
 export async function checkUserSession(ctx: Context, next: Next) {
-  const
-    { cookie, userId } = getSessionData(ctx),
-    userSession = await redisGet(userId);
+  const { cookie, userId } = getSessionData(ctx);
+  const userSession = await redisGet(userId);
 
   if (userSession.cookie !== cookie) throw new NotAutorized(getErrorMessage(ERR_CODE.CookieNotAuth))
   
@@ -23,7 +22,9 @@ export async function checkUserSession(ctx: Context, next: Next) {
     ctx.state.user = { ...userSession.user }
   }
   else { // Отсутствуют данные пользователя, запрашиваем и сохраняем
+    // TODO: решить ситуацию, когда userId - undefined (надо разлогинется и заново войти)
     const user = await serviceFindUserById(userId);
+
     await redisSet(userId, cookie, user);
     ctx.state.user = { ...user }
   }
