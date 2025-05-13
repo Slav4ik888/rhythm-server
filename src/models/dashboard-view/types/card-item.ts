@@ -1,4 +1,5 @@
 import { ItemBase } from '../../base'
+import { ChartConfigDatasets, ChartConfigTrendDatasets, ChartType } from './charts'
 import { IndicatorsConfig } from './config'
 import { ViewItemStyles } from './item-styles'
 
@@ -7,10 +8,13 @@ export type ViewItemType = 'box' | 'text' | 'divider' | 'chart' | 'chip' | 'grow
 export type ViewItemId = string
 
 
+/** v.2025-05-05 */
 export interface ViewItemCharts {
-  kod?       : string
-  chartType? : any // ChartType
-  datasets?  : any // ChartConfigDatasets
+  kod?           : string
+  chartType?     : ChartType
+  datasets?      : ChartConfigDatasets
+  isTrend?       : boolean // Показывать ли линию тренда
+  trendDataSets? : ChartConfigTrendDatasets
 }
 
 export type ViewItemChartsField = keyof ViewItemCharts

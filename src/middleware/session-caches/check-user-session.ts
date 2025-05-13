@@ -16,7 +16,7 @@ export async function checkUserSession(ctx: Context, next: Next) {
   const { cookie, userId } = getSessionData(ctx);
   const userSession = await redisGet(userId);
 
-  if (userSession.cookie !== cookie) throw new NotAutorized(getErrorMessage(ERR_CODE.CookieNotAuth))
+  if (userSession.cookie !== cookie  || ! userSession.user || ! userId) throw new NotAutorized(getErrorMessage(ERR_CODE.CookieNotAuth))
   
   if (userSession.user) {
     ctx.state.user = { ...userSession.user }
