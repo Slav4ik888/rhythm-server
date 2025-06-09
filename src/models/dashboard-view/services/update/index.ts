@@ -5,19 +5,29 @@ import { getCompanyId } from '../../../company';
 import { DbRef, getRefDoc } from '../../../helpers';
 import { getUserId } from '../../../user';
 import { PartialViewItem } from '../../types';
+import { db } from '../../../../libs/firebase';
 
 
 
 /** Update ViewItem in DB */
-export const serviceDashboardViewUpdate = async (ctx: Context, viewItem: PartialViewItem): Promise<undefined> => {
+export const serviceDashboardUpdateGroupItems = async (ctx: Context, viewItems: PartialViewItem[]): Promise<undefined> => {
   const userId    = getUserId(ctx);
   const companyId = getCompanyId(ctx);
-  
-  viewItem.lastChange = creatorFixDate(userId);
 
-  const dataInDot = convertToDot(viewItem);
+  // Get a new write batch
+  const batch = db.batch();
 
-  await getRefDoc(DbRef.VIEW, { companyId, id: viewItem.id }).update(dataInDot);
+  viewItems.forEach(item => {
+    const ref = getRefDoc(DbRef.VIEW, { companyId, id: item.id });
+    const viewItem = {
+      ...item,
+      lastChange: creatorFixDate(userId)
+    };
+    batch.update(ref, convertToDot(viewItem));
+  });
+
+  // Commit the batch
+  await batch.commit();
 
   return
 };

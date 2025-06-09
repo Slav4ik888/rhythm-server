@@ -1,11 +1,11 @@
 import { addViewItemModel } from './add'
-import { updateViewItemModel } from './update'
+import { updateGroupViewItemsModel } from './update'
 import { deleteViewItemModel } from './delete'
-import { createGroupItemsModel } from './create-group-items'
+import { createGroupViewItemsModel } from './create-group-items'
 
-export default { 
+export default {
   add              : addViewItemModel,
-  createGroupItems : createGroupItemsModel,
-  update           : updateViewItemModel,
+  createGroupItems : createGroupViewItemsModel,
+  updateGroupItems : updateGroupViewItemsModel,
   delete           : deleteViewItemModel,
 }

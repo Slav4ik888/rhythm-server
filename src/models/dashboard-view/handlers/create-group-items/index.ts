@@ -11,12 +11,12 @@ export interface AddNewView {
 /**
  * @requires body.AddNewView
  */
-export const createGroupItemsModel = async (ctx: Context): Promise<void> => {
+export const createGroupViewItemsModel = async (ctx: Context): Promise<void> => {
   const { viewItems } = ctx.request.body as AddNewView;
-  
+
   // TODO: Permissions
   // TODO: Remove fields that are not allowed to be updated
-  
+
   // TODO: validateNewView(ctx, userData);
 
   await serviceDashboardViewCreateGroupItems(ctx, viewItems);

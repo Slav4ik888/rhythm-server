@@ -3,7 +3,7 @@ import app from './app';
 app.listen(process.env.PORT || 7575, () => console.log(`Listening on port ${process.env.PORT || 7575}!`))
 
 // cd ../rhythm-server npm run dev
-// git add . && git commit -m "added rhythm-server.service" && git push -u origin main
+// git add . && git commit -m "added serviceDashboardUpdateGroupItems" && git push -u origin main
 
 // 200 OK
 // This response code indicates that the request was successful.
@@ -17,7 +17,7 @@ app.listen(process.env.PORT || 7575, () => console.log(`Listening on port ${proc
 // 401 Unauthorized
 // This error indicates that you need to perform authentication before accessing the resource.
 
-// 403 Forbidden — сервер понял запрос, но он отказывается его выполнять из-за ограничений в доступе для клиента к указанному ресурсу. 
+// 403 Forbidden — сервер понял запрос, но он отказывается его выполнять из-за ограничений в доступе для клиента к указанному ресурсу.
 
 // 404 Not Found
 // This response indicates that the required resource could not be found. This is generally returned to all requests which point to a URL with no corresponding resource.

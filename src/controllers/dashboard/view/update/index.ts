@@ -9,9 +9,9 @@ export async function dashboardViewUpdateController(ctx: Context): Promise<any> 
   const
     logTemp = createLogTemp(ctx, 'dashboardViewUpdate'),
     error   = responseError(ctx, logger, logTemp);
-  
+
   try {
-    await models.dashboard.view.update(ctx);
+    await models.dashboard.view.updateGroupItems(ctx);
     logger.info(`${logTemp} success`);
   }
   catch (err) {

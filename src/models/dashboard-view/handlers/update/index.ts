@@ -1,26 +1,26 @@
 import { Context } from '../../../../app/types/global';
-import { serviceDashboardViewUpdate } from '../../services';
+import { serviceDashboardUpdateGroupItems } from '../../services';
 import { PartialViewItem } from '../../types';
 
 
 
 export interface UpdateViewItem {
-  viewItem: PartialViewItem
+  viewItems: PartialViewItem[]
 }
 
 /**
  * @requires body.UpdateViewItem
  */
-export const updateViewItemModel = async (ctx: Context): Promise<void> => {
-  const { viewItem } = ctx.request.body as UpdateViewItem;
-  
+export const updateGroupViewItemsModel = async (ctx: Context): Promise<void> => {
+  const { viewItems } = ctx.request.body as UpdateViewItem;
+
   // TODO: Permissions
   // TODO: Remove fields that are not allowed to be updated
-  
+
   // TODO: validateUpdateViewItem (ctx, userData);
 
-  await serviceDashboardViewUpdate(ctx, viewItem);
-  
+  await serviceDashboardUpdateGroupItems(ctx, viewItems);
+
   ctx.status = 200;
   ctx.body = {};
 };
