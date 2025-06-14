@@ -6,4 +6,4 @@ export {
   MOCK_USER_ID, MOCK_POSITION_ID, MOCK_POSITION_IDS_10A, MOCK_POSITION_IDS_10B,
   MOCK_POSITION_IDS_10C, MOCK_POSITION_IDS_10D
 } from './mocks'
-export { getStartResourseData, update } from './handlers'
+export { getAuth, update } from './handlers'

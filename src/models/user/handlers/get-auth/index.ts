@@ -8,31 +8,27 @@ import { User } from '../../types';
 
 
 
-/** 2024-12-25 */
-interface ResGetStartResourseData {
+/** 2025-06-13 */
+interface ResGetAuth {
   userData      : User
   companyData   : Company
-  dashboardView : ViewItem[]
 }
 
 
 /**
- * 
- * @requires body.activeFolder 
+ *
+ * @requires body
  */
-export async function getStartResourseDataModel(ctx: Context): Promise<any> {
+export async function getAuthModel(ctx: Context): Promise<any> {
   const { id, companyId } = ctx.state.user;
-  const { sheetId = NO_SHEET_ID } = ctx.params;
-
 
   // Get folders
   // ctx.state.return = true;
 
   const userData      = await serviceGetUser(companyId, id);
   const companyData   = await serviceGetCompany(companyId);
-  const dashboardView = await serviceDashboardViewGetViewsBySheetId(companyId, sheetId);
 
   ctx.body = {
-    userData, companyData, dashboardView
+    userData, companyData
   };
 }

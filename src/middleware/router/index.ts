@@ -9,7 +9,7 @@ import { checkUserSession } from '../session-caches';
 
 const
   router = new Router({ prefix: '/api' }),
-  { auth, user, company, dashboard } = controllers;
+  { auth, user, company, dashboard, paramsCompany } = controllers;
 
 
 // USERS - Auth
@@ -18,16 +18,22 @@ router.post(paths.auth.login.resetEmailPassword,   em,               auth.resetE
 router.post(paths.auth.login.byEmail,              em,               auth.login);
 
 // USERS - Data
-router.get(paths.user.getStartResourseData,        fbAuth,           user.getStartResourseData);
+router.get(paths.user.getAuth,                     fbAuth,           user.getAuth);
+// router.get(paths.user.getStartResourseData,        fbAuth,           user.getStartResourseData);
 router.post(paths.user.update,                     checkUserSession, user.update);
 router.get (paths.user.logout,                     em,               user.logout);
 
 // COMPANY
+// router.post(paths.company.get,                     checkUserSession, company.get);
 router.post(paths.company.update,                  checkUserSession, company.update);
 
+// PARAMS-COMPANY
+router.get(paths.paramsCompany.get,                checkUserSession, paramsCompany.get);
+
 // VIEW
-router.post(paths.dashboard.view.add,              checkUserSession, dashboard.view.add);
+// router.post(paths.dashboard.view.add,              checkUserSession, dashboard.view.add);
 router.post(paths.dashboard.view.createGroupItems, checkUserSession, dashboard.view.createGroupItems);
+router.post(paths.dashboard.view.get,              checkUserSession, dashboard.view.get);
 router.post(paths.dashboard.view.update,           checkUserSession, dashboard.view.update);
 router.post(paths.dashboard.view.delete,           checkUserSession, dashboard.view.delete);
 

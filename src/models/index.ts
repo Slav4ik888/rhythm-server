@@ -1,6 +1,7 @@
 import * as auth from './auth'
 import * as base from './base'
 import * as company from './company'
+import * as paramsCompany from './params-company'
 import * as user from './user'
 import * as dashboard from './dashboard-view'
 
@@ -14,4 +15,5 @@ export default {
   company,
   user,
   dashboard,
+  paramsCompany,
 }

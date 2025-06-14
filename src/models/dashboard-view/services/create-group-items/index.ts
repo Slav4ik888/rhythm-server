@@ -5,13 +5,14 @@ import { DbRef, getRefDoc } from '../../../helpers';
 import { getUserId } from '../../../user';
 import { ViewItem } from '../../types';
 import { db } from '../../../../libs/firebase';
+import { AddNewViews } from '../../handlers/create-group-items';
 
 
 
 /** Create new ViewItems in DB */
-export const serviceDashboardViewCreateGroupItems = async (ctx: Context, viewItems: ViewItem[]): Promise<undefined> => {
-  const userId    = getUserId(ctx);
-  const companyId = getCompanyId(ctx);
+export const serviceDashboardViewCreateGroupItems = async (ctx: Context, data: AddNewViews): Promise<undefined> => {
+  const { viewItems, companyId } = data;
+  const userId = getUserId(ctx);
 
   // Get a new write batch
   const batch = db.batch();

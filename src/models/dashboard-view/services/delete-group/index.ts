@@ -1,19 +1,18 @@
 import { Context } from '../../../../app/types/global';
 import { db } from '../../../../libs/firebase';
-import { getCompanyId } from '../../../company';
 import { DbRef, getRefDoc } from '../../../helpers';
-import { ViewItemId } from '../../types';
+import { DeleteViews } from '../../handlers/delete';
 
 
 
 /** Delete group ViewItems from DB */
-export const serviceDashboardViewDeleteGroup = async (ctx: Context, allIds: ViewItemId[]): Promise<undefined> => {
-  const companyId  = getCompanyId(ctx);
-  
+export const serviceDashboardViewDeleteGroup = async (ctx: Context, data: DeleteViews): Promise<undefined> => {
+  const { allIds, companyId } = data;
+
   // Get a new write batch
   const batch = db.batch();
 
-  allIds.forEach(id => { 
+  allIds.forEach(id => {
     const ref = getRefDoc(DbRef.VIEW, { companyId, id });
     batch.delete(ref);
   });

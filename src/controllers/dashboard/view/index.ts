@@ -1,11 +1,13 @@
-import { dashboardViewAddController } from './add'
+// import { dashboardViewAddController } from './DEPRECATED-add'
 import { dashboardViewCreateGroupItemsController } from './create-group-items'
 import { dashboardViewUpdateController } from './update'
 import { dashboardViewDeleteController } from './delete'
+import { dashboardViewGetController } from './get'
 
 
-export default { 
-  add              : dashboardViewAddController,
+export default {
+  get              : dashboardViewGetController,
+  // add              : dashboardViewAddController,
   createGroupItems : dashboardViewCreateGroupItemsController,
   update           : dashboardViewUpdateController,
   delete           : dashboardViewDeleteController,

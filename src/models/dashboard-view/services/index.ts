@@ -1,4 +1,4 @@
-export { serviceDashboardViewAdd } from './add'
+// export { serviceDashboardViewAdd } from './DEPRECATED-add'
 export { serviceDashboardUpdateGroupItems } from './update'
 export { serviceDashboardViewDelete } from './delete'
 export { serviceDashboardViewDeleteGroup } from './delete-group'

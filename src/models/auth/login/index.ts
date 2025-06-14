@@ -6,6 +6,7 @@ import { checkIsUserDisabled } from './services';
 import { Context } from '../../../app/types/global';
 import { serviceFindUserByEmail } from '../../user';
 import { AuthByLogin } from './types';
+import { serviceGetCompany } from '../../company';
 
 
 
@@ -14,13 +15,14 @@ export async function loginModel(ctx: Context): Promise<any> {
   const { email = '', password } = data;
 
   validateAuthByLogin(ctx, data);
-  
+
   await checkIsUserDisabled(ctx, email);
- 
+
   const userCredential = await signInWithEmailAndPassword(auth, email, password);
-  const user = await serviceFindUserByEmail(email);
+  const user           = await serviceFindUserByEmail(email);
+  const company        = await serviceGetCompany(user.companyId);
 
   await setCookie(ctx, userCredential, user, 'login');
 
-  ctx.body = { message : 'Login is successfully!' }
+  ctx.body = { user, company, message : 'Login is successfully!' }
 }

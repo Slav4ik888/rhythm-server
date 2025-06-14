@@ -1,17 +1,17 @@
 import { Context } from '../../../app/types/global';
-import { createLogTemp, loggerLogin as logger } from '../../../libs/loggers';
+import { createLogTemp, loggerCompany as logger } from '../../../libs/loggers';
 import models from '../../../models';
 import { responseError } from '../../../views';
 
 
 
-export async function getStartResourseDataController(ctx: Context): Promise<any> {
+export async function paramsCompanyGetController(ctx: Context): Promise<any> {
   const
-    logTemp = createLogTemp(ctx, 'getStartResourseData'),
+    logTemp = createLogTemp(ctx, 'paramsCompanyGet'),
     error   = responseError(ctx, logger, logTemp);
-  
+
   try {
-    await models.user.getStartResourseData(ctx);
+    await models.paramsCompany.get(ctx);
     logger.info(`${logTemp} success`);
   }
   catch (err) {

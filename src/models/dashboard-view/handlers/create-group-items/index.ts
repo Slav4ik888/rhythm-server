@@ -4,22 +4,23 @@ import { ViewItem } from '../../types';
 
 
 
-export interface AddNewView {
-  viewItems: ViewItem[]
+export interface AddNewViews {
+  companyId : string
+  viewItems : ViewItem[]
 }
 
 /**
- * @requires body.AddNewView
+ * @requires body.AddNewViews
  */
 export const createGroupViewItemsModel = async (ctx: Context): Promise<void> => {
-  const { viewItems } = ctx.request.body as AddNewView;
+  const { viewItems, companyId } = ctx.request.body as AddNewViews;
 
   // TODO: Permissions
   // TODO: Remove fields that are not allowed to be updated
 
   // TODO: validateNewView(ctx, userData);
 
-  await serviceDashboardViewCreateGroupItems(ctx, viewItems);
+  await serviceDashboardViewCreateGroupItems(ctx, { viewItems, companyId });
 
   ctx.status = 200;
   ctx.body = {};
