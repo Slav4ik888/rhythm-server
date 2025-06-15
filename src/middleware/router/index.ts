@@ -19,7 +19,6 @@ router.post(paths.auth.login.byEmail,              em,               auth.login)
 
 // USERS - Data
 router.get(paths.user.getAuth,                     fbAuth,           user.getAuth);
-// router.get(paths.user.getStartResourseData,        fbAuth,           user.getStartResourseData);
 router.post(paths.user.update,                     checkUserSession, user.update);
 router.get (paths.user.logout,                     em,               user.logout);
 
@@ -31,7 +30,6 @@ router.post(paths.company.update,                  checkUserSession, company.upd
 router.get(paths.paramsCompany.get,                checkUserSession, paramsCompany.get);
 
 // VIEW
-// router.post(paths.dashboard.view.add,              checkUserSession, dashboard.view.add);
 router.post(paths.dashboard.view.createGroupItems, checkUserSession, dashboard.view.createGroupItems);
 router.post(paths.dashboard.view.get,              checkUserSession, dashboard.view.get);
 router.post(paths.dashboard.view.update,           checkUserSession, dashboard.view.update);
