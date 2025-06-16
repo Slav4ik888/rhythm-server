@@ -1,12 +1,12 @@
 import { Context } from '../../../../app/types/global';
 import { getUserId } from '../../../user';
 import { serviceUpdateCompany } from '../../services';
-import { Company } from '../../types';
+import { PartialCompany } from '../../types';
 
 
 
 export interface UpdatedConfig {
-  companyData: Partial<Company>
+  companyData: PartialCompany
 }
 
 
@@ -14,7 +14,7 @@ export interface UpdatedConfig {
  * @requires body as UpdatedConfig
  */
 export const updateCompanyModel = async (ctx: Context): Promise<void> => {
-  const { companyData } = ctx.request.body;
+  const { companyData } = ctx.request.body as UpdatedConfig;
   const userId = getUserId(ctx);
 
   // TODO: Permissions

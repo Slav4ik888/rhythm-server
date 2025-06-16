@@ -5,22 +5,27 @@ import { ViewItem } from '../../types';
 
 
 export interface AddNewViews {
-  companyId : string
-  viewItems : ViewItem[]
+  viewUpdatedMs : number
+  companyId     : string
+  viewItems     : ViewItem[]
 }
 
 /**
  * @requires body.AddNewViews
  */
 export const createGroupViewItemsModel = async (ctx: Context): Promise<void> => {
-  const { viewItems, companyId } = ctx.request.body as AddNewViews;
+  const { viewItems, companyId, viewUpdatedMs } = ctx.request.body as AddNewViews;
 
   // TODO: Permissions
   // TODO: Remove fields that are not allowed to be updated
 
   // TODO: validateNewView(ctx, userData);
 
-  await serviceDashboardViewCreateGroupItems(ctx, { viewItems, companyId });
+  if (! companyId || ! viewItems || ! viewItems?.length || ! viewUpdatedMs ) {
+    ctx.throw(400, 'invalid body required field');
+  }
+
+  await serviceDashboardViewCreateGroupItems(ctx);
 
   ctx.status = 200;
   ctx.body = {};

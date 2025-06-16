@@ -1,6 +1,4 @@
-// export { serviceDashboardViewAdd } from './DEPRECATED-add'
 export { serviceDashboardUpdateGroupItems } from './update'
-export { serviceDashboardViewDelete } from './delete'
 export { serviceDashboardViewDeleteGroup } from './delete-group'
 export { serviceDashboardViewGetViewsBySheetId } from './get-views-by-sheetid'
 export { serviceDashboardViewCreateGroupItems } from './create-group-items'

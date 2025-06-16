@@ -7,20 +7,23 @@ export const MOCK_OWNER_ID   = '7mNs77rglRfvjuuIEf57ZvMFVr82';
 export const MOCK_COMPANY_ID = 's61FdrbjG0U0iVlBRoFC';
 
 export const MOCK_COMPANY_EMPTY: Company = {
-  id            : '',
-  ownerId       : '',
-  companyName   : '',
-  owner         : '',
+  id             : '',
+  ownerId        : '',
+  companyName    : '',
+  owner          : '',
 
-  logoUrl       : '',
+  logoUrl        : '',
+  googleData: {
+    url: '',
+  },
 
-  subscribes    : [],
-  
-  // details       : {} as CompanyDetails,
-  status        : CompanyStatus.NEW,
+  status         : CompanyStatus.NEW,
+  // dashboardData  : {} as CompanyDashboardData,
+  customSettings : {},
+  viewUpdated    : creatorFixDate(),
 
-  createdAt     : creatorFixDate(), 
-  lastChange    : creatorFixDate()
+  createdAt      : creatorFixDate(),
+  lastChange     : creatorFixDate()
 };
 
 
@@ -28,6 +31,6 @@ export const MOCK_COMPANY: Company = creatorCompany({
   id            : MOCK_COMPANY_ID,
   ownerId       : MOCK_OWNER_ID,
 
-  createdAt     : creatorFixDate(MOCK_OWNER_ID, MOCK_DATE_13_03_2023), 
+  createdAt     : creatorFixDate(MOCK_OWNER_ID, MOCK_DATE_13_03_2023),
   lastChange    : creatorFixDate(MOCK_OWNER_ID, MOCK_DATE_13_03_2023)
 });

@@ -9,9 +9,10 @@ import { UpdateViewItem } from '../../handlers/update';
 
 
 /** Update ViewItem in DB */
-export const serviceDashboardUpdateGroupItems = async (ctx: Context, data: UpdateViewItem): Promise<undefined> => {
-  const { companyId, viewItems } = data;
+export const serviceDashboardUpdateGroupItems = async (ctx: Context): Promise<undefined> => {
+  const { viewItems, companyId, viewUpdatedMs } = ctx.request.body as UpdateViewItem;
   const userId = getUserId(ctx);
+  const fixDate = creatorFixDate(userId, viewUpdatedMs);
 
   // Get a new write batch
   const batch = db.batch();
@@ -20,10 +21,14 @@ export const serviceDashboardUpdateGroupItems = async (ctx: Context, data: Updat
     const ref = getRefDoc(DbRef.VIEW, { companyId, id: item.id });
     const viewItem = {
       ...item,
-      lastChange: creatorFixDate(userId)
+      lastChange: fixDate
     };
     batch.update(ref, convertToDot(viewItem));
   });
+
+  // Update the company viewUpdated
+  const ref = getRefDoc(DbRef.COMPANY, { companyId });
+  batch.update(ref, { viewUpdated: fixDate });
 
   // Commit the batch
   await batch.commit();

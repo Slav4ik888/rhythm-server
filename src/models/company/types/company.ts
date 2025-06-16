@@ -22,37 +22,55 @@ export enum CompanyStatus {
 }
 
 
-/** Реквизиты компании */
-export interface CompanyDetails {
-  addressLegal   : Address // Юридический адрес
-  addressActual  : Address // Фактический адрес
-  addressMailing : Address // Почтовый адрес
-  ITN            : string  // ИНН компании
-  // manager        : Executive  // Executive
+export interface GoogleData {
+  url: string
 }
 
 
+/** Для сохранения уникальных настроек переменных (цветов и констант) */
+export type ColorSettingsType = 'color' | 'background'
 
-// Профиль компании
+export interface ColorSettings {
+  title?      : string // Можно исп для periodType, напр. "Мес" | "Нед"
+  color?      : string
+  background? : string
+}
+
+export interface CustomSettings {
+  // [key: string]: ColorSettings
+  periodType?  : Record<string, ColorSettings>
+  companyType? : Record<string, ColorSettings>
+  productType? : Record<string, ColorSettings>
+}
+
+
+/**
+ * v.2025-06-16
+ * Профиль компании
+ */
 export interface Company {
-  id            : string
-  companyName   : string
-  ownerId       : string
-  owner         : string // email
+  id             : string
+  companyName    : string
+  ownerId        : string
+  owner          : string // email
 
-  logoUrl       : string // https://firebasestorage.googleapis.com/v0/b/osnova-course.appspot.com/o/no-img-company.svg?alt=media
+  logoUrl        : string // https://firebasestorage.googleapis.com/v0/b/osnova-course.appspot.com/o/no-img-company.svg?alt=media
+  status         : CompanyStatus
 
-  // payers: Payers           // Плательщики от компании
-  // invoices: Array<Invoice> // Созданные счета компании
-  // payments: Array<Payment> // Платежи компании
-  subscribes    : Array<any> // SubscribesCompany
-  
-  // details?      : CompanyDetails
-  status        : CompanyStatus
+  googleData     : GoogleData
+  // dashboardData  : CompanyDashboardData
+  customSettings : CustomSettings
+  viewUpdated    : FixDate // Timestamp last ViewItems updated. При любом изменении ViewItems - обновляем
+  createdAt      : FixDate
+  lastChange     : FixDate
+}
 
-  // globalStyles? : CompanyGlobalStyles 
-  // docsSettings: CompanyDocsSettings // Global docs settings
+export type PartialCompany = Partial<Company> & { id: string }
 
-  createdAt     : FixDate
-  lastChange    : FixDate
+/** Обязательные поля для чужого пользователя прошедшего по ссылке */
+export type ParamsCompany = Partial<Company> & {
+  id             : string
+  customSettings : CustomSettings
+  googleData     : GoogleData
+  viewUpdated    : FixDate // Timestamp last ViewItems updated
 }
