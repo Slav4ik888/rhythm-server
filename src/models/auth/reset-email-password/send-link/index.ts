@@ -8,17 +8,17 @@ import { sendMail } from '../../../../libs/emails';
 export const sendLink = async (email: string): Promise<boolean> => {
   const actionCodeSettings = {
     handleCodeInApp: true,
-    url: (process.env?.IS_DEV ? process.env?.SITE_URL_DEV : cfg.SITE_URL) as string,
+    url: cfg.SITE_URL,
   };
 
   const link = await admin.auth().generatePasswordResetLink(email, actionCodeSettings);
-    
+
   if (link) await sendMail({
     to       : email,
     subject  : `'Ссылка для восстановления доступа на сайт - "${cfg.SITE_TITLE_FULL}"`,
     template : 'reset-email-password',
     locals   : {
-      name: '',
+      name          : '',
       platform_name : cfg.SITE_TITLE_FULL,
       url_site      : cfg.SITE_URL,
       url_link      : link

@@ -9,8 +9,8 @@ export async function resetEmailPasswordModel(ctx: Context): Promise<any> {
   const email = ctx.request?.body?.email || '';
 
   validateResetEmailPassword(ctx, email);
-  checkUser(ctx, email);
-  
+  await checkUser(ctx, email);
+
   const result = await sendLink(email);
 
   ctx.status = result ? 200 : 400;

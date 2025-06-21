@@ -1,7 +1,7 @@
 import { MOCK_COMPANY_EMPTY } from '../../../mocks';
-import { cloneObj } from 'shared/helpers/objects';
 import { creatorCompany } from '..';
-import { Company } from 'entities/company';
+import { Company } from '../../../types';
+import { cloneObj } from '../../../../../shared/utils/objects';
 
 
 
@@ -15,8 +15,9 @@ const COMPANY_WITHOUT_ANY_FIELDS = {
 describe('creatorCompany', () => {
   test('Company without any fields & has additional', () => {
     const res = creatorCompany(COMPANY_WITHOUT_ANY_FIELDS as unknown as Company);
-    res.createdAt = MOCK_COMPANY_EMPTY.createdAt;
-    res.lastChange = MOCK_COMPANY_EMPTY.lastChange;
+    res.viewUpdated.date = MOCK_COMPANY_EMPTY.viewUpdated.date;
+    res.createdAt        = MOCK_COMPANY_EMPTY.createdAt;
+    res.lastChange       = MOCK_COMPANY_EMPTY.lastChange;
 
     expect(res).toEqual(MOCK_COMPANY_EMPTY);
   });
@@ -29,16 +30,18 @@ describe('creatorCompany', () => {
     const
       res = creatorCompany(undefined),
       company = cloneObj(MOCK_COMPANY_EMPTY);
-    
+
     company.id                = '';
     company.ownerId           = '';
     company.createdAt.userId  = '';
     company.createdAt.date    = 0;
+    company.viewUpdated.date  = 0;
     company.lastChange.userId = '';
     company.lastChange.date   = 0;
 
-    res.createdAt.date  = 0;
-    res.lastChange.date = 0;
+    res.viewUpdated.date = 0;
+    res.createdAt.date   = 0;
+    res.lastChange.date  = 0;
 
     expect(res).toEqual(company);
   });

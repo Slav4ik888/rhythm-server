@@ -110,6 +110,19 @@ const loggerMail = createLogger({
   ]
 });
 
+const loggerDocs = createLogger({
+  level: 'info',
+  format: combine(
+    label({ label: 'docs' }),
+    timestamp(),
+    myFormat
+  ),
+  transports: [
+    new transports.File({ filename: path.join(__dirname, rootPath, 'errors.log'), level: 'error' }),
+    new transports.File({ filename: path.join(__dirname, rootPath, 'docs.log') })
+  ]
+});
+
 const loggerDashboardView = createLogger({
   level: 'info',
   format: combine(
@@ -132,6 +145,7 @@ if (process.env.NODE_ENV !== 'production') {
   loggerSignup        .add(new transports.Console({ format: combine(format.colorize(), format.simple()) }));
   loggerUser          .add(new transports.Console({ format: combine(format.colorize(), format.simple()) }));
   loggerCompany       .add(new transports.Console({ format: combine(format.colorize(), format.simple()) }));
+  loggerDocs          .add(new transports.Console({ format: combine(format.colorize(), format.simple()) }));
   loggerMail          .add(new transports.Console({ format: combine(format.colorize(), format.simple()) }));
   loggerDashboardView .add(new transports.Console({ format: combine(format.colorize(), format.simple()) }));
 }
@@ -139,5 +153,5 @@ if (process.env.NODE_ENV !== 'production') {
 
 export {
   loggerServer, loggerAuth, loggerLogin, loggerSignup, loggerUser, loggerCompany, loggerMail,
-  loggerDashboardView
+  loggerDashboardView, loggerDocs
 };

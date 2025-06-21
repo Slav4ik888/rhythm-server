@@ -4,12 +4,13 @@ import { fbAuth } from '../../libs/firebase';
 import { em } from './helpers';
 import { paths } from './paths';
 import { checkUserSession } from '../session-caches';
+import { serviceUpdateCompany } from '../../models/company/services';
 // import { mustBeAuthenticated } from '../../libs/verifications/must-be-authenticated.js';
 
 
 const
   router = new Router({ prefix: '/api' }),
-  { auth, user, company, dashboard, paramsCompany } = controllers;
+  { auth, user, company, dashboard, paramsCompany, docs } = controllers;
 
 
 // USERS - Auth
@@ -35,9 +36,20 @@ router.post(paths.dashboard.view.get,              checkUserSession, dashboard.v
 router.post(paths.dashboard.view.update,           checkUserSession, dashboard.view.update);
 router.post(paths.dashboard.view.delete,           checkUserSession, dashboard.view.delete);
 
+// DOCS
+router.get(paths.docs.getPolicy,                   em,               docs.getPolicy);
 
 
 // Testing
+// router.post('/devUpdateCompany', async (ctx) => {
+//   console.log('ctx.request.body: ', ctx.request.body);
+
+//   // @ts-ignore
+//   await serviceUpdateCompany(ctx.request.body.company, ctx.request.body.userId);
+
+//   ctx.body = { status: 'ok' };
+//   ctx.status = 200;
+// });
 router.get('/hello', (ctx) => {
   console.log('Hello wolrd!');
   ctx.body = 'Hello wolrd!';
