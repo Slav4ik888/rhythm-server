@@ -23,9 +23,9 @@ export async function sendEmailConfirmation(ctx: Context): Promise<any> {
 
   const link = await admin.auth().generateEmailVerificationLink(email, actionCodeSettings);
 
-  const emailConfig: SendEmailOptions = {
+  await sendMail({
     to       : email,
-    subject  : `Подтвердите эл.почту для доступа в Rhythm - "${cfg.SITE_TITLE_FULL}"`,
+    subject  : `Подтвердите эл.почту для доступа в "${cfg.SITE_TITLE_FULL}"`,
     template : 'confirmation',
     locals   : {
       name             : '',
@@ -33,9 +33,7 @@ export async function sendEmailConfirmation(ctx: Context): Promise<any> {
       platform_name    : cfg.SITE_TITLE_FULL,
       url_site         : cfg.SITE_URL,
     }
-  };
-
-  await sendMail(emailConfig);
+  });
 
   await sendMail({
     to       : cfg.INFO_EMAIL,

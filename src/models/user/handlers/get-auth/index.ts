@@ -1,8 +1,5 @@
 import { Context } from '../../../../app/types/global';
 import { Company, serviceGetCompany } from '../../../company';
-import { NO_SHEET_ID } from '../../../dashboard-view/consts';
-import { serviceDashboardViewGetViewsBySheetId } from '../../../dashboard-view/services';
-import { ViewItem } from '../../../dashboard-view/types';
 import { serviceGetUser } from '../../services';
 import { User } from '../../types';
 
@@ -15,15 +12,9 @@ interface ResGetAuth {
 }
 
 
-/**
- *
- * @requires body
- */
+/** Get user`s userData & companyData */
 export async function getAuthModel(ctx: Context): Promise<any> {
   const { id, companyId } = ctx.state.user;
-
-  // Get folders
-  // ctx.state.return = true;
 
   const userData      = await serviceGetUser(companyId, id);
   const companyData   = await serviceGetCompany(companyId);

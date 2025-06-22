@@ -1,25 +1,13 @@
 import { FixDate } from '../../base';
 import { CompanyDashboardMember, CompanyProfileMember } from './access';
-import { Address } from './address';
 
-
-
-/**
- * Временно для компаний которых я подключил к Ритму
- * До тех пор пока не сделаю возможность настройки dashboard в виде Конструктора
- * с сохранением конструкции в аккаунте компании
- */
-export enum ActivatedCompanyId {
-  OSNOVA     = "89MM9qHJLJlY5DZp1T9S",
-  CSS        = "jOiXJDIY0nJeiIuBMtI4",
-  DEMO_PECAR = "demo_pecar",
-}
 
 
 export enum CompanyStatus {
-  NEW     = 'NEW',    // 'Зарегистрирован'
-  ACTIVE  = 'ACTIVE', // 'Активный'
-  REMOVED = 'REMOVED' // 'Удалён'
+  NEW      = 'NEW',    // 'Зарегистрирован'
+  VERIFIED = 'VERIFIED',
+  ACTIVE   = 'ACTIVE', // 'Активный'
+  REMOVED  = 'REMOVED' // 'Удалён'
 }
 
 
