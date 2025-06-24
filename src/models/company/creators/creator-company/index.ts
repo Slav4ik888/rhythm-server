@@ -19,7 +19,7 @@ export const creatorCompany = (cfg: Partial<Company> = {} as Company): Company =
   dashboardMembers : cfg.dashboardMembers || [],
   companyMembers   : cfg.companyMembers   || [],
 
-  viewUpdated      : cfg.viewUpdated      || creatorFixDate(cfg.id),
+  bunchesUpdated   : cfg.bunchesUpdated   || {},
   createdAt        : cfg.createdAt        || creatorFixDate(cfg.id),
   lastChange       : cfg.lastChange       || creatorFixDate(cfg.id)
 });

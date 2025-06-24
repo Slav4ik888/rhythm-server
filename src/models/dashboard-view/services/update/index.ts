@@ -4,7 +4,7 @@ import { creatorFixDate } from '../../../base';
 import { DbRef, getRefDoc } from '../../../helpers';
 import { getUserId } from '../../../user';
 import { db } from '../../../../libs/firebase';
-import { UpdateViewItem } from '../../handlers/update';
+import { UpdateViewItem } from '../../handlers-view/update';
 
 
 

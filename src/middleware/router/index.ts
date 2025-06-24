@@ -5,6 +5,8 @@ import { em } from './helpers';
 import { paths } from './paths';
 import { checkUserSession } from '../session-caches';
 import { serviceUpdateCompany } from '../../models/company/services';
+import { devSaveBunches } from '../../models/dashboard-view/services/dev-save-bunches';
+import { serviceGetDashboardBunches } from '../../models/dashboard-view/services';
 // import { mustBeAuthenticated } from '../../libs/verifications/must-be-authenticated.js';
 
 
@@ -31,16 +33,34 @@ router.post(paths.company.update,                  checkUserSession, company.upd
 router.get(paths.paramsCompany.get,                checkUserSession, paramsCompany.get);
 
 // VIEW
-router.post(paths.dashboard.view.createGroupItems, checkUserSession, dashboard.view.createGroupItems);
-router.post(paths.dashboard.view.get,              checkUserSession, dashboard.view.get);
-router.post(paths.dashboard.view.update,           checkUserSession, dashboard.view.update);
-router.post(paths.dashboard.view.delete,           checkUserSession, dashboard.view.delete);
+// router.post(paths.dashboard.view.createGroupItems, checkUserSession, dashboard.view.createGroupItems);
+router.post(paths.dashboard.bunch.get,              checkUserSession, dashboard.bunch.get);
+// router.post(paths.dashboard.view.update,           checkUserSession, dashboard.view.update);
+// router.post(paths.dashboard.view.delete,           checkUserSession, dashboard.view.delete);
 
 // DOCS
 router.get(paths.docs.getPolicy,                   em,               docs.getPolicy);
 
 
 // Testing
+// router.post('/devGetBunches', async (ctx) => {
+//   // @ts-ignore
+//   const { companyId, bunchIds } = ctx.request.body;
+//   await serviceGetDashboardBunches(companyId, bunchIds);
+
+//   ctx.body = { status: 'ok' };
+//   ctx.status = 200;
+// });
+
+// router.post('/devSaveBunches', async (ctx) => {
+//   console.log('ctx.request.body: ', ctx.request.body);
+
+//   await devSaveBunches(ctx);
+
+//   ctx.body = { status: 'ok' };
+//   ctx.status = 200;
+// });
+
 // router.post('/devUpdateCompany', async (ctx) => {
 //   console.log('ctx.request.body: ', ctx.request.body);
 
@@ -50,6 +70,7 @@ router.get(paths.docs.getPolicy,                   em,               docs.getPol
 //   ctx.body = { status: 'ok' };
 //   ctx.status = 200;
 // });
+
 router.get('/hello', (ctx) => {
   console.log('Hello wolrd!');
   ctx.body = 'Hello wolrd!';

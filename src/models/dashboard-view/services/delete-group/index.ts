@@ -3,7 +3,7 @@ import { db } from '../../../../libs/firebase';
 import { creatorFixDate } from '../../../base';
 import { DbRef, getRefDoc } from '../../../helpers';
 import { getUserId } from '../../../user';
-import { DeleteViews } from '../../handlers/delete';
+import { DeleteViews } from '../../handlers-view/delete';
 
 
 

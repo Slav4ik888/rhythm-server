@@ -5,16 +5,14 @@ import { responseError } from '../../../../views';
 
 
 
-/**
- * DEPRECATED
- *  Get dashboard`s ViewItem[] */
-export async function dashboardViewGetController(ctx: Context): Promise<any> {
+/** Get dashboard`s Bunch[] */
+export async function dashboardBunchGetController(ctx: Context): Promise<any> {
   const
-    logTemp = createLogTemp(ctx, 'dashboardViewGet'),
+    logTemp = createLogTemp(ctx, 'dashboardBunchGet'),
     error   = responseError(ctx, logger, logTemp);
 
   try {
-    // await models.dashboard.view.get(ctx);
+    await models.dashboard.bunch.get(ctx);
     logger.info(`${logTemp} success`);
   }
   catch (err) {

@@ -5,8 +5,6 @@ import { ViewItemStyles } from './item-styles'
 
 export type ViewItemType = 'box' | 'text' | 'divider' | 'chart' | 'chip' | 'growthIcon' | 'digitIndicator'
 
-export type ViewItemId = string
-
 
 /** v.2025-05-05 */
 export interface ViewItemCharts {
@@ -38,7 +36,7 @@ export type ViewItemSettings = IndicatorsConfig & {
   kod?            : string  // Код для одиночного элемента Chip | GrowthItem |
   inverted?       : boolean // График перевёрнутый, пример - если задолженность уменьшается то это рост
   unchangedBlack? : boolean // При отсутствии изменений в результатах красить чёрным цветом
-  
+
   // Chart settings
   charts?         : ViewItemCharts[]
   chartOptions?   : any // ChartConfigOptions
@@ -54,16 +52,28 @@ export type ViewItemSettings = IndicatorsConfig & {
 export type ViewItemSettingsField = keyof ViewItemSettings;
 
 
-/** v.2025-02-04 */
+// ------------------------------------- //
+// ------------  VIEW-ITEM  ------------ //
+// ----------- v.2025-06-23  ----------- //
+// ------------------------------------- //
+
+export type ViewItemId = string
+export type BunchId = string
+
 export interface ViewItem extends ItemBase {
   id           : ViewItemId
-  parentId     : ViewItemId // Where item is child. If no parentId, then parentId === ''
+  bunchId      : BunchId
+  parentId     : ViewItemId | 'no_parentId' // 'no_parentId' для корневых элементов
   sheetId      : ViewItemId // Main sheet id === ''
 
   type         : ViewItemType
   styles       : ViewItemStyles
 
   settings?    : ViewItemSettings
+  /** Для корневых элементов */
+  children?    : Record<ViewItemId, ViewItem>
 }
 
 export type PartialViewItem = Partial<ViewItem> & { id: ViewItemId }
+
+export type Bunch = Record<ViewItemId, ViewItem>;

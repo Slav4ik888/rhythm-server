@@ -1,5 +1,5 @@
-import { default as view } from './view'
+import { default as bunch } from './bunch'
 
 export default {
-  view
+  bunch
 }

@@ -3,7 +3,7 @@ import { creatorFixDate } from '../../../base';
 import { DbRef, getRefDoc } from '../../../helpers';
 import { getUserId } from '../../../user';
 import { db } from '../../../../libs/firebase';
-import { AddNewViews } from '../../handlers/create-group-items';
+import { AddNewViews } from '../../handlers-view/create-group-items';
 
 
 
