@@ -3,32 +3,40 @@ import { creatorFixDate } from '../../../base';
 import { DbRef, getRefDoc } from '../../../helpers';
 import { getUserId } from '../../../user';
 import { db } from '../../../../libs/firebase';
-import { AddNewViews } from '../../handlers-view/create-group-items';
+import { CreateGroupViewItems } from '../../handlers-view/create-group-items';
+import { convertToDot } from '../../../../shared/utils/objects';
 
 
 
 /** Create new ViewItems in DB */
 export const serviceDashboardViewCreateGroupItems = async (ctx: Context): Promise<undefined> => {
-  const { viewItems, companyId, viewUpdatedMs } = ctx.request.body as AddNewViews;
+  const { viewItems, companyId, bunchUpdatedMs, bunchAction } = ctx.request.body as CreateGroupViewItems;
   const userId = getUserId(ctx);
-  const fixDate = creatorFixDate(userId, viewUpdatedMs);
+  const fixDate = creatorFixDate(userId);
+  const isBunchCreate = bunchAction === 'create';
 
   // Get a new write batch
   const batch = db.batch();
 
-  viewItems.forEach(item => {
-    const ref = getRefDoc(DbRef.VIEW, { companyId, id: item.id });
+  viewItems.forEach((item, idx) => {
+    const ref = getRefDoc(DbRef.BUNCH, { companyId, bunchId: item.bunchId });
     const viewItem = {
       ...item,
       createdAt  : fixDate,
       lastChange : fixDate,
     };
-    batch.set(ref, viewItem);
+    if (isBunchCreate && idx === 0) {
+      batch.set(ref, { [viewItem.id]: viewItem });
+    }
+    else {
+      batch.update(ref, convertToDot({ [viewItem.id]: viewItem } ));
+    }
   });
 
-  // Update the company viewUpdated
+  // Update the company bunchesUpdated
   const ref = getRefDoc(DbRef.COMPANY, { companyId });
-  batch.update(ref, { viewUpdated : fixDate });
+  batch.update(ref, convertToDot({ bunchesUpdated: { [viewItems[0].bunchId]: bunchUpdatedMs } }));
+
 
   // Commit the batch
   await batch.commit();

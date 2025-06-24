@@ -32,9 +32,12 @@ router.post(paths.company.update,                  checkUserSession, company.upd
 // PARAMS-COMPANY
 router.get(paths.paramsCompany.get,                checkUserSession, paramsCompany.get);
 
+// BUNCH
+router.post(paths.dashboard.bunch.get,             checkUserSession, dashboard.bunch.get);
+
 // VIEW
-// router.post(paths.dashboard.view.createGroupItems, checkUserSession, dashboard.view.createGroupItems);
-router.post(paths.dashboard.bunch.get,              checkUserSession, dashboard.bunch.get);
+router.post(paths.dashboard.view.createGroupItems, checkUserSession, dashboard.view.createGroupItems);
+// router.post(paths.dashboard.view.get,              checkUserSession, dashboard.view.get);
 // router.post(paths.dashboard.view.update,           checkUserSession, dashboard.view.update);
 // router.post(paths.dashboard.view.delete,           checkUserSession, dashboard.view.delete);
 

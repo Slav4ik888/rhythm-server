@@ -1,27 +1,28 @@
 import { Context } from '../../../../app/types/global';
 import { serviceDashboardViewCreateGroupItems } from '../../services';
-import { ViewItem } from '../../types';
+import { BunchAction, ViewItem } from '../../types';
 
 
 
-export interface AddNewViews {
-  viewUpdatedMs : number
-  companyId     : string
-  viewItems     : ViewItem[]
+export interface CreateGroupViewItems {
+  bunchUpdatedMs : number
+  companyId      : string
+  viewItems      : ViewItem[]
+  bunchAction    : BunchAction
 }
 
 /**
  * @requires body.AddNewViews
  */
 export const createGroupViewItemsModel = async (ctx: Context): Promise<void> => {
-  const { viewItems, companyId, viewUpdatedMs } = ctx.request.body as AddNewViews;
+  const { viewItems, companyId, bunchUpdatedMs, bunchAction } = ctx.request.body as CreateGroupViewItems;
 
   // TODO: Permissions
   // TODO: Remove fields that are not allowed to be updated
 
   // TODO: validateNewView(ctx, userData);
 
-  if (! companyId || ! viewItems || ! viewItems?.length || ! viewUpdatedMs ) {
+  if (! companyId || ! viewItems || ! viewItems?.length || ! bunchUpdatedMs || ! bunchAction ) {
     ctx.throw(400, 'invalid body required field');
   }
 
