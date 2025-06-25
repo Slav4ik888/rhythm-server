@@ -29,7 +29,7 @@ export const serviceDashboardViewCreateGroupItems = async (ctx: Context): Promis
       batch.set(ref, { [viewItem.id]: viewItem });
     }
     else {
-      batch.update(ref, convertToDot({ [viewItem.id]: viewItem } ));
+      batch.update(ref, convertToDot({ [viewItem.id]: viewItem }));
     }
   });
 

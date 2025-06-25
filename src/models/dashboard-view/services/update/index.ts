@@ -10,25 +10,26 @@ import { UpdateViewItem } from '../../handlers-view/update';
 
 /** Update ViewItem in DB */
 export const serviceDashboardUpdateGroupItems = async (ctx: Context): Promise<undefined> => {
-  const { viewItems, companyId, viewUpdatedMs } = ctx.request.body as UpdateViewItem;
+  const { viewItems, companyId, bunchUpdatedMs } = ctx.request.body as UpdateViewItem;
   const userId = getUserId(ctx);
-  const fixDate = creatorFixDate(userId, viewUpdatedMs);
+  const fixDate = creatorFixDate(userId, bunchUpdatedMs);
 
   // Get a new write batch
   const batch = db.batch();
 
   viewItems.forEach(item => {
-    const ref = getRefDoc(DbRef.VIEW, { companyId, id: item.id });
+    const ref = getRefDoc(DbRef.BUNCH, { companyId, bunchId: item.bunchId });
     const viewItem = {
       ...item,
       lastChange: fixDate
     };
-    batch.update(ref, convertToDot(viewItem));
+    batch.update(ref, convertToDot({ [viewItem.id]: viewItem }));
   });
 
-  // Update the company viewUpdated
+
+  // Update the company bunchesUpdated
   const ref = getRefDoc(DbRef.COMPANY, { companyId });
-  batch.update(ref, { viewUpdated: fixDate });
+  batch.update(ref, convertToDot({ bunchesUpdated: { [viewItems[0].bunchId]: bunchUpdatedMs } }));
 
   // Commit the batch
   await batch.commit();

@@ -3,24 +3,27 @@ import { serviceDashboardUpdateGroupItems } from '../../services';
 import { PartialViewItem } from '../../types';
 
 
+interface PartialViewItemUpdate extends PartialViewItem {
+  bunchId: string
+}
 
 export interface UpdateViewItem {
-  viewUpdatedMs : number
-  companyId     : string
-  viewItems     : PartialViewItem[]
+  bunchUpdatedMs : number
+  companyId      : string
+  viewItems      : PartialViewItemUpdate[]
 }
 
 /**
  * @requires body.UpdateViewItem
  */
 export const updateGroupViewItemsModel = async (ctx: Context): Promise<void> => {
-  const { viewItems, companyId, viewUpdatedMs } = ctx.request.body as UpdateViewItem;
+  const { viewItems, companyId, bunchUpdatedMs } = ctx.request.body as UpdateViewItem;
 
   // TODO: Permissions
   // TODO: Remove fields that are not allowed to be updated
 
   // TODO: validateUpdateViewItem (ctx, userData);
-  if (! companyId || ! viewItems || ! viewItems?.length || ! viewUpdatedMs ) {
+  if (! companyId || ! viewItems || ! viewItems?.length || ! bunchUpdatedMs ) {
     ctx.throw(400, 'invalid body required field');
   }
 
