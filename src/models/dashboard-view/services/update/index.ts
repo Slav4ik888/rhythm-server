@@ -5,6 +5,7 @@ import { DbRef, getRefDoc } from '../../../helpers';
 import { getUserId } from '../../../user';
 import { db } from '../../../../libs/firebase';
 import { UpdateViewItem } from '../../handlers-view/update';
+import { getBunchesTimestamps } from '../../utils';
 
 
 
@@ -29,7 +30,7 @@ export const serviceDashboardUpdateGroupItems = async (ctx: Context): Promise<un
 
   // Update the company bunchesUpdated
   const ref = getRefDoc(DbRef.COMPANY, { companyId });
-  batch.update(ref, convertToDot({ bunchesUpdated: { [viewItems[0].bunchId]: bunchUpdatedMs } }));
+  batch.update(ref, convertToDot({ bunchesUpdated: getBunchesTimestamps(viewItems, bunchUpdatedMs) }));
 
   // Commit the batch
   await batch.commit();

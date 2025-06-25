@@ -39,7 +39,7 @@ router.post(paths.dashboard.bunch.get,             checkUserSession, dashboard.b
 router.post(paths.dashboard.view.createGroupItems, checkUserSession, dashboard.view.createGroupItems);
 // router.post(paths.dashboard.view.get,              checkUserSession, dashboard.view.get);
 router.post(paths.dashboard.view.update,           checkUserSession, dashboard.view.update);
-// router.post(paths.dashboard.view.delete,           checkUserSession, dashboard.view.delete);
+router.post(paths.dashboard.view.delete,           checkUserSession, dashboard.view.delete);
 
 // DOCS
 router.get(paths.docs.getPolicy,                   em,               docs.getPolicy);

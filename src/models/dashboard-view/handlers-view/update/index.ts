@@ -3,7 +3,7 @@ import { serviceDashboardUpdateGroupItems } from '../../services';
 import { PartialViewItem } from '../../types';
 
 
-interface PartialViewItemUpdate extends PartialViewItem {
+export interface PartialViewItemUpdate extends PartialViewItem {
   bunchId: string
 }
 
