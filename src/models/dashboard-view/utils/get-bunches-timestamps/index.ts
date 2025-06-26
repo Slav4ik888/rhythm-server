@@ -4,7 +4,6 @@ import { PartialViewItemUpdate } from '../../handlers-view/update';
 
 
 /**
- * For server
  * Выбирает все уникальные bunchId, создаёт BunchesUpdated, добавляя bunchUpdatedMs */
 export const getBunchesTimestamps = (items: PartialViewItemUpdate[], bunchUpdatedMs: number): BunchesUpdated => {
   const bunchMap: BunchesUpdated = {};

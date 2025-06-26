@@ -4,15 +4,12 @@ import { fbAuth } from '../../libs/firebase';
 import { em } from './helpers';
 import { paths } from './paths';
 import { checkUserSession } from '../session-caches';
-import { serviceUpdateCompany } from '../../models/company/services';
-import { devSaveBunches } from '../../models/dashboard-view/services/dev-save-bunches';
-import { serviceGetDashboardBunches } from '../../models/dashboard-view/services';
 // import { mustBeAuthenticated } from '../../libs/verifications/must-be-authenticated.js';
 
 
 const
   router = new Router({ prefix: '/api' }),
-  { auth, user, company, dashboard, paramsCompany, docs } = controllers;
+  { auth, user, company, dashboard, paramsCompany, docs, google } = controllers;
 
 
 // USERS - Auth
@@ -44,6 +41,8 @@ router.post(paths.dashboard.view.delete,           checkUserSession, dashboard.v
 // DOCS
 router.get(paths.docs.getPolicy,                   em,               docs.getPolicy);
 
+// GOOGLE
+router.post(paths.google.getData,                  checkUserSession, google.getData);
 
 // Testing
 // router.post('/devGetBunches', async (ctx) => {
