@@ -7,7 +7,7 @@ import { PartialCompany } from '../../types';
 
 
 /** Update Company in DB */
-export const serviceUpdateCompany = async (company: PartialCompany, userId: string): Promise<undefined> => {
+export const serviceUpdateCompany = async (company: PartialCompany, userId: string): Promise<PartialCompany> => {
   const companyId = company.id;
 
   if (isField(company, 'lastChange')) company.lastChange = creatorFixDate(userId);
@@ -16,5 +16,5 @@ export const serviceUpdateCompany = async (company: PartialCompany, userId: stri
 
   await getRefDoc(DbRef.COMPANY, { companyId }).update(dataInDot);
 
-  return
+  return company
 };

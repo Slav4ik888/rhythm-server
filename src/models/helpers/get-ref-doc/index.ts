@@ -23,6 +23,7 @@ export const getRefDoc = (type: DbRef, data: Data = {}): DocumentReference<Docum
     case DbRef.USER:     return db.collection(DbRef.USERS)    .doc(companyId).collection(DbRef.USERS).doc(userId);
     case DbRef.COMPANY:  return db.collection(DbRef.COMPANIES).doc(companyId);
     case DbRef.BUNCH:    return db.collection(DbRef.BUNCHES)  .doc(companyId).collection(DbRef.BUNCHES).doc(bunchId);
+    case DbRef.TEMPLATE: return db.collection(DbRef.TEMPLATES).doc(bunchId);
 
     // DEPRECATED
     case DbRef.VIEW:     return db.collection(DbRef.VIEWS)    .doc(companyId).collection(DbRef.VIEWS).doc(id);

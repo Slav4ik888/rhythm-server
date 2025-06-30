@@ -1,1 +1,1 @@
-export { getBunchesTimestamps } from './get-bunches-timestamps'
+export { getBunchesTimestamps } from '../../../shared/lib/structures/bunch/utils/get-bunches-timestamps'

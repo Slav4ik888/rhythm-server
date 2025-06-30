@@ -6,6 +6,7 @@ import * as user from './user'
 import * as dashboard from './dashboard-view'
 import * as docs from './docs'
 import * as google from './google'
+import * as templates from './templates'
 
 export { SignupData, AuthByLogin } from './auth'
 export { creatorCompany, MOCK_OWNER_ID, MOCK_COMPANY_ID } from './company'
@@ -17,6 +18,7 @@ export default {
   company,
   user,
   dashboard,
+  templates,
   paramsCompany,
   docs,
   google

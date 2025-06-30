@@ -1,5 +1,5 @@
-import { BunchesUpdated } from '../../../company/types';
-import { PartialViewItemUpdate } from '../../handlers-view/update';
+import { PartialViewItemUpdate } from '../../../../../../models/dashboard-view/handlers-view/update';
+import { BunchesUpdated } from '../../types';
 
 
 

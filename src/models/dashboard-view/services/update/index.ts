@@ -10,7 +10,7 @@ import { getBunchesTimestamps } from '../../utils';
 
 
 /** Update ViewItem in DB */
-export const serviceDashboardUpdateGroupItems = async (ctx: Context): Promise<undefined> => {
+export const serviceDashboardUpdateGroupItems = async (ctx: Context): Promise<UpdateViewItem> => {
   const { viewItems, companyId, bunchUpdatedMs } = ctx.request.body as UpdateViewItem;
   const userId = getUserId(ctx);
   const fixDate = creatorFixDate(userId, bunchUpdatedMs);
@@ -35,5 +35,5 @@ export const serviceDashboardUpdateGroupItems = async (ctx: Context): Promise<un
   // Commit the batch
   await batch.commit();
 
-  return
+  return ctx.request.body as UpdateViewItem
 };

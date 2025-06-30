@@ -9,7 +9,7 @@ import { convertToDot } from '../../../../shared/utils/objects';
 
 
 /** Create new ViewItems in DB */
-export const serviceDashboardViewCreateGroupItems = async (ctx: Context): Promise<undefined> => {
+export const serviceDashboardViewCreateGroupItems = async (ctx: Context): Promise<CreateGroupViewItems> => {
   const { viewItems, companyId, bunchUpdatedMs, bunchAction } = ctx.request.body as CreateGroupViewItems;
   const userId = getUserId(ctx);
   const fixDate = creatorFixDate(userId);
@@ -41,5 +41,5 @@ export const serviceDashboardViewCreateGroupItems = async (ctx: Context): Promis
   // Commit the batch
   await batch.commit();
 
-  return
+  return ctx.request.body as CreateGroupViewItems
 };

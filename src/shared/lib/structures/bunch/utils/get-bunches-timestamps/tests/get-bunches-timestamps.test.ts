@@ -1,4 +1,4 @@
-import { ViewItem } from '../../../types';
+import { ViewItem } from '../../../../../../../models/dashboard-view/types';
 import { getBunchesTimestamps } from '..';
 
 

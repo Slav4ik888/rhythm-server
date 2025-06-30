@@ -7,6 +7,9 @@ export enum DbRef {
   BUNCH       = 'bunch',
   BUNCHES     = 'bunches',
 
+  TEMPLATE    = 'template',
+  TEMPLATES   = 'templates',
+
   // DEPRECATED
   VIEW        = 'view',
   VIEWS       = 'views',

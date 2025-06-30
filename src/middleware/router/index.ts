@@ -2,47 +2,49 @@ import Router from 'koa-router';
 import controllers from '../../controllers';
 import { fbAuth } from '../../libs/firebase';
 import { em } from './helpers';
-import { paths } from './paths';
+import { API_PATHS } from './paths';
 import { checkUserSession } from '../session-caches';
 // import { mustBeAuthenticated } from '../../libs/verifications/must-be-authenticated.js';
 
 
 const
   router = new Router({ prefix: '/api' }),
-  { auth, user, company, dashboard, paramsCompany, docs, google } = controllers;
+  { auth, user, company, dashboard, paramsCompany, docs, google, templates } = controllers;
 
 
 // USERS - Auth
-router.post(paths.auth.signup.byEmail,             em,               auth.signupByEmail);
-router.post(paths.auth.login.resetEmailPassword,   em,               auth.resetEmailPassword);
-router.post(paths.auth.login.byEmail,              em,               auth.login);
+router.post (API_PATHS.auth.signup.byEmail,             em,               auth.signupByEmail);
+router.post (API_PATHS.auth.login.resetEmailPassword,   em,               auth.resetEmailPassword);
+router.post (API_PATHS.auth.login.byEmail,              em,               auth.login);
 
 // USERS - Data
-router.get(paths.user.getAuth,                     fbAuth,           user.getAuth);
-router.post(paths.user.update,                     checkUserSession, user.update);
-router.get (paths.user.logout,                     em,               user.logout);
+router.get  (API_PATHS.user.getAuth,                    fbAuth,           user.getAuth);
+router.post (API_PATHS.user.update,                     checkUserSession, user.update);
+router.post (API_PATHS.user.logout,                     em,               user.logout);
 
 // COMPANY
-// router.post(paths.company.get,                     checkUserSession, company.get);
-router.post(paths.company.update,                  checkUserSession, company.update);
+// router.post(API_PATHS.company.get,                     checkUserSession, company.get);
+router.patch(API_PATHS.company.update,                  checkUserSession, company.update);
 
 // PARAMS-COMPANY
-router.get(paths.paramsCompany.get,                checkUserSession, paramsCompany.get);
-
-// BUNCH
-router.post(paths.dashboard.bunch.get,             checkUserSession, dashboard.bunch.get);
+router.get  (API_PATHS.paramsCompany.get,               checkUserSession, paramsCompany.get);
 
 // VIEW
-router.post(paths.dashboard.view.createGroupItems, checkUserSession, dashboard.view.createGroupItems);
-// router.post(paths.dashboard.view.get,              checkUserSession, dashboard.view.get);
-router.post(paths.dashboard.view.update,           checkUserSession, dashboard.view.update);
-router.post(paths.dashboard.view.delete,           checkUserSession, dashboard.view.delete);
+router.post (API_PATHS.dashboard.bunch.get,             checkUserSession, dashboard.bunch.get);
+router.post (API_PATHS.dashboard.view.createGroupItems, checkUserSession, dashboard.view.createGroupItems);
+// router.post(API_PATHS.dashboard.view.get,              checkUserSession, dashboard.view.get);
+router.patch(API_PATHS.dashboard.view.update,           checkUserSession, dashboard.view.update);
+router.post (API_PATHS.dashboard.view.delete,           checkUserSession, dashboard.view.delete);
+
+// TEMPLATES
+router.get  (API_PATHS.templates.getTemplates,          checkUserSession, templates.getTemplates);
+router.post (API_PATHS.templates.update,                checkUserSession, templates.update);
 
 // DOCS
-router.get(paths.docs.getPolicy,                   em,               docs.getPolicy);
+router.get  (API_PATHS.docs.getPolicy,                  em,               docs.getPolicy);
 
 // GOOGLE
-router.post(paths.google.getData,                  checkUserSession, google.getData);
+router.post (API_PATHS.google.getData,                  checkUserSession, google.getData);
 
 // Testing
 // router.post('/devGetBunches', async (ctx) => {

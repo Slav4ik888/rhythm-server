@@ -1,4 +1,4 @@
-export const paths = {
+export const API_PATHS = {
   auth: {
     login: {
       byEmail            : '/auth/login/byEmail',
@@ -34,6 +34,11 @@ export const paths = {
       update           : '/dashboard/view/update',
       delete           : '/dashboard/view/delete',
     }
+  },
+  templates: {
+    add          : '/templates/add',
+    getTemplates : '/templates/getTemplates',
+    update       : '/templates/update',
   },
   docs: {
     getPolicy: '/getPolicy',

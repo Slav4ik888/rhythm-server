@@ -1,6 +1,7 @@
 import { Context } from '../../../../app/types/global';
+import { BunchAction } from '../../../../shared/lib/structures/bunch';
 import { serviceDashboardViewCreateGroupItems } from '../../services';
-import { BunchAction, ViewItem } from '../../types';
+import { ViewItem } from '../../types';
 
 
 

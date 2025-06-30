@@ -5,8 +5,9 @@ import { default as paramsCompany } from './params-company'
 import { default as dashboard } from './dashboard'
 import { default as docs } from './docs'
 import { default as google } from './google'
+import { default as templates } from './templates'
 
 
 export default {
-  auth, user, company, dashboard, paramsCompany, docs, google
+  auth, user, company, dashboard, paramsCompany, docs, google, templates
 }
