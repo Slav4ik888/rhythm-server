@@ -7,7 +7,7 @@ import { ViewItem } from '../../types';
  * Get bunches by bunchIds
  * @returns viewItem[]
  */
-export async function serviceGetDashboardBunches(companyId: string, bunchIds: string[]): Promise<ViewItem[]> {
+export async function serviceGetDashboardViewItems(companyId: string, bunchIds: string[]): Promise<ViewItem[]> {
   const results = [];
 
   for await (const bunchId of bunchIds) {

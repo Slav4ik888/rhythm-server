@@ -29,16 +29,16 @@ export const serviceUpdateTemplate = async (ctx: Context): Promise<UpdateTemplat
   if (isBunchCreate) {
     updated.createdAt = {} as FixDate;
     updated.createdAt = fixDate;
-    batch.set(ref, { [updated.bunchId]: updated });
+    batch.set(ref, { [updated.id]: updated });
   }
   else {
-    batch.update(ref, convertToDot({ [updated.bunchId]: updated }));
+    batch.update(ref, convertToDot({ [updated.id]: updated }));
   }
 
 
   // Update bunchUpdated
   const refCol = getRefCol(DbRef.TEMPLATES).doc('bunchesUpdated');
-  batch.update(refCol, convertToDot({ bunchesUpdated: { [updated.bunchId]: bunchUpdatedMs } }));
+  batch.update(refCol, convertToDot({ [updated.bunchId]: bunchUpdatedMs }));
 
   // Commit the batch
   await batch.commit();

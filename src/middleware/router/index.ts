@@ -37,7 +37,8 @@ router.patch(API_PATHS.dashboard.view.update,           checkUserSession, dashbo
 router.post (API_PATHS.dashboard.view.delete,           checkUserSession, dashboard.view.delete);
 
 // TEMPLATES
-router.get  (API_PATHS.templates.getTemplates,          checkUserSession, templates.getTemplates);
+router.get  (API_PATHS.templates.getBunchesUpdated,     checkUserSession, templates.getBunchesUpdated);
+router.post (API_PATHS.templates.getTemplates,          checkUserSession, templates.getTemplates);
 router.post (API_PATHS.templates.update,                checkUserSession, templates.update);
 
 // DOCS

@@ -1,2 +1,3 @@
-export { serviceGetTemplatesBunches } from './get-bunches'
+export { serviceGetTemplates } from './get-templates'
 export { serviceUpdateTemplate } from './update'
+export { serviceGetBunchesUpdated } from './get-bunches-updated'

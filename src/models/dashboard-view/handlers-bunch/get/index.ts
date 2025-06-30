@@ -1,7 +1,7 @@
 import { Context } from '../../../../app/types/global';
 import { ERROR_NAME, getErrorText } from '../../../../libs/validators';
 // import { NO_SHEET_ID } from '../../consts';
-import { serviceGetDashboardBunches } from '../../services';
+import { serviceGetDashboardViewItems } from '../../services';
 import { ViewItem } from '../../types';
 
 
@@ -27,7 +27,7 @@ export async function getBunchesModel(ctx: Context): Promise<any> {
 
   // TODO: Check доступ к переданной companyId
 
-  const viewItems = await serviceGetDashboardBunches(companyId, bunchIds);
+  const viewItems = await serviceGetDashboardViewItems(companyId, bunchIds);
 
   ctx.body = {
     viewItems
