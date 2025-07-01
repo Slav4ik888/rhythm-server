@@ -40,6 +40,7 @@ router.post (API_PATHS.dashboard.view.delete,           checkUserSession, dashbo
 router.get  (API_PATHS.templates.getBunchesUpdated,     checkUserSession, templates.getBunchesUpdated);
 router.post (API_PATHS.templates.getTemplates,          checkUserSession, templates.getTemplates);
 router.post (API_PATHS.templates.update,                checkUserSession, templates.update);
+router.post (API_PATHS.templates.delete,                checkUserSession, templates.deleteTemplate);
 
 // DOCS
 router.get  (API_PATHS.docs.getPolicy,                  em,               docs.getPolicy);

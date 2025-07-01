@@ -11,7 +11,7 @@ import { PartialTemplate } from '../../types';
 
 /** Add | Update Template in DB */
 export const serviceUpdateTemplate = async (ctx: Context): Promise<UpdateTemplate> => {
-  const { template, bunchUpdatedMs, bunchAction } = ctx.request.body as UpdateTemplate;
+  const { template, bunchUpdatedMs, bunchAction, fullSet } = ctx.request.body as UpdateTemplate;
   const userId = getUserId(ctx);
   const fixDate = creatorFixDate(userId);
   const isBunchCreate = bunchAction === 'create';
@@ -32,7 +32,9 @@ export const serviceUpdateTemplate = async (ctx: Context): Promise<UpdateTemplat
     batch.set(ref, { [updated.id]: updated });
   }
   else {
-    batch.update(ref, convertToDot({ [updated.id]: updated }));
+    batch.update(ref, fullSet
+      ? { [updated.id]: updated }
+      : convertToDot({ [updated.id]: updated }));
   }
 
 
