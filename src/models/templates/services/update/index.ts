@@ -45,5 +45,5 @@ export const serviceUpdateTemplate = async (ctx: Context): Promise<UpdateTemplat
   // Commit the batch
   await batch.commit();
 
-  return { template: updated, bunchUpdatedMs, bunchAction }
+  return { ...ctx.request.body as UpdateTemplate, template: updated, }
 };
