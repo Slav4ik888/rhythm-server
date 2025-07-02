@@ -20,6 +20,11 @@ export async function loginModel(ctx: Context): Promise<any> {
 
   const userCredential = await signInWithEmailAndPassword(auth, email, password);
   const user           = await serviceFindUserByEmail(email);
+
+  if (! user) {
+    ctx.throw(400, { general: 'Неверная почта или пароль' });
+  }
+
   const company        = await serviceGetCompany(user.companyId);
 
   await setCookie(ctx, userCredential, user, 'login');

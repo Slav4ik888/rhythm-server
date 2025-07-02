@@ -27,8 +27,8 @@ export const updateGroupViewItemsModel = async (ctx: Context): Promise<void> => 
     ctx.throw(400, 'invalid body required field');
   }
 
-  await serviceDashboardUpdateGroupItems(ctx);
+  const result = await serviceDashboardUpdateGroupItems(ctx);
 
   ctx.status = 200;
-  ctx.body = {};
+  ctx.body = result;
 };
