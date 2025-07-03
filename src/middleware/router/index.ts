@@ -13,7 +13,8 @@ const
 
 
 // USERS - Auth
-router.post (API_PATHS.auth.signup.byEmail,             em,               auth.signupByEmail);
+router.post (API_PATHS.auth.signup.byEmailStart,        em,               auth.signupByEmailStart);
+router.post (API_PATHS.auth.signup.byEmailEnd,          em,               auth.signupByEmailEnd);
 router.post (API_PATHS.auth.login.resetEmailPassword,   em,               auth.resetEmailPassword);
 router.post (API_PATHS.auth.login.byEmail,              em,               auth.login);
 

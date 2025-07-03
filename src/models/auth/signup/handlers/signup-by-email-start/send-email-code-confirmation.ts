@@ -1,15 +1,15 @@
-import { createLogTemp, loggerMail as logger } from '../../../../libs/loggers';
-import { sendMail, SendEmailOptions } from '../../../../libs/emails';
-import { Context } from '../../../../app/types/global';
-import { admin } from '../../../../libs/firebase';
-import { cfg } from '../../../../app/config';
+import { createLogTemp, loggerMail as logger } from '../../../../../libs/loggers';
+import { sendMail, SendEmailOptions } from '../../../../../libs/emails';
+import { Context } from '../../../../../app/types/global';
+import { admin } from '../../../../../libs/firebase';
+import { cfg } from '../../../../../app/config';
 
 
 
 /**
- * Отправляем ссылку для подтверждения почты
+ * Отправляем Code для подтверждения почты
  */
-export async function sendEmailConfirmation(ctx: Context): Promise<any> {
+export async function sendEmailCodeConfirmation(ctx: Context): Promise<any> {
   const
     email   = String((ctx?.request?.body?.signupData)?.email),
     logTemp = createLogTemp(ctx, 'signup', email);

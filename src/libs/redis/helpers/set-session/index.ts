@@ -4,7 +4,7 @@ import { client } from '../../init';
 
 
 /** Set cookie & user to Redis */
-export const redisSet = async (
+export const redisSetSession = async (
   userId        : string,
   sessionCookie : string,
   user          : User

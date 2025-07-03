@@ -14,7 +14,7 @@ interface RedisGet {
 }
 
 /** Get cookie & user from Redis */
-export const redisGet = async (userId: string): Promise<ResRedisGet> => {
+export const redisGetSession = async (userId: string): Promise<ResRedisGet> => {
   const data = await client.hGetAll(userId) as unknown as RedisGet
 
   return {

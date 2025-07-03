@@ -3,7 +3,7 @@ import { Context } from '../../app/types/global';
 import { getSessionData } from '../../libs/firebase';
 import { serviceFindUserById } from '../../models/user';
 import { ERR_CODE, getErrorMessage, NotAutorized } from '../../views';
-import { redisGet, redisSet } from '../../libs/redis';
+import { redisGetSession, redisSetSession } from '../../libs/redis';
 
 
 
@@ -14,10 +14,10 @@ import { redisGet, redisSet } from '../../libs/redis';
  */
 export async function checkUserSession(ctx: Context, next: Next) {
   const { cookie, userId } = getSessionData(ctx);
-  const userSession = await redisGet(userId);
+  const userSession = await redisGetSession(userId);
 
   if (userSession.cookie !== cookie  || ! userSession.user || ! userId) throw new NotAutorized(getErrorMessage(ERR_CODE.CookieNotAuth))
-  
+
   if (userSession.user) {
     ctx.state.user = { ...userSession.user }
   }
@@ -25,7 +25,7 @@ export async function checkUserSession(ctx: Context, next: Next) {
     // TODO: решить ситуацию, когда userId - undefined (надо разлогинется и заново войти)
     const user = await serviceFindUserById(userId);
 
-    await redisSet(userId, cookie, user);
+    await redisSetSession(userId, cookie, user);
     ctx.state.user = { ...user }
   }
 
@@ -41,8 +41,8 @@ export async function checkUserSession(ctx: Context, next: Next) {
 //               - Достаём из Redis данные userId
 //               - Сохраняем их в ctx.state.user = { ...user } as User;
 //          "-": Проверка1
-// 
-//    "-": 
+//
+//    "-":
 //        Проверка1:
 //         - fbAuth:
 //            "+":

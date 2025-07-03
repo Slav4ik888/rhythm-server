@@ -1,5 +1,7 @@
 export {
-  redisGet,
-  redisSet,
+  redisSetSignup,
+  redisGetSignup,
+  redisGetSession,
+  redisSetSession,
   redisGetUser
 } from './helpers'
