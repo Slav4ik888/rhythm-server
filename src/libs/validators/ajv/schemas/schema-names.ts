@@ -24,11 +24,12 @@ export enum SCHEMA_NAME {
   // RULES
   DEFS_RULE            = 'defs-rule',
   RULE                 = 'rule',
-  
+
   // LOGIN_PAGE
   AUTH_BY_LOGIN        = 'auth-by-login',
   RESET_EMAIL_PASSWORD = 'reset-email-password',
 
   // SIGNUP_PAGE
-  SIGNUP_DATA          = 'signup-data'
+  SIGNUP_DATA          = 'signup-data',
+  SIGNUP_DATA_END      = 'signup-data-end',
 }

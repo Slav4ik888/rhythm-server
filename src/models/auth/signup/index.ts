@@ -1,2 +1,2 @@
 export * from './handlers'
-export { SignupData } from './types'
+export { SignupData, SignupDataEnd } from './types'

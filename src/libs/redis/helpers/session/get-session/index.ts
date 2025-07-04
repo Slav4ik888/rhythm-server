@@ -1,6 +1,6 @@
-import { User } from '../../../../models/user';
-import { parse } from '../../../../shared/utils/strings';
-import { client } from '../../init';
+import { User } from '../../../../../models/user';
+import { parse } from '../../../../../shared/utils/strings';
+import { client } from '../../../init';
 
 
 export interface ResRedisGet {

@@ -1,5 +1,5 @@
-import { User } from '../../../../models/user';
-import { client } from '../../init';
+import { User } from '../../../../../models/user';
+import { client } from '../../../init';
 
 
 

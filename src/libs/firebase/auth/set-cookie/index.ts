@@ -5,7 +5,7 @@ import { User } from '../../../../models/user';
 import { day } from '../../../../shared/utils/dates';
 import { admin } from '../../config/admin-sdk';
 import { checkCsrfToken } from '../check-csrf-token';
-import { redisSet } from '../../../redis';
+import { redisSetSession } from '../../../redis';
 
 
 
@@ -17,7 +17,7 @@ export async function setCookie(
   logTemp        : string
 ) {
   checkCsrfToken(ctx);
-  
+
   const idToken = await userCredential.user.getIdToken();
 
   // Set session expiration to 12 days.
@@ -40,8 +40,8 @@ export async function setCookie(
   const userId = userCredential.user.uid;
 
   // Set to Redis
-  redisSet(userId, sessionCookie, user);
-  
+  redisSetSession(userId, sessionCookie, user);
+
   // Add UserId
   const cookie = userId + '/' + sessionCookie;
 

@@ -1,22 +1,25 @@
 import { setCookie } from '../../../../../libs/firebase';
 import { createNewCompany, createNewUser, complectionUser } from '../../services';
-import { validateSignupData } from '../../validators';
 import { checkIsNotFreeEmail } from '../../../utils';
 import { Context } from '../../../../../app/types/global';
-import { sendEmailConfirmation } from './send-email-confirmation';
 import { redisGetSignup } from '../../../../../libs/redis';
+import { sendInfoRegistration } from './send-info-registration';
+import { validateSignupDataEnd } from '../../validators';
+import { checkCodeAnswer } from './utils';
 
 
 
 export async function signupByEmailEndModel(ctx: Context): Promise<any> {
+  const { signupDataEnd } = ctx.request.body;
+  const { email, emailCode } = ctx.request.body?.signupDataEnd;
 
-  // Получить данные (код и signupData) с Redis
-  const { code, signupData, expired } = await redisGetSignup(email);
+  validateSignupDataEnd(ctx, signupDataEnd);
 
-  // Проверить expired
-  if (Date.now() > expired) return ctx.throw(400, { email: 'Время действия кода истекло, запросите код ещё раз' });
-  // Проверить корректность кода
+  const data = await redisGetSignup(email); // Получить данные (код и signupData) с Redis
 
+  await checkCodeAnswer(ctx, data, emailCode);
+
+  const { signupData } = data;
   await checkIsNotFreeEmail(ctx, signupData.email);
 
   const { newUserData, userCredential } = await createNewUser(signupData);
@@ -24,7 +27,7 @@ export async function signupByEmailEndModel(ctx: Context): Promise<any> {
 
   await complectionUser(newUserData, companyId);
   await setCookie(ctx, userCredential, newUserData, 'signup');
-  await sendEmailConfirmation(ctx);
+  await sendInfoRegistration(ctx, data.signupData?.firstName);
 
   ctx.body = {
     newUserData,

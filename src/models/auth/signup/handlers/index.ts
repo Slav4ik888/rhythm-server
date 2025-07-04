@@ -1,2 +1,3 @@
-export { signupByEmailStartModel } from './signup-by-email-start';
-export { signupByEmailEndModel } from './signup-by-email-end';
+export { signupByEmailStartModel } from './by-email-start';
+export { signupByEmailEndModel } from './by-email-end';
+export { signupSendCodeModel } from './send-code';

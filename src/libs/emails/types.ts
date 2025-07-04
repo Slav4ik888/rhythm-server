@@ -12,6 +12,7 @@ interface Locals {
   email?            : string,
   companyId?        : string,
   companyName?      : string,
+  code?             : string,
   platform_name?    : string,
   password?         : string
 }

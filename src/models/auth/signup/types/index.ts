@@ -17,3 +17,8 @@ export interface SignupData {
   permissions     : boolean // Разрешения на обработку персональных данных
   isMobile        : boolean // С какого устройства вошёл
 }
+
+export interface SignupDataEnd {
+  email     : string
+  emailCode : string
+}

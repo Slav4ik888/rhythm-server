@@ -1,5 +1,5 @@
 import { MOCK_EMAIL, MOCK_PASSWORD } from '../../../base/mocks';
-import { SignupData } from '../types';
+import { SignupData, SignupDataEnd } from '../types';
 
 
 export const MOCK_SIGNUP_DATA_SMALL: SignupData = {
@@ -9,7 +9,7 @@ export const MOCK_SIGNUP_DATA_SMALL: SignupData = {
   confirmPassword : MOCK_PASSWORD,
 
   permissions     : true,
-  isMobile        : false 
+  isMobile        : false
 };
 
 
@@ -27,5 +27,10 @@ export const MOCK_SIGNUP_DATA_FULL: SignupData = {
   confirmPassword : MOCK_PASSWORD,
 
   permissions     : true,
-  isMobile        : false 
+  isMobile        : false
+};
+
+export const MOCK_SIGNUP_DATA_END: SignupDataEnd = {
+  email           : MOCK_EMAIL,
+  emailCode       : '123456',
 };
