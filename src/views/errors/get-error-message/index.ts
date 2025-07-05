@@ -23,11 +23,12 @@ export function getErrorMessage(
 
     case ERR_CODE.PasswordWrong:
     case ERR_CODE['auth/wrong-password']:            return 'Не верный пароль, попробуйте ещё раз.';
-    
+
+    case ERR_CODE['auth/invalid-credential']:
     case ERR_CODE['auth/invalid-login-credentials']: return 'Не верный email или пароль';
-    
+
     case ERR_CODE.UnauthorizedRequest:               return 'Неавторизованный запрос.';
-    case ERR_CODE.CookieNotAuth:     
+    case ERR_CODE.CookieNotAuth:
     case ERR_CODE['auth/id-token-expired']:          return 'Пользователь не авторизован.';
 
     case ERR_CODE.GeneratePasswordResetLink:         return 'Не удалось создать ссылку для восстановления пароля';
@@ -46,7 +47,7 @@ export function getErrorMessage(
     case ERR_CODE.MaxLength:              return `Поле ${label} должно быть не больше ${value} символов.`;
     case ERR_CODE.Minimum:                return `Значение в поле ${label} должно быть не меньше ${value}.`;
     case ERR_CODE.Maximum:                return `Значение в поле ${label} должно быть не больше ${value}.`;
-    
+
     case ERR_CODE.Const:                  return `Значение в поле ${label} должно быть равно ${value}.`;
     case ERR_CODE.Format:                 return `Не корректный формат данных в поле ${label}.`;
     case ERR_CODE.FormatShouldBe:         return `Значение в поле ${label} должно быть ${value}.`;
@@ -60,18 +61,18 @@ export function getErrorMessage(
     case ERR_CODE.MustBeBool:             return `Не корректный тип данных. Поле ${label} должно быть "да" или "нет".`;
     case ERR_CODE.MustBeString:           return `Не корректный тип данных. Поле ${label} должно быть строкой.`;
     case ERR_CODE.GuardCSRF:              return `GuardCSRF.`;
-    
+
     // -------------------------------------------------------------------------------------
 
     case ERR_CODE.CannotGetData:          return 'Не удалось получить данные.';
-    
+
     case ERR_CODE.FolderMustNotBeFull:    return 'Нельзя удалить папку с вложенными папками или документами.';
     case ERR_CODE.MustBePermissions:      return 'Для продолжения, необходимо предоставить согласие на обработку персональных данных.';
-    
+
     case ERR_CODE.DevMustBeOneOfSeveral:  return `Поле ${label} не является одним из допустимых значений. Это ошибка разработчика.`;
     case ERR_CODE.DevMustNotBeEmpty:      return `Поле ${label} не должно быть пустым. Это ошибка разработчика.`;
 
     case ERR_CODE.General:                return 'Извините, произошла непредвиденная ошибка. Мы уже отправили разработчику отчёт об этом.'
-    default: return errCode // 'Неизвестная ошибка.'; 
+    default: return errCode // 'Неизвестная ошибка.';
   }
 }

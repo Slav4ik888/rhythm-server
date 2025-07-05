@@ -34,7 +34,7 @@ export enum ERR_CODE {
   GuardCSRF                   = 'GuardCSRF',
   BasRequest                  = 'Bad Request',
   'Bad Request'               = 'Bad Request',
-  
+
   // File
   MaxFileSize = 'MaxFileSize',
   // Firebase
@@ -43,5 +43,6 @@ export enum ERR_CODE {
   'auth/user-not-found'            = 'auth/user-not-found',
   'auth/wrong-password'            = 'auth/wrong-password',
   'auth/email-already-in-use'      = 'auth/email-already-in-use',
-  'auth/invalid-login-credentials' = 'auth/invalid-login-credentials'
+  'auth/invalid-login-credentials' = 'auth/invalid-login-credentials',
+  'auth/invalid-credential'        = 'auth/invalid-credential',
 }

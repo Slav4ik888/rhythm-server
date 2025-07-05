@@ -12,7 +12,7 @@ type Result = Errors & {
 
 export const getErrors = (errors: Errors): Result => {
   if (! errors) return { general: getErrorMessage(ERR_CODE.General) };
-  
+
   const isNotEmpty = isNoEmptyFields(errors);
   let result: Result = {};
   console.log('[ResponseError][getErrors] isNotEmpty:', isNotEmpty);
@@ -26,7 +26,7 @@ export const getErrors = (errors: Errors): Result => {
     case 1009:
       result = { general: getErrorMessage(ERR_CODE.MaxFileSize) };
       break;
-    
+
     case ERR_CODE['auth/email-already-exists']:
     case ERR_CODE['auth/email-already-in-use']:
       result = { email: getErrorMessage(ERR_CODE[errors.code]) };
@@ -35,13 +35,14 @@ export const getErrors = (errors: Errors): Result => {
     case ERR_CODE['auth/id-token-expired']:
     case ERR_CODE['auth/user-not-found']:
     case ERR_CODE['auth/invalid-login-credentials']:
+    case ERR_CODE['auth/invalid-credential']:
       result = { general: getErrorMessage(ERR_CODE[errors.code]) };
       break;
-    
+
     case ERR_CODE['auth/wrong-password']:
       result = { password: getErrorMessage(ERR_CODE[errors.code]) };
       break;
-         
+
     default:
       if (errors.code) {
         result = { general: `[${errors?.code}]: ${errors?.message}` };
@@ -53,7 +54,7 @@ export const getErrors = (errors: Errors): Result => {
         general: getErrorMessage(ERR_CODE.General),
         unknownError: 'true' // Если неизвестная ошибка, нужно её всю залогировать
       };
-      
+
   }
 
   if (errors.message) result.message = getErrorMessage(ERR_CODE[errors.message]);

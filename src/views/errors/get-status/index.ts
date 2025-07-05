@@ -17,9 +17,10 @@ export const getStatus = (errors: Errors): number => {
     case ERR_CODE['auth/id-token-expired']:
     case ERR_CODE['auth/user-not-found']:
     case ERR_CODE['auth/invalid-login-credentials']:
+    case ERR_CODE['auth/invalid-credential']:
     case ERR_CODE['auth/wrong-password']:
       return 401
-    
+
     default: return 500;
   }
 }
