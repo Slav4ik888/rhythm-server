@@ -1,14 +1,18 @@
+import { Next } from 'koa';
 import { Context } from '../../../../app/types/global';
 import { ERROR_NAME, getErrorText } from '../../../../libs/validators';
+import { checkUserSession } from '../../../../middleware/session-caches';
 import { serviceGetCompany } from '../../../company';
 import { serviceGoogleGetData } from '../../services';
 
 
-/**
- * @requires body.companyId
- */
-export const googleGetDataModel = async (ctx: Context): Promise<any> => {
-  const { companyId } = ctx.request.body;
+interface GoogleGetDataModel {
+  companyId       : string
+  dashboardPageId : string | undefined
+}
+
+export const googleGetDataModel = async (ctx: Context, next: Next): Promise<any> => {
+  const { companyId, dashboardPageId } = ctx.request.body as GoogleGetDataModel;
 
   if (! companyId) return ctx.throw(400, { general: getErrorText(ERROR_NAME.INVALID_DATA, 'companyId') })
 
@@ -16,6 +20,12 @@ export const googleGetDataModel = async (ctx: Context): Promise<any> => {
 
   const company = await serviceGetCompany(companyId);
   if (! company?.googleData?.url) return ctx.throw(400, { general: 'В данных по компании отсутствует url для Google Data' })
+
+  // Check доступ (для неавторизованных)
+  if (! company?.dashboardPublicAccess?.[dashboardPageId]) {
+    // Нет публичного доступа
+    await checkUserSession(ctx, next);
+  }
 
   const data = await serviceGoogleGetData(company?.googleData?.url);
 

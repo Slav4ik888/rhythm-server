@@ -49,7 +49,7 @@ router.post (API_PATHS.templates.delete,                checkUserSession, templa
 router.get  (API_PATHS.docs.getPolicy,                  em,               docs.getPolicy);
 
 // GOOGLE
-router.post (API_PATHS.google.getData,                  checkUserSession, google.getData);
+router.post (API_PATHS.google.getData,                  em,               google.getData);
 
 // Testing
 // router.post('/devGetBunches', async (ctx) => {
