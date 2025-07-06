@@ -23,7 +23,7 @@ export const updateCompanyModel = async (ctx: Context): Promise<void> => {
   // TODO: validateCompany(ctx, companyData);
 
   // Update
-  await serviceUpdateCompany(companyData, userId);
+  const company = await serviceUpdateCompany(companyData, userId);
 
-  ctx.status = 200;
+  ctx.body = company;
 };

@@ -3,15 +3,19 @@ import { ERROR_NAME, getErrorText } from '../../../../libs/validators';
 import { Company, serviceGetCompany } from '../../../company';
 
 
-/**
- */
-export const getParamsCompanyModel = async (ctx: Context): Promise<Company> => {
-  const { companyId } = ctx.params;
+interface GetCompanyModel {
+  companyId       : string
+  dashboardPageId : string | undefined
+}
 
-  if (! companyId) return ctx.throw(400, { general: getErrorText(ERROR_NAME.INVALID_DATA, 'companyId') })
+export const getParamsCompanyModel = async (ctx: Context): Promise<Company> => {
+  const { companyId, dashboardPageId } = ctx.request.body as GetCompanyModel;
+
+  if (! companyId) return ctx.throw(400, { general: getErrorText(ERROR_NAME.INVALID_DATA, 'companyId') + ` [${companyId}]` })
 
   // TODO: Получать не целиком данные компании а только для проверки полномочий доступа
   // TODO: Check permissons for companyId
+  // для неавторизованных отдавать только необходимые поля
 
   const company = await serviceGetCompany(companyId);
 

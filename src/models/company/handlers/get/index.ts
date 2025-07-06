@@ -12,8 +12,6 @@ export const getCompanyModel = async (ctx: Context): Promise<Company> => {
 
   if (! companyId) return ctx.throw(400, { general: getErrorText(ERROR_NAME.INVALID_DATA, 'companyId') })
 
-  // TODO: Check permissons for companyId
-
   const company = await serviceGetCompany(companyId);
 
   if (ctx.state.callback) return company;

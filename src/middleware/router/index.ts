@@ -29,18 +29,19 @@ router.post (API_PATHS.user.logout,                     em,               user.l
 router.patch(API_PATHS.company.update,                  checkUserSession, company.update);
 
 // PARAMS-COMPANY
-router.get  (API_PATHS.paramsCompany.get,               checkUserSession, paramsCompany.get);
+// Возможность без авторизации (если доступ к страницу открыт)
+router.post (API_PATHS.paramsCompany.get,               em,               paramsCompany.get);
 
 // VIEW
-router.post (API_PATHS.dashboard.bunch.get,             checkUserSession, dashboard.bunch.get);
+router.post (API_PATHS.dashboard.bunch.get,             em,               dashboard.bunch.get);
 router.post (API_PATHS.dashboard.view.createGroupItems, checkUserSession, dashboard.view.createGroupItems);
 // router.post(API_PATHS.dashboard.view.get,              checkUserSession, dashboard.view.get);
 router.patch(API_PATHS.dashboard.view.update,           checkUserSession, dashboard.view.update);
 router.post (API_PATHS.dashboard.view.delete,           checkUserSession, dashboard.view.delete);
 
 // TEMPLATES
-router.get  (API_PATHS.templates.getBunchesUpdated,     checkUserSession, templates.getBunchesUpdated);
-router.post (API_PATHS.templates.getTemplates,          checkUserSession, templates.getTemplates);
+router.get  (API_PATHS.templates.getBunchesUpdated,     em,               templates.getBunchesUpdated);
+router.post (API_PATHS.templates.getTemplates,          em,               templates.getTemplates);
 router.post (API_PATHS.templates.update,                checkUserSession, templates.update);
 router.post (API_PATHS.templates.delete,                checkUserSession, templates.deleteTemplate);
 

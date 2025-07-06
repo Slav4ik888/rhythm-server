@@ -23,7 +23,7 @@ export const API_PATHS = {
     // deleteCompany : '/deleteCompany/:companyId',
   },
   paramsCompany: {
-    get    : '/paramsCompany/get/:companyId',
+    get    : '/paramsCompany/get',
   },
   dashboard: {
     bunch:  {

@@ -1,5 +1,6 @@
 import { Context } from '../../../../app/types/global';
 import { ERROR_NAME, getErrorText } from '../../../../libs/validators';
+import { serviceGetCompany } from '../../../company';
 // import { NO_SHEET_ID } from '../../consts';
 import { serviceGetDashboardViewItems } from '../../services';
 import { ViewItem } from '../../types';
@@ -12,8 +13,9 @@ interface ResGetBunches {
 }
 
 interface ReqGetBunches {
-  companyId : string
-  bunchIds  : string[] // То что надо загрузить
+  companyId       : string
+  bunchIds        : string[] // То что надо загрузить
+  dashboardPageId : string | undefined
 }
 
 /**
@@ -21,11 +23,18 @@ interface ReqGetBunches {
  * @requires body.ReqGetBunchs
  */
 export async function getBunchesModel(ctx: Context): Promise<any> {
-  const { companyId, bunchIds } = ctx.request.body as ReqGetBunches;
+  const { companyId, bunchIds, dashboardPageId } = ctx.request.body as ReqGetBunches;
 
   if (! companyId) return ctx.throw(400, { general: getErrorText(ERROR_NAME.INVALID_DATA, 'companyId') })
 
-  // TODO: Check доступ к переданной companyId
+  const company = await serviceGetCompany(companyId);
+
+  // TODO: Check доступ к переданной companyId (для авторизованных)
+
+  // Check доступ (для неавторизованных)
+  if (! company?.dashboardPublicAccess?.[dashboardPageId]) {
+    // Нет публичного доступа
+  }
 
   const viewItems = await serviceGetDashboardViewItems(companyId, bunchIds);
 
