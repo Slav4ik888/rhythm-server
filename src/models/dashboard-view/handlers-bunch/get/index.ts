@@ -13,9 +13,9 @@ interface ResGetBunches {
 }
 
 interface ReqGetBunches {
-  companyId       : string
-  bunchIds        : string[] // То что надо загрузить
-  dashboardPageId : string | undefined
+  companyId        : string
+  bunchIds         : string[] // То что надо загрузить
+  dashboardSheetId : string | undefined
 }
 
 /**
@@ -23,7 +23,7 @@ interface ReqGetBunches {
  * @requires body.ReqGetBunchs
  */
 export async function getBunchesModel(ctx: Context): Promise<any> {
-  const { companyId, bunchIds, dashboardPageId } = ctx.request.body as ReqGetBunches;
+  const { companyId, bunchIds, dashboardSheetId } = ctx.request.body as ReqGetBunches;
 
   if (! companyId) return ctx.throw(400, { general: getErrorText(ERROR_NAME.INVALID_DATA, 'companyId') })
 
@@ -32,7 +32,7 @@ export async function getBunchesModel(ctx: Context): Promise<any> {
   // TODO: Check доступ к переданной companyId (для авторизованных)
 
   // Check доступ (для неавторизованных)
-  if (! company?.dashboardPublicAccess?.[dashboardPageId]) {
+  if (! company?.dashboardPublicAccess?.[dashboardSheetId]) {
     // Нет публичного доступа
   }
 

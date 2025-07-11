@@ -11,6 +11,6 @@ export {
   MOCK_COMPANY_EMPTY
 } from './mocks'
 
-export { update, get } from './handlers'
+export { update, get, deleteSheet } from './handlers'
 export { serviceGetCompany } from './services'
 export { getCompanyId } from './utils'

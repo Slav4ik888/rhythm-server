@@ -8,11 +8,11 @@ import { serviceGoogleGetData } from '../../services';
 
 interface GoogleGetDataModel {
   companyId       : string
-  dashboardPageId : string | undefined
+  dashboardSheetId : string | undefined
 }
 
 export const googleGetDataModel = async (ctx: Context, next: Next): Promise<any> => {
-  const { companyId, dashboardPageId } = ctx.request.body as GoogleGetDataModel;
+  const { companyId, dashboardSheetId } = ctx.request.body as GoogleGetDataModel;
 
   if (! companyId) return ctx.throw(400, { general: getErrorText(ERROR_NAME.INVALID_DATA, 'companyId') })
 
@@ -22,7 +22,7 @@ export const googleGetDataModel = async (ctx: Context, next: Next): Promise<any>
   if (! company?.googleData?.url) return ctx.throw(400, { general: 'В данных по компании отсутствует url для Google Data' })
 
   // Check доступ (для неавторизованных)
-  if (! company?.dashboardPublicAccess?.[dashboardPageId]) {
+  if (! company?.dashboardPublicAccess?.[dashboardSheetId]) {
     // Нет публичного доступа
     await checkUserSession(ctx, next);
   }

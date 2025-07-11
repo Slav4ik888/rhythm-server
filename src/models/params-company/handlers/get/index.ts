@@ -4,12 +4,12 @@ import { Company, serviceGetCompany } from '../../../company';
 
 
 interface GetCompanyModel {
-  companyId       : string
-  dashboardPageId : string | undefined
+  companyId        : string
+  dashboardSheetId : string | undefined // к какой странице запрашивается доступ
 }
 
 export const getParamsCompanyModel = async (ctx: Context): Promise<Company> => {
-  const { companyId, dashboardPageId } = ctx.request.body as GetCompanyModel;
+  const { companyId, dashboardSheetId } = ctx.request.body as GetCompanyModel;
 
   if (! companyId) return ctx.throw(400, { general: getErrorText(ERROR_NAME.INVALID_DATA, 'companyId') + ` [${companyId}]` })
 

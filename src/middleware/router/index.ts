@@ -27,6 +27,7 @@ router.post (API_PATHS.user.logout,                     em,               user.l
 // COMPANY
 // router.post(API_PATHS.company.get,                     checkUserSession, company.get);
 router.patch(API_PATHS.company.update,                  checkUserSession, company.update);
+router.patch(API_PATHS.company.deleteSheet,             checkUserSession, company.deleteSheet);
 
 // PARAMS-COMPANY
 // Возможность без авторизации (если доступ к страницу открыт)
