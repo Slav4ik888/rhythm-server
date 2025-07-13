@@ -1,5 +1,5 @@
 export { serviceDashboardUpdateGroupItems } from './update'
 export { serviceDashboardViewDeleteGroup } from './delete-group'
-// export { serviceDashboardViewGetViewsBySheetId } from './get-views-by-sheetid'
 export { serviceDashboardViewCreateGroupItems } from './create-group-items'
 export { serviceGetDashboardViewItems } from './get-view-items'
+export { serviceDashboardViewGetAllViewItems } from './get-all-views'

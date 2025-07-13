@@ -6,9 +6,10 @@ import { serviceGetCompany } from '../../../company';
 import { serviceGoogleGetData } from '../../services';
 
 
+
 interface GoogleGetDataModel {
-  companyId       : string
-  dashboardSheetId : string | undefined
+  companyId        : string
+  dashboardSheetId : string | undefined // For check доступ (для неавторизованных)
 }
 
 export const googleGetDataModel = async (ctx: Context, next: Next): Promise<any> => {

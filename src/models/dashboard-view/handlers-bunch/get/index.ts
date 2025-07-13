@@ -14,8 +14,8 @@ interface ResGetBunches {
 
 interface ReqGetBunches {
   companyId        : string
-  bunchIds         : string[] // То что надо загрузить
-  dashboardSheetId : string | undefined
+  bunchIds         : string[]            // То что надо загрузить
+  dashboardSheetId : string | undefined  // For check доступ (для неавторизованных)
 }
 
 /**

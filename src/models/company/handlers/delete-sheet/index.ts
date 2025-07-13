@@ -1,8 +1,9 @@
 import { Context } from '../../../../app/types/global';
 import { ERROR_NAME, getErrorText } from '../../../../libs/validators';
+import { serviceDashboardViewGetAllViewItems } from '../../../dashboard-view/services';
 import { getUserId } from '../../../user';
 import { serviceCompanyDeleteSheet } from '../../services';
-import { PartialCompany } from '../../types';
+import { isSheetNotEmpty } from '../../utils';
 
 
 
@@ -19,8 +20,12 @@ export const companyDeleteSheetModel = async (ctx: Context): Promise<void> => {
   if (! companyId || ! sheetId) return ctx.throw(400, { general: getErrorText(ERROR_NAME.INVALID_DATA)})
 
   // TODO: Permissions
-  // TODO: проверка наличия вложенных ViewItems - Нельзя удалять пока они есть
 
+  // Проверка наличия вложенных ViewItems - Нельзя удалять пока они есть
+  const viewItems = await serviceDashboardViewGetAllViewItems(companyId);
+  if (isSheetNotEmpty(viewItems, sheetId)) return ctx.throw(400, {
+    general: 'Нельзя удалить вкладку, пока есть вложенные элементы'
+  });
 
   // Update
   await serviceCompanyDeleteSheet(companyId, sheetId, userId);
