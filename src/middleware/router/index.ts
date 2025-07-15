@@ -4,6 +4,7 @@ import { fbAuth } from '../../libs/firebase';
 import { em } from './helpers';
 import { API_PATHS } from './paths';
 import { checkUserSession } from '../session-caches';
+import { DbRef, getRefCol, getRefDoc } from '../../models/helpers';
 // import { mustBeAuthenticated } from '../../libs/verifications/must-be-authenticated.js';
 
 
@@ -52,6 +53,31 @@ router.get  (API_PATHS.docs.getPolicy,                  em,               docs.g
 // GOOGLE
 router.post (API_PATHS.google.getData,                  em,               google.getData);
 
+// DEV
+// router.post ('/devCreateDemoCompany', async (ctx) => {
+//   console.log('ctx.request.body: ', ctx.request.body);
+
+//   // @ts-ignore
+//   if (! ctx.request.body.id) return;
+//   // @ts-ignore
+//   await getRefDoc(DbRef.COMPANY, { companyId: ctx.request.body.id }).set(ctx.request.body),
+
+//   ctx.body = { status: 'ok' };
+//   ctx.status = 200;
+// });
+
+// router.post('/devUpdateCompany', async (ctx) => {
+//   console.log('ctx.request.body: ', ctx.request.body);
+
+//   // @ts-ignore
+//   await serviceUpdateCompany(ctx.request.body.company, ctx.request.body.userId);
+
+//   ctx.body = { status: 'ok' };
+//   ctx.status = 200;
+// });
+
+
+
 // Testing
 // router.post('/devGetBunches', async (ctx) => {
 //   // @ts-ignore
@@ -71,15 +97,7 @@ router.post (API_PATHS.google.getData,                  em,               google
 //   ctx.status = 200;
 // });
 
-// router.post('/devUpdateCompany', async (ctx) => {
-//   console.log('ctx.request.body: ', ctx.request.body);
 
-//   // @ts-ignore
-//   await serviceUpdateCompany(ctx.request.body.company, ctx.request.body.userId);
-
-//   ctx.body = { status: 'ok' };
-//   ctx.status = 200;
-// });
 
 router.get('/hello', (ctx) => {
   console.log('Hello wolrd!');
