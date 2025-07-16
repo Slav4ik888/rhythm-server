@@ -2,14 +2,14 @@ import { Context } from '../../../../app/types/global';
 import { ERROR_NAME, getErrorText } from '../../../../libs/validators';
 import { serviceGetCompany } from '../../../company';
 // import { NO_SHEET_ID } from '../../consts';
-import { serviceGetDashboardViewItems } from '../../services';
-import { ViewItem } from '../../types';
+import { serviceGetDashboardBunches } from '../../services';
+import { BunchesViewItem } from '../../types';
 
 
 
-/** 2025-06-23 */
+/** 2025-07-16 */
 interface ResGetBunches {
-  viewItems : ViewItem[]
+  bunches: BunchesViewItem
 }
 
 interface ReqGetBunches {
@@ -20,7 +20,6 @@ interface ReqGetBunches {
 
 /**
  * Get all BunchsByCompanyId
- * @requires body.ReqGetBunchs
  */
 export async function getBunchesModel(ctx: Context): Promise<any> {
   const { companyId, bunchIds, dashboardSheetId } = ctx.request.body as ReqGetBunches;
@@ -36,9 +35,9 @@ export async function getBunchesModel(ctx: Context): Promise<any> {
     // Нет публичного доступа
   }
 
-  const viewItems = await serviceGetDashboardViewItems(companyId, bunchIds);
+  const bunches = await serviceGetDashboardBunches(companyId, bunchIds);
 
   ctx.body = {
-    viewItems
+    bunches
   };
 }

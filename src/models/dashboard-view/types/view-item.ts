@@ -1,3 +1,4 @@
+import { Bunch } from '../../../shared/lib/structures/bunch'
 import { ItemBase } from '../../base'
 import { ChartConfigDatasets, ChartConfigTrendDatasets, ChartType } from './charts'
 import { IndicatorsConfig } from './config'
@@ -73,3 +74,4 @@ export interface ViewItem extends ItemBase {
 }
 
 export type PartialViewItem = Partial<ViewItem> & { id: ViewItemId }
+export type BunchesViewItem = Bunch<string, Bunch<string, ViewItem>>
