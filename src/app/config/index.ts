@@ -1,4 +1,5 @@
 export const cfg = {
+  VERSION         : '1.8.0',
   COOKIE_NAME     : 'rhythm',
   SITE_URL        : 'https://rhy.thm.su',
   SITE_TITLE_FULL : 'Rhythm',
