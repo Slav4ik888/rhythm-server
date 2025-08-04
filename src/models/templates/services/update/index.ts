@@ -12,8 +12,8 @@ import { PartialTemplate } from '../../types';
 /** Add | Update Template in DB */
 export const serviceUpdateTemplate = async (ctx: Context): Promise<UpdateTemplate> => {
   const { template, bunchUpdatedMs, bunchAction, fullSet } = ctx.request.body as UpdateTemplate;
-  const userId = getUserId(ctx);
-  const fixDate = creatorFixDate(userId);
+  const userId        = getUserId(ctx);
+  const fixDate       = creatorFixDate(userId);
   const isBunchCreate = bunchAction === 'create';
 
   // Get a new write batch
