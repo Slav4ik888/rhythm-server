@@ -1,4 +1,4 @@
-export {
+export type {
   Condition,
   FixDate,
   Change,
@@ -13,3 +13,4 @@ export {
   MOCK_ID_1, MOCK_ID_2, MOCK_ID_3
 } from './mocks'
 export { defsItemBase, schemaFixDate } from './validators/schemas'
+export type { SidebarListItem } from './sidebar/types'
