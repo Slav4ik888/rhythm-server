@@ -10,7 +10,7 @@ export async function loginController(ctx: Context): Promise<any> {
     email   = String(ctx.request.body.authByLogin?.email),
     logTemp = createLogTemp(ctx, 'authByLogin', email),
     error   = responseError(ctx, logger, logTemp);
-  
+
   try {
     await models.auth.login(ctx);
     logger.info(`${logTemp} success`);

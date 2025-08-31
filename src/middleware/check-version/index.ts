@@ -1,7 +1,8 @@
 import { Next } from 'koa';
 import { Context } from '../../app/types/global';
 import { cfg } from '../../app/config';
-import { ERR_CODE, getErrorMessage, NotAutorized } from '../../views';
+import { createLogTemp, loggerApp as logger } from '../../libs/loggers';
+// import { ERR_CODE, getErrorMessage, NotAutorized } from '../../views';
 
 
 
@@ -14,6 +15,8 @@ export async function cv(ctx: Context, next: Next) {
   // throw new NotAutorized(getErrorMessage(ERR_CODE.CookieNotAuth))
 
   if (clientVersion !== serverVersion) {
+    logger.error(createLogTemp(ctx, 'cv'));
+
     ctx.status = 409; // Conflict
     ctx.body = {
       error: 'Version mismatch',
