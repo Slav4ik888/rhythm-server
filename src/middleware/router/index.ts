@@ -11,7 +11,7 @@ import { cv } from '../check-version';
 
 const
   router = new Router({ prefix: '/api' }),
-  { auth, user, company, dashboard, paramsCompany, docs, google, templates } = controllers;
+  { auth, user, company, dashboard, paramsCompany, docs, google, templates, logs } = controllers;
 
 
 // USERS - Auth
@@ -53,6 +53,10 @@ router.get  (API_PATHS.docs.getPolicy,                  cv,               docs.g
 router.post (API_PATHS.google.getData,                  cv,               google.getData);
 
 // DEV
+router.get('/logs/errors/view',     logs.errorsView);
+router.get('/logs/errors/download', logs.errorsDownload);
+router.get('/logs/errors/clear',    logs.errorsClear);
+
 // router.post ('/devCreateDemoCompany', async (ctx) => {
 //   console.log('ctx.request.body: ', ctx.request.body);
 
