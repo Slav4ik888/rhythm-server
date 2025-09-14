@@ -43,14 +43,14 @@ export const logsErrorsViewModel = async (ctx: Context, next: Next): Promise<any
       <body>
         <h1>Error Logs</h1>
         <div class="actions">
-          <a href="http://rhy.thm.su/api/logs/errors/download" download>Download Log File</a>
+          <a href="https://rhy.thm.su/api/logs/errors/download" download>Download Log File</a>
           <button class="danger" onclick="clearLog()">Clear Log File</button>
         </div>
         <pre>${content.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</pre>
 
         <script>
           function clearLog() {
-            fetch('http://rhy.thm.su/api/logs/errors/clear', { method: 'GET' })
+            fetch('https://rhy.thm.su/api/logs/errors/clear', { method: 'GET' })
               .then(response => response.json())
               .then(data => {
                 alert(data.message);
