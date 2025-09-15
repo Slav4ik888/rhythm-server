@@ -9,21 +9,21 @@ import { getSessionData } from '../../libs/firebase';
 /** Проверяем версию на клиенте */
 export async function cv(ctx: Context, next: Next) {
   // Лог загрузки страницы
-  if ([
-    '/api/user/getAuth',
-    '/api/paramsCompany/get'
-  ].includes(ctx.path)) {
+  // if ([
+  //   '/api/user/getAuth',
+  //   '/api/paramsCompany/get'
+  // ].includes(ctx.path)) {
 
-    const { userId } = getSessionData(ctx);
+  // Лог загрузки любой страницы, чтобы понимать где люди шарахаются
+  const { userId } = getSessionData(ctx);
 
-    if (! ['pT5sk0UDkzgVGXtCRLjk72h4jwV2'].includes(userId)) {
-      const user = userId ? userId : 'quest';
+  if (! ['pT5sk0UDkzgVGXtCRLjk72h4jwV2'].includes(userId)) {
+    const user = userId ? userId : 'quest';
 
-      const { companyId } = ctx.request.body;
-      const ci = companyId ? `[ci]: ${companyId}` : '';
+    const { companyId } = ctx.request.body;
+    const ci = companyId ? `[ci]: ${companyId}` : '';
 
-      loggerUrl.info(`[r]: ${ctx.request.url} ${ci} [u]: ${user} [ref]: ${ctx.get('Referer')}`);
-    }
+    loggerUrl.info(`[r]: ${ctx.request.url} ${ci} [u]: ${user} [ref]: ${ctx.get('Referer')}`);
   }
   // -------
 
