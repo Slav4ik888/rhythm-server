@@ -1,13 +1,16 @@
 import { Next } from 'koa';
 import { Context } from '../../app/types/global';
 import { cfg } from '../../app/config';
-import { createLogTemp, loggerApp as logger } from '../../libs/loggers';
+import { createLogTemp, loggerApp as logger, loggerUrl } from '../../libs/loggers';
 // import { ERR_CODE, getErrorMessage, NotAutorized } from '../../views';
 
 
 
 /** Проверяем версию на клиенте */
 export async function cv(ctx: Context, next: Next) {
+  // Лог всех пришедших роутов
+  loggerUrl.info(`[r]: ${ctx.request.url} ${createLogTemp(ctx, 'cv')}`);
+
   const clientVersion = ctx.request.headers['x-client-version'];
   const serverVersion = cfg.VERSION;
 
