@@ -9,7 +9,10 @@ import { createLogTemp, loggerApp as logger, loggerUrl } from '../../libs/logger
 /** Проверяем версию на клиенте */
 export async function cv(ctx: Context, next: Next) {
   // Лог всех пришедших роутов
-  loggerUrl.info(`[r]: ${ctx.request.url} ${createLogTemp(ctx, 'cv')}`);
+  const { companyId } = ctx.request.body;
+  const ci = companyId ? `[ci]: ${companyId}` : '';
+
+  loggerUrl.info(`[r]: ${ctx.request.url} ${ci} ${createLogTemp(ctx, 'cv')}`);
 
   const clientVersion = ctx.request.headers['x-client-version'];
   const serverVersion = cfg.VERSION;
