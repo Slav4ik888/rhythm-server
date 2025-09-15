@@ -6,7 +6,7 @@ import { PASS } from '../../../../logs/pass';
 
 
 
-const hostname = 'https://rhy.thm.su' || 'http://localhost:7575';
+const hostname = 'https://rhy.thm.su'; // || 'http://localhost:7575';
 
 export const logsViewModel = async (ctx: Context, next: Next): Promise<any> => {
   const { name, pass } = ctx.params;
@@ -47,7 +47,7 @@ export const logsViewModel = async (ctx: Context, next: Next): Promise<any> => {
           pre { background: white; padding: 20px; border-radius: 5px; }
           .actions { margin: 20px 0; }
           button { padding: 10px 20px; margin-right: 10px; cursor: pointer; }
-          .danger { background: #ff4757; color: white; border: none; }
+          .danger { background: #a24f56; color: white; border: none; border-radius: 18px; margin-left: 16px; }
         </style>
       </head>
       <body>
