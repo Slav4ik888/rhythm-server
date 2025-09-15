@@ -1,7 +1,7 @@
-import { logsErrorsViewController as errorsView } from './errors-view'
-import { logsErrorsDownloadController as errorsDownload } from './errors-download'
-import { logsErrorsClearController as errorsClear } from './errors-clear'
+import { logsViewController as view } from './view'
+import { logsDownloadController as download } from './download'
+import { logsClearController as clear } from './clear'
 
 export default {
-  errorsView, errorsDownload, errorsClear
+  view, download, clear
 }

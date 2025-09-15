@@ -1,1 +1,1 @@
-export { errorsView, errorsDownload, errorsClear } from './handlers'
+export { view, download, clear } from './handlers'

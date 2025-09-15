@@ -47,15 +47,19 @@ router.post (API_PATHS.templates.update,                cv, checkUserSession, te
 router.post (API_PATHS.templates.delete,                cv, checkUserSession, templates.deleteTemplate);
 
 // DOCS
-router.get  (API_PATHS.docs.getPolicy,                  cv,               docs.getPolicy);
+router.get  (API_PATHS.docs.getPolicy,                  cv,                   docs.getPolicy);
 
 // GOOGLE
-router.post (API_PATHS.google.getData,                  cv,               google.getData);
+router.post (API_PATHS.google.getData,                  cv,                   google.getData);
 
 // DEV
-router.get('/logs/errors/view',     logs.errorsView);
-router.get('/logs/errors/download', logs.errorsDownload);
-router.get('/logs/errors/clear',    logs.errorsClear);
+router.get('/logs/view/:name/:pass',     logs.view);
+router.get('/logs/download/:name/:pass', logs.download);
+router.get('/logs/clear/:name/:pass',    logs.clear);
+
+// router.get('/logs/errors/view',     logs.errorsView);
+// router.get('/logs/errors/download', logs.errorsDownload);
+// router.get('/logs/errors/clear',    logs.errorsClear);
 
 // router.post ('/devCreateDemoCompany', async (ctx) => {
 //   console.log('ctx.request.body: ', ctx.request.body);

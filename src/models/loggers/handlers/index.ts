@@ -1,3 +1,3 @@
-export { logsErrorsViewModel as errorsView } from './errors-view'
-export { logsErrorsDownloadModel as errorsDownload } from './errors-download'
-export { logsErrorsClearModel as errorsClear } from './errors-clear'
+export { logsViewModel as view } from './view'
+export { logsDownloadModel as download } from './download'
+export { logsClearModel as clear } from './clear'

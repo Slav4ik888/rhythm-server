@@ -6,13 +6,13 @@ import { responseError } from '../../../views';
 
 
 
-export async function logsErrorsClearController(ctx: Context, next: Next): Promise<any> {
+export async function logsViewController(ctx: Context, next: Next): Promise<any> {
   const
-    logTemp = createLogTemp(ctx, 'logsErrorsClear'),
+    logTemp = createLogTemp(ctx, 'logsView'),
     error   = responseError(ctx, logger, logTemp);
 
   try {
-    await models.logs.errorsClear(ctx, next);
+    await models.logs.view(ctx, next);
     logger.info(`${logTemp} success`);
   }
   catch (err) {

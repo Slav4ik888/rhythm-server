@@ -3,7 +3,7 @@ import app from './app';
 app.listen(process.env.PORT || 7575, () => console.log(`Listening on port ${process.env.PORT || 7575}!`))
 
 // cd ../rhythm-server && npm run dev
-// git add . && git commit -m "add loggerUrl" && git push -u origin main
+// git add . && git commit -m "refact logs" && git push -u origin main
 // service rhythm-server restart updated version to 1.42.0
 
 // 200 OK

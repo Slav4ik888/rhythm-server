@@ -6,13 +6,13 @@ import { responseError } from '../../../views';
 
 
 
-export async function logsErrorsViewController(ctx: Context, next: Next): Promise<any> {
+export async function logsDownloadController(ctx: Context, next: Next): Promise<any> {
   const
-    logTemp = createLogTemp(ctx, 'logsErrorsView'),
+    logTemp = createLogTemp(ctx, 'logsDownload'),
     error   = responseError(ctx, logger, logTemp);
 
   try {
-    await models.logs.errorsView(ctx, next);
+    await models.logs.download(ctx, next);
     logger.info(`${logTemp} success`);
   }
   catch (err) {
