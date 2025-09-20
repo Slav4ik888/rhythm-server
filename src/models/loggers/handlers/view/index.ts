@@ -3,6 +3,7 @@ import { Context } from '../../../../app/types/global';
 import fs from 'fs';
 import path from 'path';
 import { PASS } from '../../../../logs/pass';
+import { capitalize } from '../../../../shared/utils/strings';
 
 
 
@@ -36,12 +37,14 @@ export const logsViewModel = async (ctx: Context, next: Next): Promise<any> => {
     const content = fs.readFileSync(logPath, 'utf8');
 
     // Отображаем как HTML с подсветкой
+    const title = capitalize(name, { first: true });
+
     ctx.type = 'html';
     ctx.body = `
       <!DOCTYPE html>
       <html>
       <head>
-        <title>Error Logs</title>
+        <title>${title} logs</title>
         <style>
           body { font-family: monospace; background: #f5f5f5; padding: 20px; }
           pre { background: white; padding: 20px; border-radius: 5px; }
@@ -51,7 +54,7 @@ export const logsViewModel = async (ctx: Context, next: Next): Promise<any> => {
         </style>
       </head>
       <body>
-        <h1>Error Logs</h1>
+        <h1>${title} logs</h1>
         <div class="actions">
           <a href="${hostname}/api/logs/download/${name}/${pass}" download>Download Log File</a>
           <button class="danger" onclick="clearLog()">Clear Log File</button>
