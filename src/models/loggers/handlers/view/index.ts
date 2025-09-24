@@ -42,7 +42,7 @@ export const logsViewModel = async (ctx: Context, next: Next): Promise<any> => {
     ctx.type = 'html';
     ctx.body = `
       <!DOCTYPE html>
-      <html>
+      <html lang="ru">
       <head>
         <title>${title} logs</title>
         <style>

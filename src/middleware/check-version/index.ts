@@ -17,7 +17,10 @@ export async function cv(ctx: Context, next: Next) {
   // Лог загрузки любой страницы, чтобы понимать где люди шарахаются
   const { userId } = getSessionData(ctx);
 
-  if (! ['pT5sk0UDkzgVGXtCRLjk72h4jwV2'].includes(userId)) {
+  if (! [
+    'pT5sk0UDkzgVGXtCRLjk72h4jwV2', // Я
+    '4749Iuxb6ZbOfQsDuPp6ChSIvaI3', // Родя
+  ].includes(userId)) {
     const user = userId ? userId : 'quest';
 
     const { companyId } = ctx.request.body;
