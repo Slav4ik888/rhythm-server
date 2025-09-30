@@ -1,4 +1,4 @@
-export { User, Role, Position } from './types'
+export type { User, Role, Position, PartialUser } from './types'
 export { creatorUser } from './templates'
 export { serviceFindUserByEmail, serviceFindUserById, serviceGetUser } from './services'
 export { getUserId } from './utils'

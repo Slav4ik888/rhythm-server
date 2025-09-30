@@ -35,3 +35,8 @@ export interface User extends ItemBase {
 
   settings?     : UserSettings
 }
+
+export type PartialUser = Partial<User> & {
+  companyId : string
+  id        : string
+}

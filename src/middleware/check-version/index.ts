@@ -18,7 +18,9 @@ export async function cv(ctx: Context, next: Next) {
   const { userId } = getSessionData(ctx);
 
   if (! [
-    'pT5sk0UDkzgVGXtCRLjk72h4jwV2', // Я
+    'pT5sk0UDkzgVGXtCRLjk72h4jwV2', // korzan-va-mail
+    'wQ51kIvT2xPNVa2uuU0qhcjzqJB3', // info-thm
+    'xcUt9EYBrUbJd3JKiUf05Oxpp5f2', // v-korzan-da-tele
     '4749Iuxb6ZbOfQsDuPp6ChSIvaI3', // Родя
   ].includes(userId)) {
     const user = userId ? userId : 'quest';
