@@ -21,7 +21,10 @@ export type NewUserStatus = {
 }
 
 
-/** Пользователь */
+/**
+ * Пользователь
+ * v.2025-10-08
+ */
 export interface User extends ItemBase {
   companyId     : string
 
@@ -33,6 +36,7 @@ export interface User extends ItemBase {
   emailVerified : boolean
   status        : UserStatus
 
+  isEditAccess? : boolean // Временный запрет для всех на доступ к Конструктору
   settings?     : UserSettings
 }
 

@@ -6,13 +6,13 @@ import { isPhoneNumberScheme, isCountryCode, isPhoneType, isRole, isUserStatus }
 
 export const addKeywords = (ajv: Ajv) => {
   ajv
+    // Base
+    // @ts-ignore
+    .addKeyword(isCondition)
+
     // Company
     // @ts-ignore
     .addKeyword(isCompanyStatus)
-
-    // UI
-    // @ts-ignore
-    .addKeyword(isCondition)
 
     // User
     // @ts-ignore

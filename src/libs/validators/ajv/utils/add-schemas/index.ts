@@ -4,7 +4,10 @@ import { schemaAuthByLogin } from '../../../../../models/auth/login/validators/s
 import { schemaSignupData, schemaSignupDataEnd } from '../../../../../models/auth/signup/validators/schemas';
 import { defsItemBase, schemaFixDate } from '../../../../../models/base/validators/schemas';
 import { defsCompany, schemaCompany } from '../../../../../models/company/validators/schemas';
-import { defsFIO, defsPhone, defsUser, schemaPerson, schemaPhoneNumber, schemaPosition, } from '../../../../../models/user/validators/schemas';
+import {
+  defsFIO, defsPhone, defsUser, schemaPerson, schemaPhoneNumber, schemaPosition,
+  schemaSettings, schemaUser, defsPerson
+} from '../../../../../models/user/validators/schemas';
 import { defsBase } from '../../schemas';
 
 
@@ -28,9 +31,12 @@ export const addSchemas = (ajv: Ajv) => {
       defsFIO,
       defsPhone,
       defsUser,
+      defsPerson,
       schemaPerson,
       schemaPhoneNumber,
       schemaPosition,
+      schemaSettings,
+      schemaUser,
 
       // Company
       defsCompany,
