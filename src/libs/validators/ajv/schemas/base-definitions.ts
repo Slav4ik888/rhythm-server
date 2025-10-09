@@ -1,4 +1,4 @@
-import { SCHEMA_NAME } from '.';
+import { SCHEMA_NAME } from './schema-names';
 
 
 export const definitions = {

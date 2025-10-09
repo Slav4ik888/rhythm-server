@@ -1,4 +1,5 @@
-import { SCHEMA_NAME, validate } from '../../../../../../libs/validators';
+import { validate } from '../../../../../../libs/validators';
+import { SCHEMA_NAME } from '../../../../../../libs/validators/ajv/schemas/schema-names';
 import { createArr } from '../../../../../../shared/utils/arrays';
 import { getMockStrLength } from '../../../../../../shared/utils/strings';
 import { MOCK_USER_EMPLOYEE, MOCK_USER_EMPTY } from '../../../../mocks';

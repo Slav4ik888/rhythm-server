@@ -1,4 +1,4 @@
-import { SCHEMA_NAME } from '../../schemas';
+import { SCHEMA_NAME } from '../../schemas/schema-names';
 import { getValidResult, isNotOneOfSeveral } from '../../../base';
 import { getErrorText } from '../../../get-error-text';
 import { ERROR_NAME } from '../../../get-error-text/error-text';

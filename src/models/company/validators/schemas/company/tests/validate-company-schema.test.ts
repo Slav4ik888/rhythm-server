@@ -1,4 +1,4 @@
-import { SCHEMA_NAME } from '../../../../../../libs/validators';
+import { SCHEMA_NAME } from '../../../../../../libs/validators/ajv/schemas/schema-names';
 import { validate } from '../../../../../../libs/validators';
 import { getMockStrLength } from '../../../../../../shared/utils/strings';
 import { MOCK_DATE_13_03_2023 } from '../../../../../base';

@@ -1,4 +1,4 @@
-import { SCHEMA_NAME } from '../../../../../../libs/validators/ajv/schemas';
+import { SCHEMA_NAME } from '../../../../../../libs/validators/ajv/schemas/schema-names';
 
 
 export const schema = {
@@ -28,7 +28,7 @@ export const schema = {
     permissions: {
       const: true
     },
-    
+
     // С какого устройства вошёл
     isMobile: {
       type: 'boolean'

@@ -5,8 +5,8 @@ import { schemaSignupData, schemaSignupDataEnd } from '../../../../../models/aut
 import { defsItemBase, schemaFixDate } from '../../../../../models/base/validators/schemas';
 import { defsCompany, schemaCompany } from '../../../../../models/company/validators/schemas';
 import {
-  defsFIO, defsPhone, defsUser, schemaPerson, schemaPhoneNumber, schemaPosition,
-  schemaSettings, schemaUser, defsPerson
+  defsFIO, defsPhone, defsUser, schemaPhoneNumber, schemaPosition,
+  schemaUser, defsPerson, schemaPerson, schemaSettings
 } from '../../../../../models/user/validators/schemas';
 import { defsBase } from '../../schemas';
 

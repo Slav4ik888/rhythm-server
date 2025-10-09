@@ -1,6 +1,7 @@
 import { SchemaObjCxt } from 'ajv';
 import { CompanyStatus } from '../../../types';
-import { SCHEMA_NAME, isOneOfSeveral } from '../../../../../libs/validators';
+import { isOneOfSeveral } from '../../../../../libs/validators';
+import { SCHEMA_NAME } from '../../../../../libs/validators/ajv/schemas/schema-names';
 
 
 

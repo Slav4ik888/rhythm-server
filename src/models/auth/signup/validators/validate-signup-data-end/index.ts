@@ -1,5 +1,6 @@
 import { Context } from 'koa';
-import { SCHEMA_NAME, validate } from '../../../../../libs/validators';
+import { validate } from '../../../../../libs/validators';
+import { SCHEMA_NAME } from '../../../../../libs/validators/ajv/schemas/schema-names';
 import { SignupDataEnd } from '../../types';
 
 

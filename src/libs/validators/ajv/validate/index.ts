@@ -1,6 +1,6 @@
 import Ajv from 'ajv';
 import { addKeywords, addSchemas, getValidResultByKeywords, isValidSchemaName } from '../utils';
-import { SCHEMA_NAME } from '../schemas';
+import { SCHEMA_NAME } from '../schemas/schema-names';
 import { Validation } from '../../types';
 import addFormats from 'ajv-formats';
 
@@ -27,14 +27,14 @@ export const validate = (
   else return getValidResultByKeywords()
 };
 
-// 
+//
 // Базовую проверку делаем на:
 // ---------------------------
-// 
+//
 //  - Тип
 //  - Ограничения мин/макс (string / number / array (maxItems))
 //  - Отсутствие данных
 //  - Присутствие дополнительных данных
 //  - If undefined | null | NaN
 //  - If empty
-// 
+//

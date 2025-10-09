@@ -1,4 +1,4 @@
-import { SCHEMA_NAME } from '../../../../../libs/validators/ajv/schemas';
+import { SCHEMA_NAME } from '../../../../../libs/validators/ajv/schemas/schema-names';
 
 
 export const definitions = {
@@ -44,7 +44,7 @@ export const definitions = {
       type      : 'string',
       maxLength : 1000
     },
-  
+
     // Сортировка среди своих же братьев
     // При перемещении к новому родителю, ставиться в начало списка
     order: {
