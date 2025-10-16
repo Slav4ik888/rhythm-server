@@ -1,0 +1,1 @@
+export { increaseFollower } from './handlers'

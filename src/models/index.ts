@@ -8,6 +8,7 @@ import * as docs from './docs'
 import * as google from './google'
 import * as logs from './loggers'
 import * as templates from './templates'
+import * as partner from './partner'
 
 export { SignupData, AuthByLogin } from './auth'
 export { creatorCompany, MOCK_OWNER_ID, MOCK_COMPANY_ID } from './company'
@@ -23,5 +24,6 @@ export default {
   paramsCompany,
   docs,
   google,
-  logs
+  logs,
+  partner
 }

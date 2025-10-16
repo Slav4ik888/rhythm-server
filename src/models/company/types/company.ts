@@ -35,12 +35,14 @@ export interface CustomSettings {
 }
 
 
+export type CompanyId = string
+
 /**
- * v.2025-08-28
+ * v.2025-10-11
  * Профиль компании
  */
 export interface Company {
-  id                     : string
+  id                     : CompanyId
   companyName            : string
   ownerId                : string
   owner                  : string // email

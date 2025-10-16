@@ -10,6 +10,9 @@ export enum DbRef {
   TEMPLATE    = 'template',
   TEMPLATES   = 'templates',
 
+  PARTNER     = 'partner',
+  PARTNERS    = 'partners',
+
   // DEPRECATED
   VIEW        = 'view',
   VIEWS       = 'views',

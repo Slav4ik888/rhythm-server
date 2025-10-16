@@ -50,6 +50,9 @@ export const API_PATHS = {
   google: {
     getData: '/getData',
   },
+  partner: {
+    increaseFollower: '/increaseFollower'
+  },
   transactions: {
     sendTransactions: '/sendTransactions',
   }

@@ -11,7 +11,7 @@ import { cv } from '../check-version';
 
 const
   router = new Router({ prefix: '/api' }),
-  { auth, user, company, dashboard, paramsCompany, docs, google, templates, logs } = controllers;
+  { auth, user, company, dashboard, paramsCompany, docs, google, templates, logs, partner } = controllers;
 
 
 // USERS - Auth
@@ -51,6 +51,10 @@ router.get  (API_PATHS.docs.getPolicy,                  cv,                   do
 
 // GOOGLE
 router.post (API_PATHS.google.getData,                  cv,                   google.getData);
+
+// PARTNER
+router.post (API_PATHS.partner.increaseFollower,        cv,                   partner.increaseFollower);
+
 
 // DEV
 router.get('/logs/view/:name/:pass',     logs.view);

@@ -7,8 +7,9 @@ import { default as docs } from './docs'
 import { default as google } from './google'
 import { default as logs } from './loggers'
 import { default as templates } from './templates'
+import { default as partner } from './partner'
 
 
 export default {
-  auth, user, company, dashboard, paramsCompany, docs, google, templates, logs
+  auth, user, company, dashboard, paramsCompany, docs, google, templates, logs, partner
 }

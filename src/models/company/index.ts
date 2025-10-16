@@ -1,6 +1,7 @@
 export {
   CompanyStatus,
-  Company
+  Company,
+  CompanyId
 } from './types'
 
 export { creatorCompany } from './creators'
