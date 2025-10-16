@@ -19,6 +19,7 @@ export const schema = {
     status        : { $ref: `${SCHEMA_NAME.DEFS_USER}#/definitions/status` },
     isEditAccess  : { $ref: `${SCHEMA_NAME.DEFS_USER}#/definitions/isEditAccess` },
     settings      : { $ref: `${SCHEMA_NAME.DEFS_USER}#/definitions/settings` },
+    partner       : { $ref: `${SCHEMA_NAME.DEFS_USER}#/definitions/partner` },
 
     order         : { $ref: `${SCHEMA_NAME.DEFS_USER}#/definitions/order` },
     createdAt     : { $ref: `${SCHEMA_NAME.DEFS_USER}#/definitions/createdAt` },
