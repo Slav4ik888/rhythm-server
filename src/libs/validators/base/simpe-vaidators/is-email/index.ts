@@ -1,5 +1,5 @@
 
-export const isEmail = (email: string): boolean => {
+export const isEmail = (email: any): boolean => {
   if (!email || typeof email !== 'string') return false;
 
   // eslint-disable-next-line no-useless-escape
@@ -9,4 +9,4 @@ export const isEmail = (email: string): boolean => {
   return false;
 };
 
-export const isNotEmail = (email: string): boolean => !isEmail(email);
+export const isNotEmail = (email: any): boolean => !isEmail(email);

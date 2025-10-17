@@ -22,7 +22,6 @@ export interface RedisGetSignup {
 /** Get code & signupData from Redis */
 export const redisGetSignup = async (email: string): Promise<ResRedisGetSignup> => {
   const data = await client.hGetAll(email) as unknown as RedisGetSignup
-  console.log('data: ', data);
 
   return {
     code       : data?.code,

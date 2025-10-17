@@ -10,6 +10,7 @@ interface Locals {
   url_confirmation? : string,
   url_link?         : string,
   email?            : string,
+  userId?           : string,
   companyId?        : string,
   companyName?      : string,
   code?             : string,

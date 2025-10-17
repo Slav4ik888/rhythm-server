@@ -20,7 +20,8 @@ describe('convertToDot', () => {
             fourth: {
               str: 'string',
               number: 123,
-              arr: [1, 2, 3]
+              arr: [1, 2, 3],
+              email: 'korz.va.vfd@srg.second.fu'
             },
             strInThird: 'string',
             numberInThird: 456,
@@ -36,6 +37,7 @@ describe('convertToDot', () => {
       'first.second.third.fourth.str': 'string',
       'first.second.third.fourth.number': 123,
       'first.second.third.fourth.arr': [1, 2, 3],
+      'first.second.third.fourth.email': 'korz.va.vfd@srg.second.fu',
       'first.second.third.strInThird': 'string',
       'first.second.third.numberInThird': 456,
       'first.second.third.arrInThird': [4, 5, 6],

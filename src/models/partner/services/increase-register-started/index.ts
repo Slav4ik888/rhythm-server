@@ -1,9 +1,9 @@
 import { Context } from '../../../../app/types/global';
 import { DbRef, getRefDoc } from '../../../helpers';
-import { convertToDot } from '../../../../shared/utils/objects';
 import { PartnerData } from '../../types';
 import { SignupData } from '../../../auth';
 import { getCurrentMs } from '../../../../shared/utils/dates';
+import { db } from '../../../../libs/firebase';
 
 
 
@@ -16,24 +16,34 @@ export const serviceIncreaseRegisterStarted = async (ctx: Context): Promise<unde
   const ref = getRefDoc(DbRef.PARTNER, { partnerId });
 
   const docTemp = await ref.get();
-  if (docTemp.exists) {
-    const partner = docTemp.data() as PartnerData;
+  if (! docTemp.exists) return
 
-    ref.update(convertToDot({
-      registerStarted: partner.registerStarted
-        ? partner.registerStarted + 1
-        : 1,
+  const partner = docTemp.data() as PartnerData;
 
-      registerStartedData: {
-        [email]: {
-          email,
-          companyName,
-          firstName,
-          createdAt: getCurrentMs()
-        }
+  // Get a new write batch
+  const batch = db.batch();
+
+  batch.update(ref, {
+    registerStarted: partner.registerStarted
+      ? partner.registerStarted + 1
+      : 1
+  });
+
+  batch.update(ref, {
+    // @ts-ignore
+    registerStartedData: {
+      ...(partner.registerStartedData ? partner.registerStartedData : {}),
+      [email]: {
+        email,
+        companyName,
+        firstName,
+        createdAt: getCurrentMs()
       }
-    }));
-  }
+    }
+  });
+
+  // Commit the batch
+  await batch.commit();
 
   return
 };

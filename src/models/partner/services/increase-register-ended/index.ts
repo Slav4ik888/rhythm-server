@@ -1,9 +1,9 @@
 import { DbRef, getRefDoc } from '../../../helpers';
-import { convertToDot } from '../../../../shared/utils/objects';
 import { PartnerData } from '../../types';
 import { getCurrentMs } from '../../../../shared/utils/dates';
 import { CompanyId } from '../../../company';
 import { Email } from '../../../base';
+import { db } from '../../../../libs/firebase';
 
 
 
@@ -18,23 +18,31 @@ export const serviceIncreaseRegisterEnded = async (
   const ref = getRefDoc(DbRef.PARTNER, { partnerId });
 
   const docTemp = await ref.get();
-  if (docTemp.exists) {
-    const partner = docTemp.data() as PartnerData;
+  if (! docTemp.exists) return
 
-    ref.update(convertToDot({
-      registered: partner.registered
-        ? partner.registered + 1
-        : 1,
+  const partner = docTemp.data() as PartnerData;
 
-      registeredData: {
-        [email]: {
-          email,
-          companyId,
-          createdAt: getCurrentMs()
-        }
+  // Get a new write batch
+  const batch = db.batch();
+
+  batch.update(ref, {
+    registered: partner.registered
+      ? partner.registered + 1
+      : 1
+  });
+
+  batch.update(ref, {
+    // @ts-ignore
+    registeredData: {
+      ...(partner.registeredData ? partner.registeredData : {}),
+      [email]: {
+        email,
+        companyId,
+        createdAt: getCurrentMs()
       }
-    }));
-  }
+    }
+  });
 
-  return
+  // Commit the batch
+  await batch.commit();
 };

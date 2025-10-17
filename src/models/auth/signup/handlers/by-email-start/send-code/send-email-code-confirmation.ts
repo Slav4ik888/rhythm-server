@@ -8,7 +8,11 @@ import { cfg } from '../../../../../../app/config';
 /**
  * Отправляем Code для подтверждения почты
  */
-export async function sendEmailCodeConfirmation(ctx: Context, code: string): Promise<any> {
+export async function sendEmailCodeConfirmation(
+  ctx       : Context,
+  code      : string,
+  partnerId : string
+): Promise<any> {
   const email   = String((ctx.request.body.signupData)?.email);
   const logTemp = createLogTemp(ctx, 'signupSendEmailCode', email);
 
@@ -31,12 +35,22 @@ export async function sendEmailCodeConfirmation(ctx: Context, code: string): Pro
     }
   });
 
+
+  // Отправка уведомлений о попытке регистрации пользователя
   await sendMail({
     to       : cfg.INFO_EMAIL,
-    subject  : `Попытка участника Ритма: ${email}`,
-    template : 'info-attempt-registration',
-    locals: {
-      platform_name: cfg.SITE_TITLE_FULL,
+    subject  : partnerId
+      ? `Начало регистрации по партнёрской ссылке: ${partnerId}`
+      : `Попытка участника Ритма: ${email}`,
+
+    template : partnerId
+      ? 'info-partner-registration-started'
+      : 'info-attempt-registration',
+
+    locals   : {
+      platform_name : cfg.SITE_TITLE_FULL,
+      url_site      : cfg.SITE_URL,
+      partnerId,
       email
     },
   });

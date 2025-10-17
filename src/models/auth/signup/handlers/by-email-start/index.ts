@@ -4,8 +4,6 @@ import { Context } from '../../../../../app/types/global';
 import { signupSendCodeModel } from './send-code';
 import { SignupData } from '../../types';
 import { serviceIncreaseRegisterStarted } from '../../../../partner';
-import { sendNotifications } from './send-notifications';
-
 
 
 export async function signupByEmailStartModel(ctx: Context): Promise<any> {
@@ -15,6 +13,5 @@ export async function signupByEmailStartModel(ctx: Context): Promise<any> {
   validateSignupData(ctx, signupData);
   await checkIsNotFreeEmail(ctx, email);
   await signupSendCodeModel(ctx);
-  await serviceIncreaseRegisterStarted(ctx);
-  await sendNotifications(partnerId, email);
+  if (partnerId) await serviceIncreaseRegisterStarted(ctx);
 }

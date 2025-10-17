@@ -28,7 +28,7 @@ function checkAndConvert<O extends object>(obj: O, newObj: object, prevScheme: s
         checkAndConvert(value as unknown as object, newObj, scheme);
       }
       else {
-  // @ts-ignore
+        // @ts-ignore
         newObj[scheme] = value;
       }
     }

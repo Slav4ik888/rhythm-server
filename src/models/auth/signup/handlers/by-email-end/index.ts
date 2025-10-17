@@ -28,8 +28,11 @@ export async function signupByEmailEndModel(ctx: Context): Promise<any> {
 
   await complectionUser(newUserData, companyId);
   await setCookie(ctx, userCredential, newUserData, 'signup');
-  await serviceIncreaseRegisterEnded(newUserData.partner.referrerId, email, companyId);
-  await sendNotifications(ctx, data.signupData?.firstName, newUserData.partner.referrerId);
+
+  const referrerId = newUserData.partner.referrerId;
+  if (referrerId) await serviceIncreaseRegisterEnded(referrerId, email, companyId);
+
+  await sendNotifications(ctx, newUserData, data.signupData?.firstName);
 
   ctx.body = {
     newUserData,

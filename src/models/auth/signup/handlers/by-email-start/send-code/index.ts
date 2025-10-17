@@ -11,7 +11,7 @@ import { isCodeExpired } from '../../../utils/is-code-expired';
 
 export async function signupSendCodeModel(ctx: Context): Promise<any> {
   const { signupData } = ctx.request.body as { signupData: SignupData };
-  const { email } = signupData;
+  const { email, partnerId } = signupData;
 
   validateSignupData(ctx, signupData);
 
@@ -27,13 +27,10 @@ export async function signupSendCodeModel(ctx: Context): Promise<any> {
     });
   }
 
-  // Сделать код
-  const newCode = generateCheckCode();
+  const newCode = generateCheckCode(); // Сделать код
 
-  // Сохранить данные (код и signupData) в Redis
-  await redisSetSignup(email, signupData, newCode);
-
-  await sendEmailCodeConfirmation(ctx, newCode);
+  await redisSetSignup(email, signupData, newCode); // Сохранить данные (код и signupData) в Redis
+  await sendEmailCodeConfirmation(ctx, newCode, partnerId);
 
   ctx.body = {
     message: `На указанную почту [${email}] отправлен код подтверждения`

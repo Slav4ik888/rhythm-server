@@ -19,7 +19,6 @@ export const increaseFollowerModel = async (ctx: Context): Promise<void> => {
   if (! isValidPartnerId(partnerId)) return ctx.throw(400, { general: 'Invalid partnerId' });
 
   await serviceIncreaseFollower(ctx);
-
   await sendNotifications(ctx);
 
   ctx.status = 200;
