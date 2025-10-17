@@ -1,6 +1,7 @@
 import { Context } from '../../../../app/types/global';
 import { serviceIncreaseFollower } from '../../services';
 import { isValidPartnerId } from '../../utils';
+import { sendNotifications } from './send-notifycations';
 
 
 
@@ -18,6 +19,8 @@ export const increaseFollowerModel = async (ctx: Context): Promise<void> => {
   if (! isValidPartnerId(partnerId)) return ctx.throw(400, { general: 'Invalid partnerId' });
 
   await serviceIncreaseFollower(ctx);
+
+  await sendNotifications(ctx);
 
   ctx.status = 200;
 };

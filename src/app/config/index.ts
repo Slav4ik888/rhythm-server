@@ -2,7 +2,7 @@ export const cfg = {
   VERSION         : '1.48.1',
   COOKIE_NAME     : 'rhythm',
   SITE_URL        : 'https://rhy.thm.su',
-  SITE_TITLE_FULL : 'Rhythm',
+  SITE_TITLE_FULL : 'Информационная панель «Ритм»',
   INFO_EMAIL      : 'info@thm.su',
 
   UPLOAD: {

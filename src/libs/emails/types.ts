@@ -14,7 +14,8 @@ interface Locals {
   companyName?      : string,
   code?             : string,
   platform_name?    : string,
-  password?         : string
+  password?         : string,
+  partnerId?        : string,
 }
 
 interface Attachment {

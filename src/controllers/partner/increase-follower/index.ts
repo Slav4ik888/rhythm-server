@@ -1,5 +1,5 @@
 import { Context } from '../../../app/types/global';
-import { createLogTemp, loggerUser as logger } from '../../../libs/loggers';
+import { createLogTemp, loggerPartner as logger } from '../../../libs/loggers';
 import models from '../../../models';
 import { responseError } from '../../../views';
 

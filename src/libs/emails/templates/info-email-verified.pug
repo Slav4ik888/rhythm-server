@@ -7,9 +7,11 @@ html
             .container { padding: 0 100px; font-size: 16px; }
             .strong { font-weight: 600; }
             .span { font-weight: 300; }
+            .footer { font-size: 12px; }
+            .italic { font-style: italic; }
 
     body.container
-        img(src="https://firebasestorage.googleapis.com/v0/b/osnova-course.appspot.com/o/logo_white_bg.jpg?alt=media&token=3781892d-1475-4940-9c43-eb4b8a3b25c5", alt="Учебный центр Основа" style="width: 130px;")
+        img(src="https://firebasestorage.googleapis.com/v0/b/osnova-course.appspot.com/o/logo_white_bg.jpg?alt=media&token=3781892d-1475-4940-9c43-eb4b8a3b25c5", alt='Информационная панель руководителя "Ритм"' style="width: 130px;")
         h3 Подтвердили email
         br
         p.strong companyId:&nbsp;
@@ -18,5 +20,6 @@ html
             span.span #{email}
 
         hr
-        footer
-            p С наилучшими пожеланиями, «#{platform_name}»
+        footer.footer
+            p Автоматическое уведомление о событии,
+            p.italic #{platform_name}

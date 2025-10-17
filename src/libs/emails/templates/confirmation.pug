@@ -7,11 +7,12 @@ html
             .container { padding: 0 100px; font-size: 16px; }
             .code-container { width: 100%; text-align: center; font-size: 20px; font-weight: bold; }
             .code-span { background: #eee; border-radius: 5px; padding: 5px; }
-
+            .footer { font-size: 12px; }
+            .italic { font-style: italic; }
 
     body.container
         a(href=url_site)
-            img(src="https://firebasestorage.googleapis.com/v0/b/osnova-course.appspot.com/o/logo_white_bg.jpg?alt=media&token=3781892d-1475-4940-9c43-eb4b8a3b25c5",  alt="Учебный центр Основа" style="width: 130px;")
+            img(src="https://firebasestorage.googleapis.com/v0/b/osnova-course.appspot.com/o/logo_white_bg.jpg?alt=media&token=3781892d-1475-4940-9c43-eb4b8a3b25c5", alt='Информационная панель руководителя "Ритм"' style="width: 130px;")
         h3 Здравствуйте, #{name}
         p для завершения регистрации, на платформе&nbsp;
             a(href=url_site) #{platform_name}
@@ -24,5 +25,7 @@ html
         p Если Вы не регистрировались, просто проигнорируйте это письмо.
 
         hr
-        footer
-            p С наилучшими пожеланиями, «#{platform_name}»
+        footer.footer
+            footer.footer
+            p С наилучшими пожеланиями,
+            p.italic #{platform_name}

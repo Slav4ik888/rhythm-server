@@ -162,6 +162,19 @@ const loggerDashboardTemplates = createLogger({
   ]
 });
 
+const loggerPartner = createLogger({
+  level: 'info',
+  format: combine(
+    label({ label: 'partner' }),
+    timestamp(),
+    myFormat
+  ),
+  transports: [
+    new transports.File({ filename: path.join(__dirname, rootPath, 'errors.log'), level: 'error' }),
+    new transports.File({ filename: path.join(__dirname, rootPath, 'partner.log') })
+  ]
+});
+
 const loggerUrl = createLogger({
   level: 'info',
   format: combine(
@@ -189,10 +202,11 @@ if (process.env.NODE_ENV !== 'production') {
   loggerDashboardView      .add(new transports.Console({ format: combine(format.colorize(), format.simple()) }));
   loggerDashboardTemplates .add(new transports.Console({ format: combine(format.colorize(), format.simple()) }));
   loggerUrl                .add(new transports.Console({ format: combine(format.colorize(), format.simple()) }));
+  loggerPartner            .add(new transports.Console({ format: combine(format.colorize(), format.simple()) }));
 }
 
 
 export {
   loggerServer, loggerApp, loggerAuth, loggerLogin, loggerSignup, loggerUser, loggerCompany, loggerMail,
-  loggerDashboardView, loggerDocs, loggerDashboardTemplates, loggerUrl
+  loggerDashboardView, loggerDocs, loggerDashboardTemplates, loggerUrl, loggerPartner
 };
