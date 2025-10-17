@@ -6,7 +6,7 @@ import { creatorPerson } from '../creator-person';
 import { creatorUserSettings } from '../creator-settings';
 
 
-/** v.2023-09-22 */
+/** v.2025-10-17 */
 export const creatorUser = (cfg: Partial<User> = {}): User => {
   const user: User = {
     id            : cfg.id            || '',
@@ -21,8 +21,14 @@ export const creatorUser = (cfg: Partial<User> = {}): User => {
     permissions   : cfg.permissions   || false, // Разрешения на обработку персональных данных
     status        : cfg.status        || UserStatus.NEW,
     order         : cfg.order         || 100,
-    settings      : cfg.settings      || creatorUserSettings(),
 
+    settings      : cfg.settings      || creatorUserSettings(),
+    partner       : cfg.partner       || {
+                                            partnerId  : '',
+                                            referrerId : '',
+                                          },
+
+    isEditAccess  : cfg.isEditAccess  || false,
     createdAt     : cfg.createdAt     || creatorFixDate(cfg.id),
     lastChange    : cfg.lastChange    || creatorFixDate(cfg.id)
   };

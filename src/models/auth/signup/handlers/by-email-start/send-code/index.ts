@@ -1,11 +1,11 @@
-import { validateSignupData } from '../../validators';
-import { Context } from '../../../../../app/types/global';
+import { validateSignupData } from '../../../validators';
+import { Context } from '../../../../../../app/types/global';
 import { sendEmailCodeConfirmation } from './send-email-code-confirmation';
-import { redisGetSignup, redisSetSignup } from '../../../../../libs/redis';
+import { redisGetSignup, redisSetSignup } from '../../../../../../libs/redis';
 import { generateCheckCode } from './utils/generate-check-code';
-import { SignupData } from '../../types';
-import { SIGNUP_CODE_DELAY, SIGNUP_CODE_EXPIRED } from '../../consts';
-import { isCodeExpired } from '../../utils/is-code-expired';
+import { SignupData } from '../../../types';
+import { SIGNUP_CODE_DELAY, SIGNUP_CODE_EXPIRED } from '../../../consts';
+import { isCodeExpired } from '../../../utils/is-code-expired';
 
 
 

@@ -10,6 +10,7 @@ export enum Condition {
 }
 
 
+export type Email = string
 
 /** Тип для фиксирования даты */
 export interface FixDate {
@@ -42,7 +43,7 @@ export interface ItemBase {
    */
   order?       : number
   display?     : boolean // Видимый или невидимый (удалённый) элемент
-  
+
   // changes?     : Array<Change>, // Сохранённые предыдущие состояния
   createdAt    : FixDate
   lastChange   : FixDate

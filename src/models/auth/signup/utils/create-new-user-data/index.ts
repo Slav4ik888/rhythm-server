@@ -13,7 +13,7 @@ export type NewUser = User & {
 }
 
 export const createNewUserData = (data: SignupData, role?: Role): NewUser => {
-  const { password, confirmPassword, permissions, firstName, secondName, middleName, isMobile, phoneNumber } = data;
+  const { partnerId, password, confirmPassword, permissions, firstName, secondName, middleName, isMobile, phoneNumber } = data;
 
   const user: NewUser = {
     ...cloneObj(creatorUser({ ...data, role })),
@@ -27,6 +27,7 @@ export const createNewUserData = (data: SignupData, role?: Role): NewUser => {
   if (isNotUndefined(secondName))  user.person.fio.secondName = secondName
   if (isNotUndefined(middleName))  user.person.fio.middleName = middleName
   if (isNotUndefined(phoneNumber)) user.person.phoneNumber    = phoneNumber
-  
+  if (isNotUndefined(partnerId))   user.partner.referrerId    = partnerId
+
   return user
 };

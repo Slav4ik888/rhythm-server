@@ -1,7 +1,7 @@
 import { Context } from '../../../../app/types/global';
 import { serviceIncreaseFollower } from '../../services';
 import { isValidPartnerId } from '../../utils';
-import { sendNotifications } from './send-notifycations';
+import { sendNotifications } from './send-notifications';
 
 
 

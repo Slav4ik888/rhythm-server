@@ -1,7 +1,7 @@
-import { createLogTemp, loggerMail as logger } from '../../../../../libs/loggers';
-import { sendMail } from '../../../../../libs/emails';
-import { Context } from '../../../../../app/types/global';
-import { cfg } from '../../../../../app/config';
+import { createLogTemp, loggerMail as logger } from '../../../../../../libs/loggers';
+import { sendMail } from '../../../../../../libs/emails';
+import { Context } from '../../../../../../app/types/global';
+import { cfg } from '../../../../../../app/config';
 
 
 
@@ -33,7 +33,7 @@ export async function sendEmailCodeConfirmation(ctx: Context, code: string): Pro
 
   await sendMail({
     to       : cfg.INFO_EMAIL,
-    subject  : `Попытка участника Rhythm: ${email}`,
+    subject  : `Попытка участника Ритма: ${email}`,
     template : 'info-attempt-registration',
     locals: {
       platform_name: cfg.SITE_TITLE_FULL,

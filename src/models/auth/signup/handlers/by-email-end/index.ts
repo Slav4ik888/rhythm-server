@@ -3,9 +3,10 @@ import { createNewCompany, createNewUser, complectionUser } from '../../services
 import { checkIsNotFreeEmail } from '../../../utils';
 import { Context } from '../../../../../app/types/global';
 import { redisGetSignup } from '../../../../../libs/redis';
-import { sendInfoRegistration } from './send-info-registration';
 import { validateSignupDataEnd } from '../../validators';
 import { checkCodeAnswer } from './utils';
+import { sendNotifications } from './send-notifications';
+import { serviceIncreaseRegisterEnded } from '../../../../partner';
 
 
 
@@ -27,7 +28,8 @@ export async function signupByEmailEndModel(ctx: Context): Promise<any> {
 
   await complectionUser(newUserData, companyId);
   await setCookie(ctx, userCredential, newUserData, 'signup');
-  await sendInfoRegistration(ctx, data.signupData?.firstName);
+  await serviceIncreaseRegisterEnded(newUserData.partner.referrerId, email, companyId);
+  await sendNotifications(ctx, data.signupData?.firstName, newUserData.partner.referrerId);
 
   ctx.body = {
     newUserData,
