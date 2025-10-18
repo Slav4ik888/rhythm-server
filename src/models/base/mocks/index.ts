@@ -1,11 +1,14 @@
-import { MOCK_USER_ID } from '../../user/mocks';
-import { creatorFixDate } from '../creators';
 import { FixDate } from '../types';
 
 /** 2023-03-13 */
 export const MOCK_DATE_13_03_2023 = 1678665600000;
 
-export const MOCK_FIX_DATE: FixDate = creatorFixDate(MOCK_USER_ID, MOCK_DATE_13_03_2023);
+/** 2025-10-18 */
+export const MOCK_FIX_DATE: FixDate = {
+  userId : 'FmyRl2ZALlMSZTloX9JXFPrMB303',
+  date   : 1678665600000
+};
+
 
 export const MOCK_EMAIL     = 'korzan.va@mail.ru';
 export const MOCK_PASSWORD  = 'R1q@678doP';

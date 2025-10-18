@@ -8,6 +8,8 @@
     "tsc": "tsc -p tsconfig.prod.json",
     "copy": "copyfiles -u 1 src/assets/**/* src/assets/**/**/* src/downloads/**/* src/downloads/**/**/* src/libs/emails/templates/* server",
     "dev": "NODE_PATH=server/ nodemon server/index.js",
+    "test:shared": "jest --detectOpenHandles --config ./config/jest/jest.config-shared.ts",
+    "test:validators": "jest --detectOpenHandles --config ./config/jest/jest.config-validators.ts",
     "test:unit": "jest --config ./config/jest/jest.config.ts"
   },
   "author": "Vyacheslav",

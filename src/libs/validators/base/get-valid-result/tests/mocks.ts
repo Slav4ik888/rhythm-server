@@ -1,4 +1,4 @@
-import { Errors } from 'shared/lib/validators';
+import { Errors } from '../../../types';
 import { Mocks } from './types';
 
 export const mocks: Mocks = [

@@ -24,7 +24,8 @@ describe('validateSignupData', () => {
     const
       mockFn = jest.fn(),
       ctx    = new CtxClass(mockFn) as unknown as Context;
-      
+
+    // @ts-ignore
     validateSignupData(ctx, {
       firstName       : '',
       email           : '',
@@ -43,7 +44,8 @@ describe('validateSignupData', () => {
       isMobile        : 'Отсутствует обязательное поле "isMobile".',
       password        : 'Поле "Пароль" не должно быть меньше 6 символов.',
       confirmPassword : 'Значение в поле "Повторите пароль", не совпадает с введёным паролем',
-      permissions     : 'Для регистрации, необходимо предоставить согласие на обработку персональных данных'
+      permissions     : 'Для регистрации, необходимо предоставить согласие на обработку персональных данных',
+      partnerId       : 'Отсутствует обязательное поле "partnerId".',
     });
   });
 
@@ -53,7 +55,7 @@ describe('validateSignupData', () => {
     const
       mockFn = jest.fn(),
       ctx    = new CtxClass(mockFn) as unknown as Context;
-      
+
     validateSignupData(ctx, MOCK_SIGNUP_DATA_FULL);
     expect(mockFn).toBeCalledTimes(0);
     expect(ctx.status).toEqual(200);
@@ -65,7 +67,7 @@ describe('validateSignupData', () => {
     const
       mockFn = jest.fn(),
       ctx    = new CtxClass(mockFn) as unknown as Context;
-    
+
     validateSignupData(ctx, {
       companyName     : 'Bobby Mayers',
 
@@ -87,7 +89,8 @@ describe('validateSignupData', () => {
       isMobile        : 'Отсутствует обязательное поле "isMobile".',
       password        : 'Поле "Пароль" не должно быть больше 50 символов.',
       confirmPassword : 'Значение в поле "Повторите пароль", не совпадает с введёным паролем',
-      permissions     : 'Отсутствует обязательное поле "permissions".'
+      permissions     : 'Отсутствует обязательное поле "permissions".',
+      partnerId       : 'Отсутствует обязательное поле "partnerId".',
     });
   });
 });

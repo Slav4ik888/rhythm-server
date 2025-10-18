@@ -1,13 +1,14 @@
-import { SCHEMA_NAME, validate } from '../../../../../../../libs/validators';
+import { SCHEMA_NAME } from '../../../../../../../libs/validators/ajv/schemas/schema-names';
+import { validate } from '../../../../../../../libs/validators';
 
 
 describe('SCHEMA_NAME.REC', () => {
   it('Valid data', () => {
-    expect(validate(SCHEMA_NAME.RESET_EMAIL_PASSWORD, { email: 'korzan.va@mail.ru' }).valid).toEqual(true);
+    expect(validate(SCHEMA_NAME.RECOVERY_PASSWORD, { email: 'korzan.va@mail.ru' }).valid).toEqual(true);
   });
 
   it('Email is empty', () => {
-    const res = validate(SCHEMA_NAME.RESET_EMAIL_PASSWORD, { email: '' });
+    const res = validate(SCHEMA_NAME.RECOVERY_PASSWORD, { email: '' });
 
     expect(res.valid).toEqual(false);
     expect(res.errors).toEqual({
@@ -16,7 +17,7 @@ describe('SCHEMA_NAME.REC', () => {
   });
 
   it('Invalid with full data', () => {
-    const res = validate(SCHEMA_NAME.RESET_EMAIL_PASSWORD, { email: '@' });
+    const res = validate(SCHEMA_NAME.RECOVERY_PASSWORD, { email: '@' });
 
     expect(res.valid).toEqual(false);
     expect(res.errors).toEqual({

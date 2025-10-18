@@ -1,5 +1,5 @@
-import { getMockStrLength } from 'shared/helpers/strings';
 import { isMoreThan, isNotMoreThan } from '..';
+import { getMockStrLength } from '../../../../../../../../shared/utils/strings';
 
 
 describe('isMoreThan', () => {

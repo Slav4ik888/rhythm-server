@@ -13,7 +13,9 @@ export type NewUser = User & {
 }
 
 export const createNewUserData = (data: SignupData, role?: Role): NewUser => {
-  const { partnerId, password, confirmPassword, permissions, firstName, secondName, middleName, isMobile, phoneNumber } = data;
+  const {
+    partnerId, password, confirmPassword, permissions, firstName, secondName, middleName, isMobile, phoneNumber
+  } = data;
 
   const user: NewUser = {
     ...cloneObj(creatorUser({ ...data, role })),

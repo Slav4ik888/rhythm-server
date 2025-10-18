@@ -1,4 +1,5 @@
-import { SCHEMA_NAME, validate } from '../../../../../../../libs/validators';
+import { validate } from '../../../../../../../libs/validators';
+import { SCHEMA_NAME } from '../../../../../../../libs/validators/ajv/schemas/schema-names';
 import { MOCK_AUTH_BY_LOGIN } from '../../../../mocks';
 
 
@@ -16,7 +17,7 @@ describe('SCHEMA_NAME.AUTH_BY_LOGIN', () => {
     expect(res.valid).toEqual(false);
     expect(res.errors).toEqual({
       email    : 'Отсутствует обязательное поле "email".',
-      password : 'Не верный формат данных, для поля "password".'
+      password : 'Не верный формат данных, для поля "Пароль".'
     });
   });
 

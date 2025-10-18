@@ -25,17 +25,21 @@ describe('createNewUserData', () => {
           secondName : '',
           middleName : ''
         },
-        phones: []
       },
       email           : MOCK_EMAIL,
 
-      positions       : [],
       role            : Role.OWNER,
 
       emailVerified   : false,
       permissions     : true,
       status          : UserStatus.NEW,
-
+      isEditAccess    : false,
+      settings        : {},
+      partner         : {
+        partnerId  : '',
+        referrerId : 'slava',
+      },
+      order           : 100,
       createdAt       : creatorFixDate('', 0),
       lastChange      : creatorFixDate('', 0),
 
@@ -66,17 +70,20 @@ describe('createNewUserData', () => {
           secondName : 'Фамилия',
           middleName : 'Отчество'
         },
-        phones: []
       },
       email           : MOCK_EMAIL,
-
-      positions       : [],
       role            : Role.EMPLOYEE,
-
       emailVerified   : false,
       permissions     : true,
       status          : UserStatus.NEW,
 
+      isEditAccess    : false,
+      settings        : {},
+      partner: {
+        partnerId  : '',
+        referrerId : 'slava',
+      },
+      order           : 100,
       createdAt       : creatorFixDate('', 0),
       lastChange      : creatorFixDate('', 0),
 

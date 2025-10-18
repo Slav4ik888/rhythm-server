@@ -14,7 +14,7 @@ describe(`Validate scheme - ${SCHEMA_NAME.COMPANY}`, () => {
     const companyData: Company = creatorCompany({
       ...MOCK_COMPANY,
       owner          : 'demo@mail.com',
-      partnerCode    : 'code1',
+      // partnerCode    : 'code1',
       companyMembers : [{
         e : 'user1@mail.com',
         a : {
@@ -103,7 +103,7 @@ describe(`Validate scheme - ${SCHEMA_NAME.COMPANY}`, () => {
       ...creatorCompany({
         ...MOCK_COMPANY,
         owner          : 'demo@mail',
-        partnerCode    : '123456',
+        // partnerCode    : '123456',
         companyMembers : [{
           e : 'user1@mail',
           // @ts-ignore
@@ -165,7 +165,7 @@ describe(`Validate scheme - ${SCHEMA_NAME.COMPANY}`, () => {
       valid: false,
       errors: {
         'owner'                 : 'Не верный формат данных, для поля "owner".',
-        'partnerCode'           : 'Поле "partnerCode" не должно быть больше 5 символов.',
+        // 'partnerCode'           : 'Поле "partnerCode" не должно быть больше 5 символов.',
         'url'                   : 'Отсутствует обязательное поле "url".',
         'companyType'           : 'Не верный формат данных, для поля "companyType".',
         'any'                   : 'Присутствует недопустимое поле "any".',

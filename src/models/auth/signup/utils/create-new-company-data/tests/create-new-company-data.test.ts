@@ -10,16 +10,21 @@ describe('createNewCompanyData', () => {
     newCompany.lastChange = creatorFixDate('', 0);
 
     const resultCompany: Company = {
-      id          : '',
-      ownerId     : '',
-      companyName : '',
-      owner       : 'korzan.va@mail.ru',
-
-      logoUrl     : '',
-      subscribes  : [],
-      status      : CompanyStatus.NEW,
-      createdAt   : creatorFixDate('', 0), 
-      lastChange  : creatorFixDate('', 0)
+      id                    : '',
+      ownerId               : '',
+      companyName           : '',
+      owner                 : 'korzan.va@mail.ru',
+      logoUrl               : '',
+      googleData            : { url: '' },
+      status                : CompanyStatus.NEW,
+      customSettings        : {},
+      dashboardMembers      : [],
+      companyMembers        : [],
+      bunchesUpdated        : {},
+      dashboardPublicAccess : {},
+      sheets                : {},
+      createdAt             : creatorFixDate('', 0),
+      lastChange            : creatorFixDate('', 0)
     };
 
     expect(newCompany).toEqual(resultCompany);
@@ -32,16 +37,21 @@ describe('createNewCompanyData', () => {
     newCompany.lastChange = creatorFixDate('', 0);
 
     const resultCompany: Company = {
-      id          : '',
-      ownerId     : '',
-      companyName : 'Bobby Mayers',
-      owner       : 'korzan.va@mail.ru',
-
-      logoUrl     : '',
-      subscribes  : [],
-      status      : CompanyStatus.NEW,
-      createdAt   : creatorFixDate('', 0), 
-      lastChange  : creatorFixDate('', 0)
+      id                    : '',
+      ownerId               : '',
+      companyName           : 'Bobby Mayers',
+      owner                 : 'korzan.va@mail.ru',
+      logoUrl               : '',
+      googleData            : { url: '' },
+      status                : CompanyStatus.NEW,
+      customSettings        : {},
+      dashboardMembers      : [],
+      companyMembers        : [],
+      bunchesUpdated        : {},
+      dashboardPublicAccess : {},
+      sheets                : {},
+      createdAt             : creatorFixDate('', 0),
+      lastChange            : creatorFixDate('', 0)
     };
 
     expect(newCompany).toEqual(resultCompany);
@@ -53,16 +63,21 @@ describe('createNewCompanyData', () => {
     newCompany.lastChange = creatorFixDate('', 0);
 
     const resultCompany: Company = {
-      id          : '',
-      ownerId     : '',
-      companyName : '',
-      owner       : '',
-
-      logoUrl     : '',
-      subscribes  : [],
-      status      : CompanyStatus.NEW,
-      createdAt   : creatorFixDate('', 0), 
-      lastChange  : creatorFixDate('', 0)
+      id                    : '',
+      ownerId               : '',
+      companyName           : '',
+      owner                 : '',
+      logoUrl               : '',
+      googleData            : { url: '' },
+      status                : CompanyStatus.NEW,
+      customSettings        : {},
+      dashboardMembers      : [],
+      companyMembers        : [],
+      bunchesUpdated        : {},
+      dashboardPublicAccess : {},
+      sheets                : {},
+      createdAt             : creatorFixDate('', 0),
+      lastChange            : creatorFixDate('', 0)
     };
 
     expect(newCompany).toEqual(resultCompany);

@@ -1,6 +1,6 @@
 import { validate } from '..';
 import { MOCK_FIX_DATE } from '../../../../../models/base/mocks';
-import { SCHEMA_NAME } from '../../schemas';
+import { SCHEMA_NAME } from '../../schemas/schema-names';
 
 
 
