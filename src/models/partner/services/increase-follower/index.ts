@@ -1,5 +1,5 @@
 import { Context } from '../../../../app/types/global';
-import { DbRef, getRefDoc } from '../../../helpers';
+import { DbRef, getRefCol, getRefDoc } from '../../../helpers';
 import { convertToDot } from '../../../../shared/utils/objects';
 import { IncreaseFollowerConfig } from '../../handlers/increase-follower';
 import { PartnerData } from '../../types';
@@ -9,7 +9,6 @@ import { PartnerData } from '../../types';
 /** increase followers in DB */
 export const serviceIncreaseFollower = async (ctx: Context): Promise<undefined> => {
   const { partnerId } = ctx.request.body as IncreaseFollowerConfig;
-
 
   // Set | Update
   const ref = getRefDoc(DbRef.PARTNER, { partnerId });
@@ -23,6 +22,12 @@ export const serviceIncreaseFollower = async (ctx: Context): Promise<undefined> 
         ? partner.followers + 1
         : 1
     }));
+  }
+  else { // Для нового партнёра
+    ref.set({
+      id: partnerId,
+      followers: 1
+    });
   }
 
   return
