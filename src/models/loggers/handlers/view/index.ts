@@ -58,10 +58,43 @@ export const logsViewModel = async (ctx: Context, next: Next): Promise<any> => {
         <div class="actions">
           <a href="${hostname}/api/logs/download/${name}/${pass}" download>Download Log File</a>
           <button class="danger" onclick="clearLog()">Clear Log File</button>
+          <button id="copyBtn" onclick="copyLog()">Copy to Clipboard</button>
         </div>
         <pre>${content.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</pre>
 
         <script>
+          async function copyLog() {
+            const preElement = document.querySelector('pre');
+            const text = preElement.textContent;
+            const copyBtn = document.getElementById('copyBtn');
+
+            try {
+              await navigator.clipboard.writeText(text);
+
+              // Визуальный фидбек
+              const originalText = copyBtn.textContent;
+              copyBtn.textContent = 'Copied!';
+              copyBtn.style.background = '#4CAF50';
+
+              setTimeout(() => {
+                  copyBtn.textContent = originalText;
+                  copyBtn.style.background = '';
+              }, 2000);
+            }
+            catch (err) {
+              console.error('Failed to copy: ', err);
+              // Fallback
+              const textArea = document.createElement('textarea');
+              textArea.value = text;
+              document.body.appendChild(textArea);
+              textArea.select();
+              document.execCommand('copy');
+              document.body.removeChild(textArea);
+
+              alert('Log copied to clipboard!');
+            }
+          }
+
           function clearLog() {
             fetch('${hostname}/api/logs/clear/${name}/${pass}', { method: 'GET' })
               .then(response => response.json())
