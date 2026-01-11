@@ -12,20 +12,17 @@ import { redisSetSession } from '../../redis';
 export async function fbAuthCookie(ctx: Context, next: Next) {
 
   try {
-    const { cookie } = getSessionData(ctx);
+    const { sessionCookie } = getSessionData(ctx);
 
-    // Verify the session cookie. In this case an additional check is added to detect
-    // if the user's Firebase session was revoked, user deleted/disabled, etc.
+    if (! sessionCookie) throw new NotAutorized(getErrorMessage(ERR_CODE.CookieNotAuth));
 
-    if (! cookie) throw new NotAutorized(getErrorMessage(ERR_CODE.CookieNotAuth));
-
-    const decodedIdToken = await admin.auth().verifySessionCookie(cookie, true /** checkRevoked */);
-    const user = await models.user.serviceFindUserById(decodedIdToken.uid);
+    const decodedIdToken = await admin.auth().verifySessionCookie(sessionCookie, true /** checkRevoked */);
+    const user           = await models.user.serviceFindUserById(decodedIdToken?.uid);
 
     ctx.state.user = { ...user };
     loggerAuth.info(createLogTemp(ctx, 'FBAuth'));
 
-    redisSetSession(decodedIdToken.uid, cookie, user);
+    redisSetSession(user, sessionCookie);
     return next();
   }
   catch(err) {

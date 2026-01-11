@@ -4,56 +4,56 @@ import { fbAuth } from '../../libs/firebase';
 import { API_PATHS } from './paths';
 import { checkUserSession } from '../session-caches';
 import { cv } from '../check-version';
+import { logging } from '../logging';
 // import { DbRef, getRefDoc } from '../../models/helpers';
 // import { em } from './helpers';
 // import { mustBeAuthenticated } from '../../libs/verifications/must-be-authenticated.js';
 
 
-const
-  router = new Router({ prefix: '/api' }),
-  { auth, user, company, dashboard, paramsCompany, docs, google, templates, logs, partner } = controllers;
+const router = new Router({ prefix: '/api' });
+const { auth, user, company, dashboard, paramsCompany, docs, google, templates, logs, partner } = controllers;
 
 
 // USERS - Auth
-router.post (API_PATHS.auth.signup.byEmailStart,        cv,                   auth.signupByEmailStart);
-router.post (API_PATHS.auth.signup.sendCodeAgain,       cv,                   auth.signupSendCode);
-router.post (API_PATHS.auth.signup.byEmailEnd,          cv,                   auth.signupByEmailEnd);
-router.post (API_PATHS.auth.login.resetEmailPassword,   cv,                   auth.resetEmailPassword);
-router.post (API_PATHS.auth.login.byEmail,              cv,                   auth.login);
+router.post (API_PATHS.auth.signup.byEmailStart,        logging, cv,                   auth.signupByEmailStart);
+router.post (API_PATHS.auth.signup.sendCodeAgain,       logging, cv,                   auth.signupSendCode);
+router.post (API_PATHS.auth.signup.byEmailEnd,          logging, cv,                   auth.signupByEmailEnd);
+router.post (API_PATHS.auth.login.resetEmailPassword,   logging, cv,                   auth.resetEmailPassword);
+router.post (API_PATHS.auth.login.byEmail,              logging, cv,                   auth.login);
 
 // USERS - Data
-router.get  (API_PATHS.user.getAuth,                    cv, fbAuth,           user.getAuth);
-router.post (API_PATHS.user.update,                     cv, checkUserSession, user.update);
-router.post (API_PATHS.user.logout,                     cv,                   user.logout);
+router.get  (API_PATHS.user.getAuth,                    logging, cv, fbAuth,           user.getAuth);
+router.post (API_PATHS.user.update,                     logging, cv, checkUserSession, user.update);
+router.post (API_PATHS.user.logout,                     logging, cv,                   user.logout);
 
 // COMPANY
-router.patch(API_PATHS.company.update,                  cv, checkUserSession, company.update);
-router.patch(API_PATHS.company.deleteSheet,             cv, checkUserSession, company.deleteSheet);
+router.patch(API_PATHS.company.update,                  logging, cv, checkUserSession, company.update);
+router.patch(API_PATHS.company.deleteSheet,             logging, cv, checkUserSession, company.deleteSheet);
 
 // PARAMS-COMPANY
 // Возможность без авторизации (если доступ к странице открыт)
-router.post (API_PATHS.paramsCompany.get,               cv,                   paramsCompany.get);
+router.post (API_PATHS.paramsCompany.get,               logging, cv,                   paramsCompany.get);
 
 // VIEW
-router.post (API_PATHS.dashboard.bunch.get,             cv,                   dashboard.bunch.get);
-router.post (API_PATHS.dashboard.view.createGroupItems, cv, checkUserSession, dashboard.view.createGroupItems);
-router.patch(API_PATHS.dashboard.view.update,           cv, checkUserSession, dashboard.view.update);
-router.post (API_PATHS.dashboard.view.delete,           cv, checkUserSession, dashboard.view.delete);
+router.post (API_PATHS.dashboard.bunch.get,             logging, cv,                   dashboard.bunch.get);
+router.post (API_PATHS.dashboard.view.createGroupItems, logging, cv, checkUserSession, dashboard.view.createGroupItems);
+router.patch(API_PATHS.dashboard.view.update,           logging, cv, checkUserSession, dashboard.view.update);
+router.post (API_PATHS.dashboard.view.delete,           logging, cv, checkUserSession, dashboard.view.delete);
 
 // TEMPLATES
-router.get  (API_PATHS.templates.getBunchesUpdated,     cv,                   templates.getBunchesUpdated);
-router.post (API_PATHS.templates.getTemplates,          cv,                   templates.getTemplates);
-router.post (API_PATHS.templates.update,                cv, checkUserSession, templates.update);
-router.post (API_PATHS.templates.delete,                cv, checkUserSession, templates.deleteTemplate);
+router.get  (API_PATHS.templates.getBunchesUpdated,     logging, cv,                   templates.getBunchesUpdated);
+router.post (API_PATHS.templates.getTemplates,          logging, cv,                   templates.getTemplates);
+router.post (API_PATHS.templates.update,                logging, cv, checkUserSession, templates.update);
+router.post (API_PATHS.templates.delete,                logging, cv, checkUserSession, templates.deleteTemplate);
 
 // DOCS
-router.get  (API_PATHS.docs.getPolicy,                  cv,                   docs.getPolicy);
+router.get  (API_PATHS.docs.getPolicy,                  logging, cv,                   docs.getPolicy);
 
 // GOOGLE
-router.post (API_PATHS.google.getData,                  cv,                   google.getData);
+router.post (API_PATHS.google.getData,                  logging, cv,                   google.getData);
 
 // PARTNER
-router.post (API_PATHS.partner.increaseFollower,        cv,                   partner.increaseFollower);
+router.post (API_PATHS.partner.increaseFollower,        logging, cv,                   partner.increaseFollower);
 
 
 // DEV

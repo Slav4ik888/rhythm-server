@@ -1,6 +1,11 @@
+import { day } from '../../shared/utils/dates';
+
+
 export const cfg = {
-  VERSION         : '1.51.0',
+  VERSION         : '1.52.0',
   COOKIE_NAME     : 'rhythm',
+  SESSION_EXP     : day(1), // Срок действия сессии (это максимально доступный в Firebase)
+  // SESSION_UPD     : day(11.5), // За сколько дней до окончания сессии авто обновлять её
   SITE_URL        : 'https://rhy.thm.su',
   SITE_TITLE_FULL : 'Информационная панель «Ритм»',
   INFO_EMAIL      : 'info@thm.su',

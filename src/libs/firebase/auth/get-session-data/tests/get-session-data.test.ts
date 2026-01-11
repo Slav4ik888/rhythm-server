@@ -15,7 +15,7 @@ describe('getSessionData', () => {
 
     expect(getSessionData(ctx)).toEqual({
       userId: 'hrzUswUCkSUJjZanBRz79XIXB5l1',
-      cookie: 'mother_fucker_987'
+      sessionCookie: 'mother_fucker_987'
     });
   });
 
@@ -29,7 +29,7 @@ describe('getSessionData', () => {
 
     expect(getSessionData(ctx)).toEqual({
       userId: 'hrzUswUCkSUJjZanBRz79XIXB5l1mother_fucker_987',
-      cookie: undefined
+      sessionCookie: undefined
     });
   });
 
@@ -42,7 +42,7 @@ describe('getSessionData', () => {
 
     expect(getSessionData(ctx)).toEqual({
       userId: '',
-      cookie: ''
+      sessionCookie: ''
     });
   });
 });

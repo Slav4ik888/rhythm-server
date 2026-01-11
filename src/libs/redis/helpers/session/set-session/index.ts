@@ -5,12 +5,11 @@ import { client } from '../../../init';
 
 /** Set cookie & user to Redis */
 export const redisSetSession = async (
-  userId        : string,
-  sessionCookie : string,
-  user          : User
+  user          : User,
+  sessionCookie : string
 ): Promise<void> => {
 
-  await client.hSet(userId, {
+  await client.hSet(user.id, {
     cookie : sessionCookie,
     user   : JSON.stringify(user)
   });
